@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:proyecto_tienda/pages/crear_cuenta.dart';
 import 'package:proyecto_tienda/pages/listarUsuarios.dart';
 import 'package:proyecto_tienda/pages/powerPage.dart';
 import 'package:proyecto_tienda/pages/registroUsuarios.dart';
@@ -23,7 +24,7 @@ import 'package:http/http.dart' as http;
         '/vendedoresPage': (BuildContext context)=> new Vendedores(),
         '/LoginPage': (BuildContext context)=> new LoginPage(),
         '/pages/listarUsuarios': (BuildContext context)=> new ListarUser(),
-        '/pages/registroUsuarios': (BuildContext context)=> new AddData(),
+        '/pages/crear_cuenta': (BuildContext context)=> new AddData(),
         
        },
      );
@@ -121,7 +122,7 @@ showDialog(
        onWillPop: () async => false,
          child: new Scaffold(
            resizeToAvoidBottomPadding: false,
-       appBar: AppBar(title: Text("Login"),),
+      // appBar: AppBar(title: Text("Login"),),
       body: Container(
         child: Container(
           decoration: new BoxDecoration(
@@ -231,8 +232,8 @@ showDialog(
                         borderRadius: new BorderRadius.circular(10.0)
                       ),
                       onPressed: (){
-                        login();
-                     //   Navigator.pop(context);
+                      
+                     Navigator.pushReplacementNamed(context, '/pages/crear_cuenta');
                       },
                     ),
                     Text(mensaje, style: TextStyle(fontSize: 1 ,color: Colors.red),),

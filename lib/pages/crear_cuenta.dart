@@ -1,4 +1,4 @@
-/* import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:proyecto_tienda/pages/listarUsuarios.dart';
 
@@ -97,7 +97,9 @@ class _AddDataState extends State<AddData> {
                     onPressed: () {
                       if(_formKey.currentState.validate()){
                         addData();
-                        Navigator.pop(context);
+                       Navigator.pushReplacementNamed(context, '/LoginPage');
+                     //  Navigator.pushReplacementNamed(context, '/powerPage');
+                  
                       }
                   
                     },
@@ -109,7 +111,7 @@ class _AddDataState extends State<AddData> {
                         borderRadius: new BorderRadius.circular(30.0)
                     ),
                     onPressed: () {
-                     Navigator.pushReplacementNamed(context, '/powerPage');
+                    Navigator.pushReplacementNamed(context, '/LoginPage');
                   
                     },
                   ),
@@ -126,4 +128,3 @@ class _AddDataState extends State<AddData> {
     );
   }
 }
- */

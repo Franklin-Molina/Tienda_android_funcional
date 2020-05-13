@@ -30,7 +30,7 @@ class _ListarUserState extends State<ListarUser> {
       appBar: new AppBar(
         title: new Text("Listado Usuarios"),
       ),
-      floatingActionButton: new FloatingActionButton(
+     /*  floatingActionButton: new FloatingActionButton(
         child: new Icon(
           Icons.add ,
           color: Colors.black,
@@ -38,7 +38,7 @@ class _ListarUserState extends State<ListarUser> {
         onPressed: () => Navigator.of(context).push(new MaterialPageRoute(
              builder: (BuildContext context) => new AddData(),
             )),
-      ),
+      ), */
       
 
       body: new FutureBuilder<List>(
