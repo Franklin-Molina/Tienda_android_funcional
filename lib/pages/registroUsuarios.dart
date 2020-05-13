@@ -15,7 +15,7 @@ class _AddDataState extends State<AddData> {
   var _formKey = GlobalKey<FormState>();
 
   void addData() {
-    var url = "http://192.168.0.118/tienda/adddata.php";
+    var url = "http://192.168.42.170/tienda/adddata.php";
 
     http.post(url, body: {
       "username": controllerUsername.text,
@@ -49,7 +49,7 @@ class _AddDataState extends State<AddData> {
                     title: new TextFormField(
                       controller: controllerUsername,
                           validator: (value) {
-                            if (value.isEmpty) return "Ingresa un nombre de usurio";
+                            if (value.isEmpty) return "Ingresa un nombre de usuario";
                           },
                       decoration: new InputDecoration(
                         hintText: "Usuario", labelText: "Usuario",
@@ -104,7 +104,7 @@ class _AddDataState extends State<AddData> {
                   ),
                    new RaisedButton(
                     child: new Text("Salir"),
-                    color: Colors.blueAccent,
+                    color: Colors.red,
                     shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(30.0)
                     ),

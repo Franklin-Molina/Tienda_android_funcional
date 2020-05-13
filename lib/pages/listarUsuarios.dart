@@ -16,7 +16,7 @@ class _ListarUserState extends State<ListarUser> {
 
 
   Future<List> getData() async{
-    final response = await http.get("http://192.168.0.118/tienda/getdata.php",);
+    final response = await http.get("http://192.168.42.170/tienda/getdata.php",);
     return json.decode(response.body);
 
    
@@ -31,11 +31,16 @@ class _ListarUserState extends State<ListarUser> {
         title: new Text("Listado Usuarios"),
       ),
       floatingActionButton: new FloatingActionButton(
-        child: new Icon(Icons.add),
+        child: new Icon(
+          Icons.add ,
+          color: Colors.black,
+           ),
         onPressed: () => Navigator.of(context).push(new MaterialPageRoute(
              builder: (BuildContext context) => new AddData(),
             )),
       ),
+      
+
       body: new FutureBuilder<List>(
         future: getData(),
         builder: (context, snapshot) {
@@ -77,16 +82,16 @@ class ItemList extends StatelessWidget {
               child: new ListTile(
                 title: new Text(
                   list[i]['username'],
-                  style: TextStyle(fontSize: 25.0, color: Colors.orangeAccent),
+                  style: TextStyle(fontSize: 25.0, color: Colors.black),
                 ),
                 leading: new Icon(
                   Icons.person_pin,
                   size: 77.0,
-                  color: Colors.orangeAccent,
+                  color: Colors.red,
                 ),
                 subtitle: new Text(
                   "Nivel : ${list[i]['nivel']}",
-                  style: TextStyle(fontSize: 20.0, color: Colors.black),
+                  style: TextStyle(fontSize: 20.0, color: Colors.grey),
                 ),
               ),
             ),

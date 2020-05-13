@@ -16,7 +16,7 @@ import 'package:http/http.dart' as http;
    Widget build(BuildContext context) {
      return MaterialApp(
        debugShowCheckedModeBanner: false,
-       title: 'Flutter + Mysql',
+       title: 'Mercado Libre',
        home: LoginPage(),
        routes: <String, WidgetBuilder>{
         '/powerPage': (BuildContext context)=> new SuperV(),
@@ -24,7 +24,6 @@ import 'package:http/http.dart' as http;
         '/LoginPage': (BuildContext context)=> new LoginPage(),
         '/pages/listarUsuarios': (BuildContext context)=> new ListarUser(),
         '/pages/registroUsuarios': (BuildContext context)=> new AddData(),
-        
         
        },
      );
@@ -43,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
 
   String mensaje = '';
   Future<List> login() async{ 
-    final response = await http.post("http://192.168.0.118/tienda/login.php",body: {
+    final response = await http.post("http://192.168.42.170/tienda/login.php",body: {
 
     "username": controllerUser.text,
     "password": controllerPass.text,
@@ -54,7 +53,46 @@ class _LoginPageState extends State<LoginPage> {
 var datauser = json.decode(response.body);
   if(datauser.length==0){
     setState(() {
-          mensaje="Usuario/Contraseña incorrectas";
+     
+       
+showDialog(
+    context: context,
+    barrierDismissible:false,
+
+    builder: (context){
+     return AlertDialog(
+       shape: RoundedRectangleBorder(
+         borderRadius: BorderRadius.circular(20.0)
+       ),
+       title: Text("Error"),
+       content: Column(
+         crossAxisAlignment: CrossAxisAlignment.start,
+         mainAxisSize: MainAxisSize.min,
+         children: <Widget>[
+           Text("Password / User "),
+           Text(" Incorrect"),
+         Icon(
+            Icons.error_outline,
+            color: Colors.red,
+            size: 73.0,
+          )
+          
+         ],
+       ),
+       actions: <Widget>[
+          FlatButton(
+           child: Text("Aceptar"),
+           onPressed: (){
+             Navigator.of(context).pop();
+           },
+         ),
+        
+       ],
+     );
+    }
+    );
+
+      
         });
   }else{
     
@@ -79,13 +117,16 @@ var datauser = json.decode(response.body);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomPadding: false,
-      body: Form(
+    return WillPopScope(
+       onWillPop: () async => false,
+         child: new Scaffold(
+           resizeToAvoidBottomPadding: false,
+       appBar: AppBar(title: Text("Login"),),
+      body: Container(
         child: Container(
           decoration: new BoxDecoration(
            image: new DecorationImage(
-             image: new AssetImage("assets/images/digital.jpg"),
+             image: new AssetImage("assets/images/fondo_login.jpeg"),
              fit: BoxFit.cover
            ),
           ),
@@ -94,11 +135,11 @@ var datauser = json.decode(response.body);
               new Container(
                 padding: EdgeInsets.only(top: 77.0),
                 child: new CircleAvatar(
-                  backgroundColor: Colors.red,
+                  backgroundColor: Colors.green[200],
                   child: new Image(
                     width: 135,
                     height: 135,
-                    image: new AssetImage('assets/images/avatar7.png')
+                    image: new AssetImage('assets/images/avatarx.png')
                   ),
                 ),
                 width: 170.0,
@@ -170,21 +211,31 @@ var datauser = json.decode(response.body);
                 
                       ),
                     ),
-                   
                     Spacer(),
                     new RaisedButton(
                       child: new Text('Ingresar'),
-                      color: Colors.green,
+                      color: Colors.red[100],
                       shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(10.0)
                       ),
                       onPressed: (){
                         login();
-                        Navigator.pop(context);
+                     //   Navigator.pop(context);
                       },
                     ),
-                    Text(mensaje,
-                    style: TextStyle(fontSize: 1 ,color: Colors.red),),
+                       Spacer(),
+                    new RaisedButton(
+                      child: new Text('Crear cuenta'),
+                      color: Colors.black,
+                      shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(10.0)
+                      ),
+                      onPressed: (){
+                        login();
+                     //   Navigator.pop(context);
+                      },
+                    ),
+                    Text(mensaje, style: TextStyle(fontSize: 1 ,color: Colors.red),),
                   ],
                 ),
               ),
@@ -192,6 +243,7 @@ var datauser = json.decode(response.body);
           ),
           ),
         ),
-    );  
+    ), 
+    );
   }
 }

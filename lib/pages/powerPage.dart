@@ -28,42 +28,9 @@ class SuperV extends StatelessWidget {
               ),
               ),
               
-               Container(
-            padding: EdgeInsets.all(2.0),
-            child: new RawMaterialButton(
-              onPressed: (){
-                Navigator.pushReplacementNamed(context, '/pages/listarUsuarios');
-              },
-              child: new Icon(
-                Icons.list,
-                color: Colors.black,
-                size: 73.0,
-              ),
-              shape: new CircleBorder(),
-              elevation: 2.0,
-              fillColor: Colors.white,
-              
-              ),
-              ),
-               Container(
-            padding: EdgeInsets.all(2.0),
-            child: new RawMaterialButton(
-              onPressed: (){
-                Navigator.pushReplacementNamed(context, '/pages/listarUsuarios');
-              },
-              child: new Icon(
-                Icons.settings,
-                color: Colors.black,
-                size: 73.0,
-              ),
-              shape: new CircleBorder(),
-              elevation: 2.0,
-              fillColor: Colors.white,
-              
-              ),
-              ),
       ],
         ),
+/*
         Row(      //FIla 2
       children: <Widget>[
           Container(
@@ -84,45 +51,14 @@ class SuperV extends StatelessWidget {
               ),
               ),
               
-               Container(
-            padding: EdgeInsets.all(2.0),
-            child: new RawMaterialButton(
-              onPressed: (){
-                Navigator.pushReplacementNamed(context, '/pages/listarUsuarios');
-              },
-              child: new Icon(
-                Icons.list,
-                color: Colors.black,
-                size: 73.0,
-              ),
-              shape: new CircleBorder(),
-              elevation: 2.0,
-              fillColor: Colors.white,
-              
-              ),
-              ),
-               Container(
-            padding: EdgeInsets.all(2.0),
-            child: new RawMaterialButton(
-              onPressed: (){
-                Navigator.pushReplacementNamed(context, '/pages/listarUsuarios');
-              },
-              child: new Icon(
-                Icons.settings,
-                color: Colors.black,
-                size: 73.0,
-              ),
-              shape: new CircleBorder(),
-              elevation: 2.0,
-              fillColor: Colors.white,
-              
-              ),
-              ),
+           
+            
       ],
-        ),
+        ),*/
+        
         Row(      //FIla 3
       children: <Widget>[
-          Container(
+         /* Container(
             padding: EdgeInsets.all(2.0),
             child: new RawMaterialButton(
               onPressed: (){
@@ -138,25 +74,9 @@ class SuperV extends StatelessWidget {
               fillColor: Colors.white,
               
               ),
-              ),
+              ),*/
               
-               Container(
-            padding: EdgeInsets.all(2.0),
-            child: new RawMaterialButton(
-              onPressed: (){
-                Navigator.pushReplacementNamed(context, '/pages/listarUsuarios');
-              },
-              child: new Icon(
-                Icons.list,
-                color: Colors.black,
-                size: 73.0,
-              ),
-              shape: new CircleBorder(),
-              elevation: 2.0,
-              fillColor: Colors.white,
-              
-              ),
-              ),
+            
                Container(
             padding: EdgeInsets.all(2.0),
             child: new RawMaterialButton(
