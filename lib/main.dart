@@ -101,9 +101,9 @@ showDialog(
         });
   }else{
     
-   if(datauser[0]['nivel']=='admin'){
+   if(datauser[0]['estado']=='admin'){
        Navigator.pushReplacementNamed(context, '/powerPage');
-    }else if(datauser[0]['nivel']=='ventas'){
+    }else if(datauser[0]['estado']=='ventas'){
       Navigator.pushReplacementNamed(context, '/pages/list_product');
     }
 

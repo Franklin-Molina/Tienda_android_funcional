@@ -86,16 +86,17 @@ class ItemList extends StatelessWidget {
                   style: TextStyle(fontSize: 25.0, color: Colors.black),
                 ),
                 leading: new Icon(
-                  Icons.person_pin,
-                  size: 77.0,
-                  color: Colors.red,
+                  Icons.add_shopping_cart,
+                  size: 50.0,
+                  color: Colors.green,
                 ),
                 subtitle: new Text(
-                  "Descricion : ${list[i]['descricion']}",
+                  list[i]['descripcion'],           
                   style: TextStyle(fontSize: 20.0, color: Colors.grey),
                 ),
               ),
             ),
+            
           ),
         );
       },
