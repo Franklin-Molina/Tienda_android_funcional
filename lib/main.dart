@@ -3,9 +3,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:proyecto_tienda/pages/crear_cuenta.dart';
+import 'package:proyecto_tienda/pages/crear_producto.dart';
+import 'package:proyecto_tienda/pages/list_product.dart';
 import 'package:proyecto_tienda/pages/listarUsuarios.dart';
 import 'package:proyecto_tienda/pages/powerPage.dart';
-import 'package:proyecto_tienda/pages/registroUsuarios.dart';
+//import 'package:proyecto_tienda/pages/crear_producto.dart';
 import 'package:proyecto_tienda/pages/vendedoresPage.dart';
 import 'package:http/http.dart' as http;
  void main () => runApp(LoginApp());
@@ -22,9 +24,11 @@ import 'package:http/http.dart' as http;
        routes: <String, WidgetBuilder>{
         '/powerPage': (BuildContext context)=> new SuperV(),
         '/vendedoresPage': (BuildContext context)=> new Vendedores(),
+         '/pages/list_product': (BuildContext context)=> new LisProduct(),
         '/LoginPage': (BuildContext context)=> new LoginPage(),
         '/pages/listarUsuarios': (BuildContext context)=> new ListarUser(),
         '/pages/crear_cuenta': (BuildContext context)=> new AddData(),
+        '/pages/crear_producto': (BuildContext context)=> new AddProduct(),
         
        },
      );
@@ -43,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
 
   String mensaje = '';
   Future<List> login() async{ 
-    final response = await http.post("http://192.168.42.170/tienda/login.php",body: {
+    final response = await http.post("http://192.168.0.118/tienda/login.php",body: {
 
     "username": controllerUser.text,
     "password": controllerPass.text,
@@ -100,7 +104,7 @@ showDialog(
    if(datauser[0]['nivel']=='admin'){
        Navigator.pushReplacementNamed(context, '/powerPage');
     }else if(datauser[0]['nivel']=='ventas'){
-      Navigator.pushReplacementNamed(context, '/vendedoresPage');
+      Navigator.pushReplacementNamed(context, '/pages/list_product');
     }
 
     setState(() {
@@ -220,8 +224,9 @@ showDialog(
                         borderRadius: new BorderRadius.circular(10.0)
                       ),
                       onPressed: (){
-                        login();
+                       login();
                      //   Navigator.pop(context);
+                     
                       },
                     ),
                        Spacer(),

@@ -8,16 +8,16 @@ import 'dart:convert';
 import 'package:proyecto_tienda/pages/registroUsuarios.dart';
  
 
-class ListarUser extends StatefulWidget {
+class LisProduct extends StatefulWidget {
   @override
-  _ListarUserState createState() => _ListarUserState();
+  _LisProductState createState() => _LisProductState();
 }
 
-class _ListarUserState extends State<ListarUser> {
+class _LisProductState extends State<LisProduct> {
 
 
-  Future<List> getData() async{
-    final response = await http.get("http://192.168.0.118/tienda/getdata.php",);
+  Future<List> getProduct() async{
+    final response = await http.get("http://192.168.0.118/tienda/getProduct.php",);
     return json.decode(response.body);
 
    
@@ -29,7 +29,7 @@ class _ListarUserState extends State<ListarUser> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Listado Usuarios"),
+        title: new Text("Listado de productos"),
       ),
       floatingActionButton: new FloatingActionButton(
         child: new Icon(
@@ -43,7 +43,7 @@ class _ListarUserState extends State<ListarUser> {
       
 
       body: new FutureBuilder<List>(
-        future: getData(),
+        future: getProduct(),
         builder: (context, snapshot) {
           if (snapshot.hasError) print(snapshot.error);
           return snapshot.hasData
@@ -82,7 +82,7 @@ class ItemList extends StatelessWidget {
             child: new Card(
               child: new ListTile(
                 title: new Text(
-                  list[i]['username'],
+                  list[i]['nombre'],
                   style: TextStyle(fontSize: 25.0, color: Colors.black),
                 ),
                 leading: new Icon(
@@ -91,7 +91,7 @@ class ItemList extends StatelessWidget {
                   color: Colors.red,
                 ),
                 subtitle: new Text(
-                  "Nivel : ${list[i]['nivel']}",
+                  "Descricion : ${list[i]['descricion']}",
                   style: TextStyle(fontSize: 20.0, color: Colors.grey),
                 ),
               ),
