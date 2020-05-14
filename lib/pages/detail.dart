@@ -23,7 +23,7 @@ void deleteData(){
 
 void confirm (){
   AlertDialog alertDialog = new AlertDialog(
-    content: new Text("Esta seguto de eliminar '${widget.list[widget.index]['username']}'"),
+    content: new Text("Esta seguro de eliminar '${widget.list[widget.index]['username']}'"),
     actions: <Widget>[
       new RaisedButton(
         child: new Text(" Eliminar",style: new TextStyle(color: Colors.black),),
@@ -64,7 +64,8 @@ void confirm (){
                 new Padding(padding: const EdgeInsets.only(top: 30.0),),
                 new Text(widget.list[widget.index]['username'], style: new TextStyle(fontSize: 20.0),),
                 Divider(),
-                new Text("Nivel : ${widget.list[widget.index]['nivel']}", style: new TextStyle(fontSize: 18.0),),
+                new Text("Telefono : ${widget.list[widget.index]['telefono']}", style: new TextStyle(fontSize: 18.0,color: Colors.grey),),
+                new Text("Ciudad : ${widget.list[widget.index]['ciudad']}", style: new TextStyle(fontSize: 18.0,color: Colors.grey),),
                 new Padding(padding: const EdgeInsets.only(top: 30.0),),
 
                 new Row(
