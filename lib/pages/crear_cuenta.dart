@@ -10,7 +10,10 @@ class AddData extends StatefulWidget {
 class _AddDataState extends State<AddData> {
   TextEditingController controllerUsername = new TextEditingController();
   TextEditingController controllerPassword = new TextEditingController();
-  TextEditingController controllerNivel = new TextEditingController();
+  TextEditingController controllerTelefono = new TextEditingController();
+  TextEditingController controllerDireccion = new TextEditingController();
+  TextEditingController controllerCiudad = new TextEditingController();
+
 
   var _formKey = GlobalKey<FormState>();
 
@@ -20,7 +23,9 @@ class _AddDataState extends State<AddData> {
     http.post(url, body: {
       "username": controllerUsername.text,
       "password": controllerPassword.text,
-      "nivel": controllerNivel.text,
+      "telefono": controllerTelefono.text,
+      "ciudad": controllerDireccion.text,
+      "direccion": controllerCiudad.text,
 
       //"nivel": _mySelection.toString(), //aqui traemos el DropdownMenuItem lo llamamos _mySelection este es como el controller
       //"nivel": controllerNivel.text
@@ -34,7 +39,7 @@ class _AddDataState extends State<AddData> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Adicionar Usuarios"),
+        title: new Text("Crear Cuenta"),
       ),
       body: Form(
         key: _formKey,
@@ -60,6 +65,7 @@ class _AddDataState extends State<AddData> {
                     leading: const Icon(Icons.vpn_key, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerPassword,
+                       obscureText: true,
                           validator: (value) {
                             if (value.isEmpty) return "Ingresa una Contraseña";
                           },
@@ -70,14 +76,38 @@ class _AddDataState extends State<AddData> {
                   ),
                   
                    new ListTile(
-                    leading: const Icon(Icons.list, color: Colors.black),
+                    leading: const Icon(Icons.location_city, color: Colors.black),
                     title: new TextFormField(
-                      controller: controllerNivel,
+                      controller: controllerCiudad,
                           validator: (value) {
-                            if (value.isEmpty) return "Ingresa un nivel";
+                            if (value.isEmpty) return "Ingresa una ciudad";
                           },
                       decoration: new InputDecoration(
-                        hintText: "nivel", labelText: "Nivel",
+                        hintText: "Ciudad", labelText: "Ciudad",
+                      ),
+                    ),
+                  ),
+                     new ListTile(
+                    leading: const Icon(Icons.phone_android, color: Colors.black),
+                    title: new TextFormField(
+                      controller: controllerTelefono,
+                          validator: (value) {
+                            if (value.isEmpty) return "Ingresa un telefono";
+                          },
+                      decoration: new InputDecoration(
+                        hintText: "Telefono", labelText: "Telefono",
+                      ),
+                    ),
+                  ),
+                     new ListTile(
+                    leading: const Icon(Icons.call_split, color: Colors.black),
+                    title: new TextFormField(
+                      controller: controllerDireccion,
+                          validator: (value) {
+                            if (value.isEmpty) return "Ingresa una direccion";
+                          },
+                      decoration: new InputDecoration(
+                        hintText: "Direccion", labelText: "Direccion",
                       ),
                     ),
                   ),

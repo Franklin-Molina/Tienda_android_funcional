@@ -20,11 +20,17 @@
 	$id=$_POST["id"];
 	$username = $_POST['username'];
 	$password = $_POST['password'];
-	$nivel = $_POST['nivel'];
+	$telefono = $_POST['telefono'];
+	$ciudad = $_POST['ciudad'];
+	$direccion = $_POST['direccion'];
+
 	if(isset($id)==false){
 		$estado = "ventas";
 
-	$connect->query("INSERT INTO usuarios (username,password,nivel,estado) VALUES ('".$username."','".$password."','".$nivel."','".$estado."')");
+	$connect->query("INSERT INTO usuarios (username,password,telefono,ciudad,direccion,estado) 
+
+	VALUES ('".$username."','".$password."','".$telefono."','".$ciudad."','".$direccion."','".$estado."')");
+
 	}
    }
   

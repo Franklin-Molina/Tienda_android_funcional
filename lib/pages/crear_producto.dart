@@ -31,7 +31,7 @@ class _AddProductState extends State<AddProduct> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Agregar Productos"),
+        title: new Text("Agregar Producto"),
       ),
       body: Form(
         key: _formKey,
@@ -42,7 +42,7 @@ class _AddProductState extends State<AddProduct> {
               new Column(
                 children: <Widget>[
                   new ListTile(
-                    leading: const Icon(Icons.person, color: Colors.black),
+                    leading: const Icon(Icons.rate_review, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerNombre,
                       validator: (value) {
@@ -56,7 +56,7 @@ class _AddProductState extends State<AddProduct> {
                     ),
                   ),
                   new ListTile(
-                    leading: const Icon(Icons.vpn_key, color: Colors.black),
+                    leading: const Icon(Icons.monetization_on, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerPrecio,
                       validator: (value) {
@@ -69,7 +69,7 @@ class _AddProductState extends State<AddProduct> {
                     ),
                   ),
                   new ListTile(
-                    leading: const Icon(Icons.list, color: Colors.black),
+                    leading: const Icon(Icons.description, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerdescripcion,
                       validator: (value) {
@@ -83,7 +83,7 @@ class _AddProductState extends State<AddProduct> {
                     ),
                   ),
                   new ListTile(
-                    leading: const Icon(Icons.list, color: Colors.black),
+                    leading: const Icon(Icons.category, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerCategoria,
                       validator: (value) {
@@ -103,7 +103,7 @@ class _AddProductState extends State<AddProduct> {
                   ),
                   new RaisedButton(
                     child: new Text("Guardar"),
-                    color: Colors.blueAccent,
+                    color: Colors.green,
                     shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(30.0)),
                     onPressed: () {

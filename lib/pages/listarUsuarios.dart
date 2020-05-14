@@ -91,7 +91,7 @@ class ItemList extends StatelessWidget {
                   color: Colors.red,
                 ),
                 subtitle: new Text(
-                  "Nivel : ${list[i]['nivel']}",
+                  "Telefono : ${list[i]['telefono']}",
                   style: TextStyle(fontSize: 20.0, color: Colors.grey),
                 ),
               ),

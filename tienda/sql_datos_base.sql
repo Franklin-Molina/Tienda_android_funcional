@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `productos` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla android.productos: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla android.productos: ~5 rows (aproximadamente)
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
 INSERT INTO `productos` (`id`, `nombre`, `precio`, `descripcion`, `categoria`, `imagen`) VALUES
 	(1, 'x', 'x', 'x', 'x', NULL),
@@ -42,16 +42,20 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` text NOT NULL,
   `password` text NOT NULL,
-  `nivel` text NOT NULL,
+  `telefono` text NOT NULL,
+  `ciudad` text,
+  `direccion` text,
   `estado` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla android.usuarios: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla android.usuarios: ~4 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` (`id`, `username`, `password`, `nivel`, `estado`) VALUES
-	(1, 'franklin', '1234', 'x', 'admin'),
-	(2, 'carlos', '0213', '316507526', 'ventas');
+INSERT INTO `usuarios` (`id`, `username`, `password`, `telefono`, `ciudad`, `direccion`, `estado`) VALUES
+	(1, 'Franklin', '1234', '3165076269', 'Mocoa', 'Centro', 'admin'),
+	(3, 'pruebauser', '123', '96325874', 'Beijing', 'Mocoa', 'ventas'),
+	(4, 'fravents', '963258741', '316548521', 'Tokio', 'Mocoa', 'ventas'),
+	(5, 'Kira', '123', '852369', 'Centro', 'Mocoa', 'ventas');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
