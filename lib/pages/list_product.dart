@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:proyecto_tienda/pages/crear_producto.dart';
 import 'package:proyecto_tienda/pages/detail.dart';
+import 'package:proyecto_tienda/pages/detalles_product.dart';
 import 'dart:async';
 import 'dart:convert';
 
@@ -73,9 +74,9 @@ class ItemList extends StatelessWidget {
           child: new GestureDetector(
             onTap: () => Navigator.of(context).push(
                   new MaterialPageRoute(
-                      builder: (BuildContext context) => new Detail(
-                            list: list,
-                            index: i,
+                      builder: (BuildContext context) => new DetalProduct(
+                            listPrd: list,
+                            indexProd: i,
                           )
                           ),
                 ),

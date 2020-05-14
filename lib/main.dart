@@ -8,7 +8,6 @@ import 'package:proyecto_tienda/pages/list_product.dart';
 import 'package:proyecto_tienda/pages/listarUsuarios.dart';
 import 'package:proyecto_tienda/pages/powerPage.dart';
 //import 'package:proyecto_tienda/pages/crear_producto.dart';
-import 'package:proyecto_tienda/pages/vendedoresPage.dart';
 import 'package:http/http.dart' as http;
  void main () => runApp(LoginApp());
 
@@ -23,12 +22,12 @@ import 'package:http/http.dart' as http;
        home: LoginPage(),
        routes: <String, WidgetBuilder>{
         '/powerPage': (BuildContext context)=> new SuperV(),
-        '/vendedoresPage': (BuildContext context)=> new Vendedores(),
          '/pages/list_product': (BuildContext context)=> new LisProduct(),
         '/LoginPage': (BuildContext context)=> new LoginPage(),
         '/pages/listarUsuarios': (BuildContext context)=> new ListarUser(),
         '/pages/crear_cuenta': (BuildContext context)=> new AddData(),
         '/pages/crear_producto': (BuildContext context)=> new AddProduct(),
+        
         
        },
      );
@@ -53,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
     "password": controllerPass.text,
     });
    
-  //
+  
 
 var datauser = json.decode(response.body);
   if(datauser.length==0){
@@ -127,6 +126,7 @@ showDialog(
          child: new Scaffold(
            resizeToAvoidBottomPadding: false,
       // appBar: AppBar(title: Text("Login"),),
+      
       body: Container(
         child: Container(
           decoration: new BoxDecoration(
