@@ -13,7 +13,8 @@ class Detail extends StatefulWidget {
 }
 
 class _DetailState extends State<Detail> {
-
+  
+ 
 void deleteData(){
   var url="http://192.168.0.118/tienda/deleteData.php";
   http.post(url, body: {
@@ -24,9 +25,12 @@ void deleteData(){
 void confirm (){
   AlertDialog alertDialog = new AlertDialog(
     content: new Text("Esta seguro de eliminar '${widget.list[widget.index]['username']}'"),
+    
+    
     actions: <Widget>[
       new RaisedButton(
         child: new Text(" Eliminar",style: new TextStyle(color: Colors.black),),
+        
         color: Colors.red,
         onPressed: (){
           deleteData();
@@ -44,17 +48,31 @@ void confirm (){
         onPressed: ()=> Navigator.pop(context),
       ),
     ],
+  
   );
 
-  showDialog(context: context, child: alertDialog);
+  showDialog(
+  context: context, 
+  barrierDismissible: false,
+  child: alertDialog);
 }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text("${widget.list[widget.index]['username']}")),
-      body: new Container(
-        height: 270.0, 
+      appBar: new AppBar(
+        title: new Text("${widget.list[widget.index]['username']}"),
+          actions: <Widget>[
+          IconButton(icon: Icon(Icons.home , size: 40.0,color: Colors.red,),
+           onPressed: (){
+         Navigator.pushReplacementNamed(context, '/pages/listarUsuarios');
+           }
+           )
+        ],
+        ),
+
+     
+      body: new SingleChildScrollView(
         padding: const EdgeInsets.all(20.0),
         child: new Card(
           child: new Center(
@@ -66,6 +84,7 @@ void confirm (){
                 Divider(),
                 new Text("Telefono : ${widget.list[widget.index]['telefono']}", style: new TextStyle(fontSize: 18.0,color: Colors.grey),),
                 new Text("Ciudad : ${widget.list[widget.index]['ciudad']}", style: new TextStyle(fontSize: 18.0,color: Colors.grey),),
+                new Text("Direccion : ${widget.list[widget.index]['direccion']}", style: new TextStyle(fontSize: 18.0,color: Colors.grey),),
                 new Padding(padding: const EdgeInsets.only(top: 30.0),),
 
                 new Row(
@@ -90,7 +109,7 @@ void confirm (){
                             borderRadius: new BorderRadius.circular(30.0)),
                     onPressed: ()=>confirm(),                
                   ),
-                   VerticalDivider(),
+                 /*  VerticalDivider(),
                      new RaisedButton(
                     child: new Text("Salir"),
                     color: Colors.yellow,
@@ -101,7 +120,7 @@ void confirm (){
                      Navigator.pushReplacementNamed(context, '/powerPage');
                   
                     },
-                  ),
+                  ),*/
                   ],
                 )
               ],

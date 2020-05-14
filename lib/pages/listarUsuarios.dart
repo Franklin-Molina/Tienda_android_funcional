@@ -6,7 +6,6 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:proyecto_tienda/pages/registroUsuarios.dart';
- 
 
 class ListarUser extends StatefulWidget {
   @override
@@ -14,34 +13,40 @@ class ListarUser extends StatefulWidget {
 }
 
 class _ListarUserState extends State<ListarUser> {
-
-
-  Future<List> getData() async{
-    final response = await http.get("http://192.168.0.118/tienda/getdata.php",);
+  Future<List> getData() async {
+    final response = await http.get(
+      "http://192.168.0.118/tienda/getdata.php",
+    );
     return json.decode(response.body);
-
-   
   }
-
-
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Listado Usuarios"),
+          title: Text('Usuarios Registrados'),
+             actions: <Widget>[
+          IconButton(icon: Icon(Icons.exit_to_app , size: 40.0,color: Colors.red,),
+           onPressed: (){
+         Navigator.pushReplacementNamed(context, '/LoginPage');
+           }
+           )
+        ],
       ),
-      floatingActionButton: new FloatingActionButton(
-        child: new Icon(
-          Icons.add ,
-          color: Colors.black,
-           ),
-        onPressed: () => Navigator.of(context).push(new MaterialPageRoute(
-             builder: (BuildContext context) => new AddProduct(),
-            )),
-      ), 
       
 
+
+      floatingActionButton: new FloatingActionButton(
+        child: new Icon(
+          Icons.add,
+          color: Colors.black,
+        ),
+        onPressed: () => Navigator.of(context).push(new MaterialPageRoute(
+          builder: (BuildContext context) => new AddProduct(),
+        
+        )),
+      ),
+    
       body: new FutureBuilder<List>(
         future: getData(),
         builder: (context, snapshot) {
@@ -56,6 +61,7 @@ class _ListarUserState extends State<ListarUser> {
         },
       ),
     );
+    
   }
 }
 
@@ -72,13 +78,12 @@ class ItemList extends StatelessWidget {
           padding: const EdgeInsets.all(10.0),
           child: new GestureDetector(
             onTap: () => Navigator.of(context).push(
-                  new MaterialPageRoute(
-                      builder: (BuildContext context) => new Detail(
-                            list: list,
-                            index: i,
-                          )
-                          ),
-                ),
+              new MaterialPageRoute(
+                  builder: (BuildContext context) => new Detail(
+                        list: list,
+                        index: i,
+                      )),
+            ),
             child: new Card(
               child: new ListTile(
                 title: new Text(
@@ -98,7 +103,25 @@ class ItemList extends StatelessWidget {
             ),
           ),
         );
+      
       },
     );
   }
 }
+  class BotonFlo extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+       
+        onPressed: (){
+          print('boton');
+        }
+        ),
+    );
+  }
+
+  }
+

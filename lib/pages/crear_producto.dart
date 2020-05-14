@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 import 'package:proyecto_tienda/pages/listarUsuarios.dart';
 
 class AddProduct extends StatefulWidget {
@@ -7,14 +10,32 @@ class AddProduct extends StatefulWidget {
   _AddProductState createState() => new _AddProductState();
 }
 
-class _AddProductState extends State<AddProduct> {
+class _AddProductState extends State<AddProduct> {    
   TextEditingController controllerNombre = new TextEditingController();
   TextEditingController controllerPrecio = new TextEditingController();
   TextEditingController controllerdescripcion = new TextEditingController();
   TextEditingController controllerCategoria = new TextEditingController();
+
   // TextEditingController controllerImagen = new TextEditingController();  //Por agg imagen
 
   var _formKey = GlobalKey<FormState>();
+  File _imagenfile;
+
+  _galeria() async {
+    var imagen = await ImagePicker.pickImage(
+        source: ImageSource.gallery, maxHeight: 1920.0, maxWidth: 1080.0);
+    setState(() {
+      _imagenfile = imagen;
+    });
+  }
+
+  _camara() async {
+    var imagen = await ImagePicker.pickImage(
+        source: ImageSource.camera, maxHeight: 1920.0, maxWidth: 1080.0);
+    setState(() {
+      _imagenfile = imagen;
+    });
+  }
 
   void addProduct() {
     var url = "http://192.168.0.118/tienda/addProduct.php";
@@ -24,6 +45,9 @@ class _AddProductState extends State<AddProduct> {
       "precio": controllerPrecio.text,
       "descripcion": controllerdescripcion.text,
       "categoria": controllerCategoria.text,
+
+
+      
     });
   }
 
@@ -32,6 +56,13 @@ class _AddProductState extends State<AddProduct> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Agregar Producto"),
+           actions: <Widget>[
+          IconButton(icon: Icon(Icons.home , size: 40.0,color: Colors.red,),
+           onPressed: (){
+         Navigator.pushReplacementNamed(context, '/pages/list_product');
+           }
+           )
+        ],
       ),
       body: Form(
         key: _formKey,
@@ -56,7 +87,8 @@ class _AddProductState extends State<AddProduct> {
                     ),
                   ),
                   new ListTile(
-                    leading: const Icon(Icons.monetization_on, color: Colors.black),
+                    leading:
+                        const Icon(Icons.monetization_on, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerPrecio,
                       validator: (value) {
@@ -113,7 +145,7 @@ class _AddProductState extends State<AddProduct> {
                       }
                     },
                   ),
-                  new RaisedButton(
+                 /*  new RaisedButton(
                     child: new Text("Salir"),
                     color: Colors.red,
                     shape: new RoundedRectangleBorder(
@@ -121,7 +153,7 @@ class _AddProductState extends State<AddProduct> {
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, '/powerPage');
                     },
-                  ),
+                  ), */
                 ],
               ),
             ],

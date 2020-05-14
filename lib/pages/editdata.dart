@@ -52,6 +52,13 @@ class _EditDataState extends State<EditData> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("EDITAR"),
+           actions: <Widget>[
+          IconButton(icon: Icon(Icons.home , size: 40.0,color: Colors.red,),
+           onPressed: (){
+         Navigator.pushReplacementNamed(context, '/pages/listarUsuarios');
+           }
+           )
+        ],
       ),
       body: Form(
         child: ListView(
@@ -73,7 +80,7 @@ class _EditDataState extends State<EditData> {
                   ),
                 ),
                 new ListTile(
-                  leading: const Icon(Icons.location_on, color: Colors.black),
+                  leading: const Icon(Icons.vpn_key, color: Colors.black),
                   title: new TextFormField(
                     controller: controllerPassword,
                     validator: (value) {
@@ -86,7 +93,7 @@ class _EditDataState extends State<EditData> {
                   ),
                 ),
                 new ListTile(
-                  leading: const Icon(Icons.settings_input_component,
+                  leading: const Icon(Icons.phone_android,
                       color: Colors.black),
                   title: new TextFormField(
                     controller: controllerTelefono,
@@ -100,7 +107,7 @@ class _EditDataState extends State<EditData> {
                   ),
                 ),
                    new ListTile(
-                  leading: const Icon(Icons.settings_input_component,
+                  leading: const Icon(Icons.location_city,
                       color: Colors.black),
                   title: new TextFormField(
                     controller: controllerCiudad,
@@ -114,7 +121,7 @@ class _EditDataState extends State<EditData> {
                   ),
                 ),
                   new ListTile(
-                  leading: const Icon(Icons.settings_input_component,
+                  leading: const Icon(Icons.call_split,
                       color: Colors.black),
                   title: new TextFormField(
                     controller: controllerDireccion,

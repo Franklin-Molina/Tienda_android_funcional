@@ -48,13 +48,22 @@ void confirm (){
     ],
   );
 
-  showDialog(context: context, child: alertDialog);
+  showDialog(context: context, child: alertDialog, barrierDismissible: false,);
 }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: new AppBar(title: new Text("${widget.listPrd[widget.indexProd]['nombre']}")),
+      appBar: new AppBar(title: new Text("${widget.listPrd[widget.indexProd]['nombre']}"),
+      
+         actions: <Widget>[
+          IconButton(icon: Icon(Icons.home , size: 40.0,color: Colors.red,),
+           onPressed: (){
+         Navigator.pushReplacementNamed(context, '/pages/list_product');
+           }
+           )
+        ],
+      ),
       body: SingleChildScrollView(
               child: new Container(
           padding: const EdgeInsets.all(20.0),
@@ -96,7 +105,7 @@ void confirm (){
                               borderRadius: new BorderRadius.circular(30.0)),
                       onPressed: ()=>confirm(),                
                     ),
-                     VerticalDivider(),
+                  /*   VerticalDivider(),
                        new RaisedButton(
                       child: new Text("Salir"),
                       color: Colors.yellow,
@@ -107,7 +116,7 @@ void confirm (){
                        Navigator.pushReplacementNamed(context, '/pages/list_product');
                     
                       },
-                    ),
+                    ),*/
                     ],
                   ) 
                 ],

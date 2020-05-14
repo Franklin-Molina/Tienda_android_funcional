@@ -31,6 +31,13 @@ class _LisProductState extends State<LisProduct> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Listado de productos"),
+        actions: <Widget>[
+          IconButton(icon: Icon(Icons.exit_to_app , size: 40.0,color: Colors.red,),
+           onPressed: (){
+         Navigator.pushReplacementNamed(context, '/LoginPage');
+           }
+           )
+        ],
       ),
       floatingActionButton: new FloatingActionButton(
         child: new Icon(

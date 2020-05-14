@@ -53,6 +53,13 @@ class _EditDetallesState extends State<EditDetalles> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("EDITAR"),
+           actions: <Widget>[
+          IconButton(icon: Icon(Icons.home , size: 40.0,color: Colors.red,),
+           onPressed: (){
+         Navigator.pushReplacementNamed(context, '/pages/list_product');
+           }
+           )
+        ],
       ),
       body: Form(
         child: ListView(
