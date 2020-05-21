@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
       });
     } else {
       if (datauser[0]['estado'] == 'admin') {
-        Navigator.pushReplacementNamed(context, '/pages/listarUsuarios');
+        Navigator.pushReplacementNamed(context, '/powerPage');
         // Navigator.pushReplacementNamed(context, '/porwePage');
       } else if (datauser[0]['estado'] == 'ventas') {
         Navigator.pushReplacementNamed(context, '/pages/list_product');
@@ -197,8 +197,9 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       Spacer(),
                       new RaisedButton(
+                        
                         child: new Text('Crear cuenta'),
-                        color: Colors.black,
+                        color: Colors.red,
                         shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(10.0)),
                         onPressed: () {

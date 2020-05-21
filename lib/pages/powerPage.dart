@@ -1,105 +1,79 @@
 import 'package:flutter/material.dart';
-
+import 'package:proyecto_tienda/pages/crear_cuenta.dart';
+import 'package:proyecto_tienda/pages/crear_producto.dart';
+import 'package:proyecto_tienda/pages/list_product.dart';
+import 'package:proyecto_tienda/pages/listarUsuarios.dart';
 
 class SuperV extends StatelessWidget {
+  final titulo = TextStyle(color: Colors.black, fontSize: 15.0);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: new AppBar( title: Text('Pagina Admin'),),
-      body: new Column(
-        children: <Widget>[
-        Row(      //FIla 1
-      children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(2.0),
-            child: new RawMaterialButton(
-              onPressed: (){
-                Navigator.pushReplacementNamed(context, '/pages/listarUsuarios');
-              },
-              child: new Icon(
-                Icons.people,
-                color: Colors.black,
-                size: 73.0,
-              ),
-              shape: new CircleBorder(),
-              elevation: 2.0,
-              fillColor: Colors.white,
-              
-              ),
-              ),
-              
-      ],
+    return Container(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Admin All'),
+          actions: <Widget>[
+            IconButton(
+                icon: Icon(
+                  Icons.exit_to_app,
+                  size: 40.0,
+                  color: Colors.red,
+                ),
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/LoginPage');
+                })
+          ],
         ),
-/*
-        Row(      //FIla 2
-      children: <Widget>[
-          Container(
-            padding: EdgeInsets.all(2.0),
-            child: new RawMaterialButton(
-              onPressed: (){
-                Navigator.pushReplacementNamed(context, '/pages/listarUsuarios');
-              },
-              child: new Icon(
-                Icons.people,
-                color: Colors.black,
-                size: 73.0,
-              ),
-              shape: new CircleBorder(),
-              elevation: 2.0,
-              fillColor: Colors.white,
-              
-              ),
-              ),
-              
-           
-            
-      ],
-        ),*/
-        
-        Row(      //FIla 3
-      children: <Widget>[
-         /* Container(
-            padding: EdgeInsets.all(2.0),
-            child: new RawMaterialButton(
-              onPressed: (){
-                Navigator.pushReplacementNamed(context, '/pages/listarUsuarios');
-              },
-              child: new Icon(
-                Icons.people,
-                color: Colors.black,
-                size: 73.0,
-              ),
-              shape: new CircleBorder(),
-              elevation: 2.0,
-              fillColor: Colors.white,
-              
-              ),
-              ),*/
-              
-            
-               Container(
-            padding: EdgeInsets.all(2.0),
-            child: new RawMaterialButton(
-              onPressed: (){
-                Navigator.pushReplacementNamed(context, '/LoginPage');
-              },
-              child: new Icon(
-                Icons.exit_to_app,
-                color: Colors.red,
-                size: 73.0,
-              ),
-              shape: new CircleBorder(),
-              elevation: 2.0,
-              fillColor: Colors.white,
-              
-              ),
-              ),
-      ],
-        )
-        ],
+        body: ListView(children: <Widget>[
+          new Padding(
+            padding: const EdgeInsets.all(70.0),
+          ),
+          new RaisedButton(
+            child: new Text(' Productos Registrados'),
+            color: Colors.tealAccent,
+            shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(0)),
+            onPressed: () {
+              Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => new LisProduct()));
+            },
+          ),
+           Divider(),
+          new RaisedButton(
+            child: new Text(' Crear Producto '),
+            color: Colors.orange,
+            shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(0)),
+            onPressed: () {
+              Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => new AddProduct()));
+            },
+          ),
+          Divider(),
+          new RaisedButton(
+            child: new Text('Usuarios Registrados'),
+            color: Colors.tealAccent,
+            shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(0)),
+            onPressed: () {
+              Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => new ListarUser()));
+            },
+          ),
+         
+          Divider(),
+          new RaisedButton(
+            child: new Text(' Crear Usuarios '),
+            color: Colors.lightGreenAccent,
+            shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(0)),
+            onPressed: () {
+              Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => new AddData()));
+            },
+          ),
+        ]),
       ),
-       
     );
   }
 }
-

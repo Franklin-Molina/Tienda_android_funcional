@@ -25,16 +25,16 @@ CREATE TABLE IF NOT EXISTS `productos` (
   `categoria` text NOT NULL,
   `imagen` longblob,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla android.productos: ~5 rows (aproximadamente)
+-- Volcando datos para la tabla android.productos: ~6 rows (aproximadamente)
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
 INSERT INTO `productos` (`id`, `nombre`, `precio`, `descripcion`, `categoria`, `imagen`) VALUES
-	(1, 'x', 'x', 'x', 'x', NULL),
 	(2, 'Pollo', '5000', 'COmestible', 'Pollos', NULL),
-	(3, 'dd', 'dd', 'fdsf', 'sdfdsf', NULL),
-	(4, 'c', 'c', 'c', 'c', NULL),
-	(5, 'jabon', '5000', 'este es un producto de uso personal para prevenir el covid para que la humanida no muera en la crisis econo mica de los seres vivos y no vivos del mundo en particular las plantas que viven fuera del vacio del inico del mundo', 'jabones', NULL);
+	(7, 'Carroeditado', '5000editado', 'Vehiculo de cargaeditado', 'Carroseditado', NULL),
+	(10, 'yueditado', 'yueditado', 'uyud', 'yud', NULL),
+	(12, 'Teclado', '6302', 'Teclado gamer', 'Digital', NULL),
+	(13, 'prueba', '76', 'df', 'sdf', NULL);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla android.usuarios
@@ -43,19 +43,32 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `username` text NOT NULL,
   `password` text NOT NULL,
   `telefono` text NOT NULL,
-  `ciudad` text,
-  `direccion` text,
+  `ciudad` text NOT NULL,
+  `direccion` text NOT NULL,
   `estado` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla android.usuarios: ~4 rows (aproximadamente)
+-- Volcando datos para la tabla android.usuarios: ~16 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 INSERT INTO `usuarios` (`id`, `username`, `password`, `telefono`, `ciudad`, `direccion`, `estado`) VALUES
 	(1, 'Franklin', '1234', '3165076269', 'Mocoa', 'Centro', 'admin'),
 	(3, 'pruebauser', '123', '96325874', 'Beijing', 'Mocoa', 'ventas'),
-	(4, 'fravents', '963258741', '316548521', 'Tokio', 'Mocoa', 'ventas'),
-	(5, 'Kira', '123', '852369', 'Centro', 'Mocoa', 'ventas');
+	(4, 'Cueta borrada x el admin !', '963258741', '316548521', 'Tokio', 'Mocoa', 'ventas'),
+	(6, 'x', 'x', 'x', 'x', 'x', 'ventas'),
+	(7, 'cuentaVentas', '852', '963258', 'Centro', 'Mocoa', 'ventas'),
+	(8, 'juan', '0202', '321596', 'direccionmocoa', 'ciudadmocoa', 'ventas'),
+	(9, 'userventas', '852', '741', 'mocoaa', 'mocoa', 'ventas'),
+	(10, 'uventas', '852', '852', 'dircel', 'CityKrs', 'ventas'),
+	(11, 'userx', 'sdf', '123456789', 'dircol', 'citymocoa', 'ventas'),
+	(12, 'u', 'f', 'ttel', 'dr', 'cyt', 'ventas'),
+	(13, 'user', 'pasw', '741', 'cit', 'dur', 'ventas'),
+	(14, 'Kira', '0220', '3165076285', 'MocoaCity', 'Centro', 'ventas'),
+	(15, 'x1', 'x2', 'x3', 'x4', 'x5', 'ventas'),
+	(16, 'juan2', '123', '852', 'citymocoa', 'dircent', 'ventas'),
+	(17, 'jose', '852', '31689', 'choco', 'la esquina', 'ventas'),
+	(18, 'Pruebauser', '123', '369852', 'citymocoa', 'dir', 'ventas'),
+	(19, 'cuentaadmins', '123', 'telf', 'city', 'direc', 'ventas');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

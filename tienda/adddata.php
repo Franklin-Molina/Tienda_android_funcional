@@ -16,13 +16,15 @@
 	 $sql = "UPDATE usuarios set estado='$es' WHERE id='$id'";
    }else{
 
-	$estado=['estado'];
+
 	$id=$_POST["id"];
 	$username = $_POST['username'];
 	$password = $_POST['password'];
 	$telefono = $_POST['telefono'];
+	/* Fallas con direccion y cidad en la db*/
 	$ciudad = $_POST['ciudad'];
 	$direccion = $_POST['direccion'];
+	$estado=['estado'];
 
 	if(isset($id)==false){
 		$estado = "ventas";

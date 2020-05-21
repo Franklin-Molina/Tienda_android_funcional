@@ -135,7 +135,7 @@ class _AddProductState extends State<AddProduct> {
                   ),
                   new RaisedButton(
                     child: new Text("Guardar"),
-                    color: Colors.green,
+                    color: Colors.lightGreenAccent,
                     shape: new RoundedRectangleBorder(
                         borderRadius: new BorderRadius.circular(30.0)),
                     onPressed: () {

@@ -14,7 +14,6 @@ class _AddDataState extends State<AddData> {
   TextEditingController controllerDireccion = new TextEditingController();
   TextEditingController controllerCiudad = new TextEditingController();
 
-
   var _formKey = GlobalKey<FormState>();
 
   void addData() {
@@ -24,28 +23,26 @@ class _AddDataState extends State<AddData> {
       "username": controllerUsername.text,
       "password": controllerPassword.text,
       "telefono": controllerTelefono.text,
-      "ciudad": controllerDireccion.text,
-      "direccion": controllerCiudad.text,
-
-      //"nivel": _mySelection.toString(), //aqui traemos el DropdownMenuItem lo llamamos _mySelection este es como el controller
-      //"nivel": controllerNivel.text
+      "ciudad": controllerCiudad.text,
+      "direccion": controllerDireccion.text,
     });
   }
-  
-  //String _mySelection;
- // List<Map> _myJson = [{"id":0,"name":"ventas"},{"id":1,"name":"admin"}];
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Crear Cuenta"),
-           actions: <Widget>[
-          IconButton(icon: Icon(Icons.exit_to_app , size: 40.0,color: Colors.red,),
-           onPressed: (){
-         Navigator.pushReplacementNamed(context, '/LoginPage');
-           }
-           )
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.exit_to_app,
+                size: 40.0,
+                color: Colors.red,
+              ),
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/LoginPage');
+              })
         ],
       ),
       body: Form(
@@ -60,11 +57,13 @@ class _AddDataState extends State<AddData> {
                     leading: const Icon(Icons.person, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerUsername,
-                          validator: (value) {
-                            if (value.isEmpty) return "Ingresa un nombre de usuario";
-                          },
+                      validator: (value) {
+                        if (value.isEmpty)
+                          return "Ingresa un nombre de usuario";
+                      },
                       decoration: new InputDecoration(
-                        hintText: "Usuario", labelText: "Usuario",
+                        hintText: "Usuario",
+                        labelText: "Usuario",
                       ),
                     ),
                   ),
@@ -72,90 +71,82 @@ class _AddDataState extends State<AddData> {
                     leading: const Icon(Icons.vpn_key, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerPassword,
-                       obscureText: true,
-                          validator: (value) {
-                            if (value.isEmpty) return "Ingresa una Contraseña";
-                          },
+                      obscureText: true,
+                      validator: (value) {
+                        if (value.isEmpty) return "Ingresa una Contraseña";
+                      },
                       decoration: new InputDecoration(
-                        hintText: "Contraseña", labelText: "Contraseña",
+                        hintText: "Contraseña",
+                        labelText: "Contraseña",
                       ),
                     ),
                   ),
-                  
-                   new ListTile(
-                    leading: const Icon(Icons.location_city, color: Colors.black),
-                    title: new TextFormField(
-                      controller: controllerCiudad,
-                          validator: (value) {
-                            if (value.isEmpty) return "Ingresa una ciudad";
-                          },
-                      decoration: new InputDecoration(
-                        hintText: "Ciudad", labelText: "Ciudad",
-                      ),
-                    ),
-                  ),
-                     new ListTile(
-                    leading: const Icon(Icons.phone_android, color: Colors.black),
+                  new ListTile(
+                    leading:
+                        const Icon(Icons.location_city, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerTelefono,
-                          validator: (value) {
-                            if (value.isEmpty) return "Ingresa un telefono";
-                          },
+                      validator: (value) {
+                        if (value.isEmpty) return "Ingresa un Telefono";
+                      },
                       decoration: new InputDecoration(
-                        hintText: "Telefono", labelText: "Telefono",
+                        hintText: "Telefono",
+                        labelText: "Telefono",
                       ),
                     ),
                   ),
-                     new ListTile(
+                  new ListTile(
+                    leading:
+                        const Icon(Icons.phone_android, color: Colors.black),
+                    title: new TextFormField(
+                      controller: controllerCiudad,
+                      validator: (value) {
+                        if (value.isEmpty) return "Ingresa una ciudad";
+                      },
+                      decoration: new InputDecoration(
+                        hintText: "Ciudad",
+                        labelText: "Ciudad",
+                      ),
+                    ),
+                  ),
+                  new ListTile(
                     leading: const Icon(Icons.call_split, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerDireccion,
-                          validator: (value) {
-                            if (value.isEmpty) return "Ingresa una direccion";
-                          },
+                      validator: (value) {
+                        if (value.isEmpty) return "Ingresa una direccion";
+                      },
                       decoration: new InputDecoration(
-                        hintText: "Direccion", labelText: "Direccion",
+                        hintText: "Direccion",
+                        labelText: "Direccion",
                       ),
                     ),
                   ),
-
-                    const Divider(
-                    height: 1.0,
-                  ),                 
                   new Padding(
                     padding: const EdgeInsets.all(10.0),
                   ),
                   new RaisedButton(
                     child: new Text("Guardar"),
-                    color: Colors.blueAccent,
+                    color: Colors.greenAccent,
                     shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0)
-                    ),
+                        borderRadius: new BorderRadius.circular(10.0)),
                     onPressed: () {
-                      if(_formKey.currentState.validate()){
+                      if (_formKey.currentState.validate()) {
                         addData();
-                       Navigator.pushReplacementNamed(context, '/LoginPage');
-                     //  Navigator.pushReplacementNamed(context, '/powerPage');
-                  
+                        Navigator.pushReplacementNamed(context, '/LoginPage');
                       }
-                  
                     },
                   ),
-                   new RaisedButton(
+                  /*      new RaisedButton(
                     child: new Text("Salir"),
                     color: Colors.red,
                     shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0)
-                    ),
+                        borderRadius: new BorderRadius.circular(30.0)),
                     onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/LoginPage');
-                  
+                      Navigator.pushReplacementNamed(context, '/LoginPage');
                     },
-                  ),
+                  ), */
                   /*-------------------------*/
-               
-                       
-              
                 ],
               ),
             ],
