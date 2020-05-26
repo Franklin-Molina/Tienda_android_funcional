@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:proyecto_tienda/pages/list_product.dart';
-import 'package:proyecto_tienda/pages/listarUsuarios.dart';
 
 class EditDetalles extends StatefulWidget {
   final List list;
@@ -18,18 +17,18 @@ class _EditDetallesState extends State<EditDetalles> {
   TextEditingController controllerNombre;
   TextEditingController controllerPrecio;
   TextEditingController controllerDescripcion;
-  TextEditingController controllerCategoria;
+ // TextEditingController controllerCategoria;
  // TextEditingController controllerImagen;
 
 
   void editProduc() {
-    var url = "http://192.168.0.118/tienda/editProduc.php";
+    var url = "http://192.168.0.103/tienda/editProduc.php";
     http.post(url, body: {
       "id": widget.list[widget.index]['id'],
       "nombre": controllerNombre.text,
       "precio": controllerPrecio.text,
       "descripcion": controllerDescripcion.text,
-      "categoria": controllerCategoria.text,
+     // "categoria": controllerCategoria.text,
      // "imagen": controllerDireccion.text,
     });
   }
@@ -42,8 +41,8 @@ class _EditDetallesState extends State<EditDetalles> {
         new TextEditingController(text: widget.list[widget.index]['precio']);
     controllerDescripcion =
         new TextEditingController(text: widget.list[widget.index]['descripcion']);
-    controllerCategoria =
-        new TextEditingController(text: widget.list[widget.index]['categoria']);
+   // controllerCategoria =
+      //  new TextEditingController(text: widget.list[widget.index]['categoria']);
 
     super.initState();
   }
@@ -107,7 +106,7 @@ class _EditDetallesState extends State<EditDetalles> {
                     ),
                   ),
                 ),
-                   new ListTile(
+             /*       new ListTile(
                   leading: const Icon(Icons.category,
                       color: Colors.black),
                   title: new TextFormField(
@@ -120,7 +119,7 @@ class _EditDetallesState extends State<EditDetalles> {
                       labelText: "Categoria",
                     ),
                   ),
-                ),
+                ), */
               
                 const Divider(
                   height: 1.0,
@@ -133,7 +132,7 @@ class _EditDetallesState extends State<EditDetalles> {
                   color: Colors.greenAccent,
                   onPressed: () {
                     editProduc();
-                    Navigator.of(context).push(new MaterialPageRoute(
+                    Navigator.of(context).pop(new MaterialPageRoute(
                         builder: (BuildContext context) => new LisProduct()));
                   },
                 )

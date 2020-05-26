@@ -4,17 +4,21 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:proyecto_tienda/pages/crear_cuenta.dart';
 import 'package:proyecto_tienda/pages/crear_producto.dart';
+import 'package:proyecto_tienda/pages/editCateg.dart';
+import 'package:proyecto_tienda/pages/listCateg.dart';
 import 'package:proyecto_tienda/pages/list_product.dart';
 import 'package:proyecto_tienda/pages/listarUsuarios.dart';
 import 'package:proyecto_tienda/pages/powerPage.dart';
 //import 'package:proyecto_tienda/pages/crear_producto.dart';
 import 'package:http/http.dart' as http;
+import 'package:proyecto_tienda/pages/view_product.dart';
 
 void main() => runApp(LoginApp());
 
 String username;
 
 class LoginApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,6 +35,10 @@ class LoginApp extends StatelessWidget {
         '/pages/listarUsuarios': (BuildContext context) => new ListarUser(),
         '/pages/crear_cuenta': (BuildContext context) => new AddData(),
         '/pages/crear_producto': (BuildContext context) => new AddProduct(),
+       '/pages/view_product': (BuildContext context) => new Gneralprudcut(),
+       '/pages/listCateg':(BuildContext context) => new LisCatg(),
+        '/editCateg':(BuildContext context) => new EditCateg(),
+       
       },
     );
   }
@@ -42,13 +50,15 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+    final titulo = TextStyle(color: Colors.white, fontSize: 15.0);
+    
   TextEditingController controllerUser = new TextEditingController();
   TextEditingController controllerPass = new TextEditingController();
 
   String mensaje = '';
   Future<List> login() async {
     final response =
-        await http.post("http://192.168.0.118/tienda/login.php", body: {
+        await http.post("http://192.168.0.103/tienda/login.php", body: {
       "username": controllerUser.text,
       "password": controllerPass.text,
     });
@@ -61,25 +71,31 @@ class _LoginPageState extends State<LoginPage> {
             barrierDismissible: false,
             builder: (context) {
               return AlertDialog(
+                backgroundColor: Colors.black,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0)),
-                title: Text("Error"),
+                title: Text("Credenciales Invalidas",style: titulo,textAlign: TextAlign.center,),
                 content: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Text("Password / User "),
-                    Text(" Incorrect"),
+                   
+                    Text("Password / User ",style: titulo,textAlign: TextAlign.center,),
+                    Text(" Incorrect",style: titulo,textAlign: TextAlign.center,),
+                  Divider(),
                     Icon(
+                      
                       Icons.error_outline,
                       color: Colors.red,
                       size: 73.0,
+                      
                     )
                   ],
                 ),
                 actions: <Widget>[
                   FlatButton(
-                    child: Text("Aceptar"),
+                    
+                    child: Text("Aceptar",style: titulo,),
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
@@ -93,11 +109,12 @@ class _LoginPageState extends State<LoginPage> {
         Navigator.pushReplacementNamed(context, '/powerPage');
         // Navigator.pushReplacementNamed(context, '/porwePage');
       } else if (datauser[0]['estado'] == 'ventas') {
-        Navigator.pushReplacementNamed(context, '/pages/list_product');
+        Navigator.pushReplacementNamed(context, '/pages/view_product');
       }
 
       setState(() {
         username = datauser[0]['username'];
+       
       });
     }
     return datauser;
@@ -143,7 +160,7 @@ class _LoginPageState extends State<LoginPage> {
                     children: <Widget>[
                       Container(
                         width: MediaQuery.of(context).size.width / 1.2,
-                        padding: EdgeInsets.only(top: 4, left: 16, bottom: 4),
+                        padding: EdgeInsets.only(top: 4, left: 16,right: 16, bottom: 4),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(50)),
                             color: Colors.white,
@@ -203,8 +220,8 @@ class _LoginPageState extends State<LoginPage> {
                         shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(10.0)),
                         onPressed: () {
-                          Navigator.pushReplacementNamed(
-                              context, '/pages/crear_cuenta');
+                        Navigator.of(context).push(new MaterialPageRoute(
+                  builder: (BuildContext context) => new AddData()));
                         },
                       ),
                       Text(

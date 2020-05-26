@@ -17,7 +17,7 @@ class _AddDataState extends State<AddData> {
   var _formKey = GlobalKey<FormState>();
 
   void addData() {
-    var url = "http://192.168.0.118/tienda/adddata.php";
+    var url = "http://192.168.0.103/tienda/adddata.php";
 
     http.post(url, body: {
       "username": controllerUsername.text,
@@ -34,7 +34,9 @@ class _AddDataState extends State<AddData> {
       appBar: new AppBar(
         title: new Text("Crear Cuenta"),
         actions: <Widget>[
-          IconButton(
+          
+         
+           IconButton(
               icon: Icon(
                 Icons.exit_to_app,
                 size: 40.0,
@@ -43,7 +45,10 @@ class _AddDataState extends State<AddData> {
               onPressed: () {
                 Navigator.pushReplacementNamed(context, '/LoginPage');
               })
+              
+              
         ],
+        
       ),
       body: Form(
         key: _formKey,
@@ -83,7 +88,7 @@ class _AddDataState extends State<AddData> {
                   ),
                   new ListTile(
                     leading:
-                        const Icon(Icons.location_city, color: Colors.black),
+                        const Icon(Icons.phone_android, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerTelefono,
                       validator: (value) {
@@ -97,7 +102,7 @@ class _AddDataState extends State<AddData> {
                   ),
                   new ListTile(
                     leading:
-                        const Icon(Icons.phone_android, color: Colors.black),
+                        const Icon(Icons.location_city, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerCiudad,
                       validator: (value) {

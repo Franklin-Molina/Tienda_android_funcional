@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
-import 'package:proyecto_tienda/pages/listarUsuarios.dart';
+
 
 class AddProduct extends StatefulWidget {
   @override
@@ -38,13 +38,13 @@ class _AddProductState extends State<AddProduct> {
   }
 
   void addProduct() {
-    var url = "http://192.168.0.118/tienda/addProduct.php";
+    var url = "http://192.168.0.103/tienda/addProduct.php";
 
     http.post(url, body: {
       "nombre": controllerNombre.text,
       "precio": controllerPrecio.text,
       "descripcion": controllerdescripcion.text,
-      "categoria": controllerCategoria.text,
+      "id_catg_producto": controllerCategoria.text,
 
 
       
@@ -114,7 +114,7 @@ class _AddProductState extends State<AddProduct> {
                       ),
                     ),
                   ),
-                  new ListTile(
+                   new ListTile(
                     leading: const Icon(Icons.category, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerCategoria,
@@ -126,7 +126,7 @@ class _AddProductState extends State<AddProduct> {
                         labelText: "Categoria",
                       ),
                     ),
-                  ),
+                  ), 
                   const Divider(
                     height: 1.0,
                   ),

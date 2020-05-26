@@ -1,57 +1,51 @@
-import 'package:flutter/material.dart';
+ import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:proyecto_tienda/pages/crear_producto.dart';
-import 'package:proyecto_tienda/pages/detail.dart';
-import 'package:proyecto_tienda/pages/detalles_product.dart';
-import 'dart:async';
-import 'dart:convert';
 
-import 'package:proyecto_tienda/pages/registroUsuarios.dart';
- 
+import 'package:flutter/material.dart';
+import 'package:proyecto_tienda/pages/addCateg.dart';
+import 'package:proyecto_tienda/pages/detalles_categ.dart';
 
-class LisProduct extends StatefulWidget {
+class LisCatg extends StatefulWidget {
   @override
-  _LisProductState createState() => _LisProductState();
+  _LisCatgState createState() => _LisCatgState();
 }
 
-class _LisProductState extends State<LisProduct> {
+class _LisCatgState extends State<LisCatg> {
 
 
-  Future<List> getProduct() async{
-    final response = await http.get("http://192.168.0.103/tienda/getProduct.php",);
+  
+  Future<List> getCateg() async{
+    final response = await http.get("http://192.168.0.103/tienda/getCateg.php",);
     return json.decode(response.body);
 
    
   }
-
-
-
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+   return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Listado de productos"),
-        actions: <Widget>[
-          IconButton(icon: Icon(Icons.home , size: 40.0,color: Colors.red,),
+        title: new Text("Listado de Categorias"),
+      /*   actions: <Widget>[
+          IconButton(icon: Icon(Icons.search , size: 40.0,color: Colors.red,),
            onPressed: (){
-         Navigator.pushReplacementNamed(context,  '/pages/view_product');
+         Navigator.pushReplacementNamed(context, '/Gneralprudcut');
            }
            )
-        ],
+        ], */
       ),
-      floatingActionButton: new FloatingActionButton(
+    /*   floatingActionButton: new FloatingActionButton(
         child: new Icon(
           Icons.add ,
           color: Colors.black,
            ),
-        onPressed: () => Navigator.of(context).push(new MaterialPageRoute(
-             builder: (BuildContext context) => new AddProduct(),
+        onPressed: () => Navigator.of(context).push(new MaterialPageRoute(    //Crear categorias con el boron
+             builder: (BuildContext context) => new AddCatg(),
             )),
-      ), 
+      ), */ 
       
 
       body: new FutureBuilder<List>(
-        future: getProduct(),
+        future: getCateg(),
         builder: (context, snapshot) {
           if (snapshot.hasError) print(snapshot.error);
           return snapshot.hasData
@@ -66,7 +60,6 @@ class _LisProductState extends State<LisProduct> {
     );
   }
 }
-
 class ItemList extends StatelessWidget {
   final List list;
   ItemList({this.list});
@@ -81,12 +74,12 @@ class ItemList extends StatelessWidget {
           child: new GestureDetector(
             onTap: () => Navigator.of(context).push(
                   new MaterialPageRoute(
-                      builder: (BuildContext context) => new DetalProduct(
-                            listPrd: list,
-                            indexProd: i,
+                      builder: (BuildContext context) => new DetallesCatg(  //Detalles de las categorias
+                            listCatg: list,
+                            indexCatg: i,
                           )
                           ),
-                ),
+                ), 
             child: new Card(
               child: new ListTile(
                 title: new Text(
@@ -94,15 +87,11 @@ class ItemList extends StatelessWidget {
                   style: TextStyle(fontSize: 25.0, color: Colors.black),
                 ),
                 leading: new Icon(
-                  Icons.add_shopping_cart,
+                  Icons.category,
                   size: 50.0,
-                  color: Colors.green,
+                  color: Colors.black,
                 ),
-                subtitle: new Text(
-                    "Precio →  ${list[i]['precio']}",
-                 /*  list[i]['precio'],  */          
-                  style: TextStyle(fontSize: 20.0, color: Colors.grey),
-                ),
+              
               ),
             ),
             
@@ -111,4 +100,4 @@ class ItemList extends StatelessWidget {
       },
     );
   }
-}
+} 

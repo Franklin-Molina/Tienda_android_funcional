@@ -21,7 +21,7 @@ class _EditDataState extends State<EditData> {
   TextEditingController controllerDireccion;
 
   void editData() {
-    var url = "http://192.168.0.118/tienda/editdata.php";
+    var url = "http://192.168.0.103/tienda/editdata.php";
     http.post(url, body: {
       "id": widget.list[widget.index]['id'],
       "username": controllerUsername.text,
@@ -145,7 +145,7 @@ class _EditDataState extends State<EditData> {
                   color: Colors.blueAccent,
                   onPressed: () {
                     editData();
-                    Navigator.of(context).push(new MaterialPageRoute(
+                    Navigator.of(context).pop(new MaterialPageRoute(
                         builder: (BuildContext context) => new ListarUser()));
                   },
                 )

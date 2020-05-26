@@ -1,17 +1,19 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
+import 'package:proyecto_tienda/pages/addCateg.dart';
 import 'package:proyecto_tienda/pages/crear_cuenta.dart';
 import 'package:proyecto_tienda/pages/crear_producto.dart';
+import 'package:proyecto_tienda/pages/listCateg.dart';
 import 'package:proyecto_tienda/pages/list_product.dart';
 import 'package:proyecto_tienda/pages/listarUsuarios.dart';
 
-class SuperV extends StatelessWidget {
+class Gneralprudcut extends StatelessWidget {
   final titulo = TextStyle(color: Colors.white, fontSize: 15.0);
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Administracion'),
+          title: Text('Administracion-Productos'),
           actions: <Widget>[
             IconButton(
                 icon: Icon(
@@ -53,25 +55,25 @@ class SuperV extends StatelessWidget {
           ),
           Divider(),
           new RaisedButton(
-            child: new Text('Usuarios Registrados'),
+            child: new Text('Categorias Registradas'),
             color: Colors.tealAccent,
             shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(0)),
             onPressed: () {
               Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => new ListarUser()));
+                  builder: (BuildContext context) => new LisCatg()));
             },
-          ),
+          ), 
          
           Divider(),
           new RaisedButton(
-            child: new Text(' Crear Usuarios '),
+            child: new Text(' Agregar  Categoria '),
             color: Colors.lightGreenAccent,
             shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(0)),
             onPressed: () {
               Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => new AddData()));
+                  builder: (BuildContext context) => new AddCatg()));
             },
           ),
         ]),
@@ -80,3 +82,4 @@ class SuperV extends StatelessWidget {
   }
  
 }
+ 
