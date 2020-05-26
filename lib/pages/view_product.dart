@@ -1,10 +1,9 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:proyecto_tienda/pages/addCateg.dart';
-import 'package:proyecto_tienda/pages/crear_cuenta.dart';
 import 'package:proyecto_tienda/pages/crear_producto.dart';
 import 'package:proyecto_tienda/pages/listCateg.dart';
 import 'package:proyecto_tienda/pages/list_product.dart';
-import 'package:proyecto_tienda/pages/listarUsuarios.dart';
+
 
 class Gneralprudcut extends StatelessWidget {
   final titulo = TextStyle(color: Colors.white, fontSize: 15.0);
@@ -13,7 +12,8 @@ class Gneralprudcut extends StatelessWidget {
     return Container(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Administracion-Productos'),
+          title: Center(child: Text( 'Administracion-Productos',textAlign: TextAlign.center,),),
+        
           actions: <Widget>[
             IconButton(
                 icon: Icon(

@@ -30,23 +30,37 @@ class _LisProductState extends State<LisProduct> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Listado de productos"),
-        actions: <Widget>[
+        title: new Text("Listado de productos", textAlign: TextAlign.center),
+      /*   actions: <Widget>[
           IconButton(icon: Icon(Icons.home , size: 40.0,color: Colors.red,),
            onPressed: (){
          Navigator.pushReplacementNamed(context,  '/pages/view_product');
            }
            )
-        ],
+        ], */
       ),
       floatingActionButton: new FloatingActionButton(
         child: new Icon(
           Icons.add ,
-          color: Colors.black,
+          color: Colors.redAccent,
+          
            ),
+          backgroundColor: Colors.greenAccent,
         onPressed: () => Navigator.of(context).push(new MaterialPageRoute(
              builder: (BuildContext context) => new AddProduct(),
+             
             )),
+          
+      ), 
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          bottomNavigationBar: BottomAppBar(
+        clipBehavior: Clip.antiAlias,
+       
+      
+        child: Material(
+          child: SizedBox(width: double.infinity, height:50.0,),
+         color: Colors.black
+        ),
       ), 
       
 

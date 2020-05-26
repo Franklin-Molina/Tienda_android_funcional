@@ -17,11 +17,15 @@ class _LisCatgState extends State<LisCatg> {
   Future<List> getCateg() async{
     final response = await http.get("http://192.168.0.103/tienda/getCateg.php",);
     return json.decode(response.body);
+    
 
    
   }
+  
   @override
+  
   Widget build(BuildContext context) {
+    
    return new Scaffold(
       appBar: new AppBar(
         title: new Text("Listado de Categorias"),
@@ -33,15 +37,27 @@ class _LisCatgState extends State<LisCatg> {
            )
         ], */
       ),
-    /*   floatingActionButton: new FloatingActionButton(
-        child: new Icon(
-          Icons.add ,
-          color: Colors.black,
-           ),
-        onPressed: () => Navigator.of(context).push(new MaterialPageRoute(    //Crear categorias con el boron
+
+     floatingActionButton: new FloatingActionButton.extended(
+       onPressed: () => Navigator.of(context).push(new MaterialPageRoute(    //Crear categorias con el boron
              builder: (BuildContext context) => new AddCatg(),
             )),
-      ), */ 
+      
+        icon: new Icon(Icons.add),
+        label: const Text("Agregar categorias"),
+        backgroundColor: Colors.green,
+      ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+          bottomNavigationBar: BottomAppBar(
+        clipBehavior: Clip.antiAlias,
+       
+       
+        child: Material(
+          child: SizedBox(width: double.infinity, height: 40.0,),
+         color: Colors.black
+        ),
+      ), 
+
       
 
       body: new FutureBuilder<List>(

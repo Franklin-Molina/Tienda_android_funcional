@@ -11,7 +11,8 @@ class SuperV extends StatelessWidget {
     return Container(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Administracion'),
+          title: new Center(
+              child: new Text('Administracion', textAlign: TextAlign.center)),
           actions: <Widget>[
             IconButton(
                 icon: Icon(
@@ -29,18 +30,19 @@ class SuperV extends StatelessWidget {
             padding: const EdgeInsets.all(70.0),
           ),
           new RaisedButton(
-          
-            child: new Text(' Productos Registrados',style: titulo,),
+            child: new Text(
+              ' Productos Registrados',
+              style: titulo,
+            ),
             color: Colors.black,
             shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(0)),
             onPressed: () {
-    
               Navigator.of(context).push(new MaterialPageRoute(
                   builder: (BuildContext context) => new LisProduct()));
             },
           ),
-           Divider(),
+          Divider(),
           new RaisedButton(
             child: new Text(' Crear Producto '),
             color: Colors.orange,
@@ -62,7 +64,6 @@ class SuperV extends StatelessWidget {
                   builder: (BuildContext context) => new ListarUser()));
             },
           ),
-         
           Divider(),
           new RaisedButton(
             child: new Text(' Crear Usuarios '),
@@ -78,5 +79,4 @@ class SuperV extends StatelessWidget {
       ),
     );
   }
- 
 }

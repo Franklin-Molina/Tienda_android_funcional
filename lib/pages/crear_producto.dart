@@ -17,6 +17,8 @@ class _AddProductState extends State<AddProduct> {
   TextEditingController controllerCategoria = new TextEditingController();
 
   // TextEditingController controllerImagen = new TextEditingController();  //Por agg imagen
+ List<DropdownMenuItem<String>> _ciudadItems;
+
 
   var _formKey = GlobalKey<FormState>();
   File _imagenfile;
