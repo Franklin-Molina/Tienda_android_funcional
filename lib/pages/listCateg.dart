@@ -15,7 +15,7 @@ class _LisCatgState extends State<LisCatg> {
 
   
   Future<List> getCateg() async{
-    final response = await http.get("http://192.168.0.103/tienda/getCateg.php",);
+    final response = await http.get("http://192.168.0.105/tienda/getCateg.php",);
     return json.decode(response.body);
     
 

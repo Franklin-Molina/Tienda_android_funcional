@@ -17,18 +17,18 @@ class _EditDetallesState extends State<EditDetalles> {
   TextEditingController controllerNombre;
   TextEditingController controllerPrecio;
   TextEditingController controllerDescripcion;
- // TextEditingController controllerCategoria;
+  TextEditingController controllerCategoria;
  // TextEditingController controllerImagen;
 
 
   void editProduc() {
-    var url = "http://192.168.0.103/tienda/editProduc.php";
+    var url = "http://192.168.0.105/tienda/editProduc.php";
     http.post(url, body: {
       "id": widget.list[widget.index]['id'],
       "nombre": controllerNombre.text,
       "precio": controllerPrecio.text,
       "descripcion": controllerDescripcion.text,
-     // "categoria": controllerCategoria.text,
+      "id_catg_producto": controllerCategoria.text,
      // "imagen": controllerDireccion.text,
     });
   }
@@ -41,9 +41,9 @@ class _EditDetallesState extends State<EditDetalles> {
         new TextEditingController(text: widget.list[widget.index]['precio']);
     controllerDescripcion =
         new TextEditingController(text: widget.list[widget.index]['descripcion']);
-   // controllerCategoria =
-      //  new TextEditingController(text: widget.list[widget.index]['categoria']);
-
+     controllerCategoria =
+        new TextEditingController(text: widget.list[widget.index]['categ']);
+ 
     super.initState();
   }
 
@@ -106,7 +106,7 @@ class _EditDetallesState extends State<EditDetalles> {
                     ),
                   ),
                 ),
-             /*       new ListTile(
+                    new ListTile(
                   leading: const Icon(Icons.category,
                       color: Colors.black),
                   title: new TextFormField(
@@ -119,7 +119,7 @@ class _EditDetallesState extends State<EditDetalles> {
                       labelText: "Categoria",
                     ),
                   ),
-                ), */
+                ),  
               
                 const Divider(
                   height: 1.0,

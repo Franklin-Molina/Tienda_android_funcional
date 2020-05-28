@@ -18,7 +18,7 @@ class _LisProductState extends State<LisProduct> {
 
 
   Future<List> getProduct() async{
-    final response = await http.get("http://192.168.0.103/tienda/getProduct.php",);
+    final response = await http.get("http://192.168.0.105/tienda/getProduct.php",);
     return json.decode(response.body);
 
    

@@ -13,7 +13,7 @@ class _AddCatgState extends State<AddCatg> {
   var _formKey = GlobalKey<FormState>();
   
   void addCateg() {
-    var url = "http://192.168.0.103/tienda/addCateg.php";
+    var url = "http://192.168.0.105/tienda/addCateg.php";
 
     http.post(url, body: {
      
@@ -30,6 +30,11 @@ class _AddCatgState extends State<AddCatg> {
           IconButton(icon: Icon(Icons.category , size: 40.0,color: Colors.red,),
            onPressed: (){
         Navigator.pushReplacementNamed(context, '/pages/listCateg');
+           }
+           ),
+             IconButton(icon: Icon(Icons.add_shopping_cart , size: 40.0,color: Colors.red,),
+           onPressed: (){
+        Navigator.pushReplacementNamed(context, '/pages/crear_producto');
            }
            )
         ],

@@ -40,7 +40,7 @@ class _AddProductState extends State<AddProduct> {
   }
 
   void addProduct() {
-    var url = "http://192.168.0.103/tienda/addProduct.php";
+    var url = "http://192.168.0.105/tienda/addProduct.php";
 
     http.post(url, body: {
       "nombre": controllerNombre.text,
@@ -59,19 +59,30 @@ class _AddProductState extends State<AddProduct> {
       appBar: new AppBar(
         title: new Text("Agregar Producto"),
            actions: <Widget>[
-          IconButton(icon: Icon(Icons.home , size: 40.0,color: Colors.red,),
+          IconButton(
+            icon: Icon(Icons.category , size: 40.0,color: Colors.red,),
+           onPressed: (){
+         Navigator.pushReplacementNamed(context, '/pages/listCateg');
+           }
+           ),
+             IconButton(
+            icon: Icon(Icons.home , size: 40.0,color: Colors.red,),
            onPressed: (){
          Navigator.pushReplacementNamed(context, '/pages/list_product');
            }
-           )
+           ),
+          
         ],
       ),
+      
       body: Form(
+        
         key: _formKey,
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: ListView(
             children: <Widget>[
+              
               new Column(
                 children: <Widget>[
                   new ListTile(
@@ -147,21 +158,15 @@ class _AddProductState extends State<AddProduct> {
                       }
                     },
                   ),
-                 /*  new RaisedButton(
-                    child: new Text("Salir"),
-                    color: Colors.red,
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0)),
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/powerPage');
-                    },
-                  ), */
+                
                 ],
               ),
             ],
           ),
         ),
       ),
+      
     );
+    
   }
 }

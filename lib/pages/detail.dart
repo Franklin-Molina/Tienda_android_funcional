@@ -16,7 +16,7 @@ class _DetailState extends State<Detail> {
   
  
 void deleteData(){
-  var url="http://192.168.0.103/tienda/deleteData.php";
+  var url="http://192.168.0.105/tienda/deleteData.php";
   http.post(url, body: {
     'id': widget.list[widget.index]['id']
   });

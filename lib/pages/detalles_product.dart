@@ -14,7 +14,7 @@ class DetalProduct extends StatefulWidget {
 class _DetalProductState extends State<DetalProduct> {
 
 void deletProduct(){
-  var url="http://192.168.0.103/tienda/deletProduct.php";
+  var url="http://192.168.0.105/tienda/deletProduct.php";
   http.post(url, body: {
     'id': widget.listPrd[widget.indexProd]['id']
   });
@@ -70,7 +70,7 @@ void confirm (){
                   Divider(),
                   new Text("Precio : ${widget.listPrd[widget.indexProd]['precio']}", style: new TextStyle(fontSize: 18.0,color: Colors.grey),),
                   Divider(),
-                  new Text("Categoria : ${widget.listPrd[widget.indexProd]['categoria']}", style: new TextStyle(fontSize: 18.0,color: Colors.grey),),
+                  new Text("Categoria : ${widget.listPrd[widget.indexProd]['categ']}", style: new TextStyle(fontSize: 18.0,color: Colors.grey),),
                   Divider(),
                    new Text("Descipcion : ${widget.listPrd[widget.indexProd]['descripcion']}", style: new TextStyle(fontSize: 18.0,color: Colors.grey),),
                    Divider(),
