@@ -50,8 +50,9 @@ void confirm (){
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Colors.black,
       appBar: new AppBar(title: new Text("Categoria - ${widget.listCatg[widget.indexCatg]['nombre']}"),
-      
+    
           actions: <Widget>[
           IconButton(icon: Icon(Icons.category , size: 40.0,color: Colors.red,),
            onPressed: (){
@@ -60,61 +61,68 @@ void confirm (){
            )
         ],
       ),
-      body: SingleChildScrollView(
-              child: new Container(
-          padding: const EdgeInsets.all(20.0),
-          child: new Card(
-            child: new Center(
-              child: new Column(
-                children: <Widget>[
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [Colors.red,Colors.white])),
+        child: SingleChildScrollView(
+                child: new Container(
+            padding: const EdgeInsets.all(20.0),
+            child: new Card(
+              child: new Center(
+                child: new Column(
+                  children: <Widget>[
 
-                  new Padding(padding: const EdgeInsets.only(top: 10.0),),
-                  new Text(widget.listCatg[widget.indexCatg]['nombre'], style: new TextStyle(fontSize: 20.0),),
-                
-                  new Padding(padding: const EdgeInsets.only(top: 30.0),),
-                      new Divider(),
-                 new Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                     new RaisedButton(
-                      child: new Text("EDITAR"),                  
-                      color: Colors.blueAccent,
-                      shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(25.0)),
-                       onPressed: ()=>Navigator.of(context).push(
-                          new MaterialPageRoute(
-                       builder: (BuildContext context)=>new EditCateg(listCatg: widget.listCatg, indexCatg: widget.indexCatg,),
-                          )
-                        ),                    
-                    ),   
-                    VerticalDivider(),
-                    new RaisedButton(
-                      child: new Text("ELIMINAR"),                  
-                      color: Colors.redAccent, 
-                      shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(30.0)),
-                      onPressed: ()=>confirm(),                
-                    ),
-                    VerticalDivider(),
-              /*          new RaisedButton(
-                      child: new Text("Salir"),
-                      color: Colors.yellow,
-                      shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0)
+                    new Padding(padding: const EdgeInsets.only(top: 10.0),),
+                    new Text(widget.listCatg[widget.indexCatg]['nombre'], style: new TextStyle(fontSize: 20.0),),
+                  
+                    new Padding(padding: const EdgeInsets.only(top: 30.0),),
+                        new Divider(),
+                   new Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: <Widget>[
+                       new RaisedButton(
+                        child: new Text("EDITAR"),                  
+                        color: Colors.blueAccent,
+                        shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(25.0)),
+                         onPressed: ()=>Navigator.of(context).push(
+                            new MaterialPageRoute(
+                         builder: (BuildContext context)=>new EditCateg(listCatg: widget.listCatg, indexCatg: widget.indexCatg,),
+                            )
+                          ),                    
+                      ),   
+                      VerticalDivider(),
+                      new RaisedButton(
+                        child: new Text("ELIMINAR"),                  
+                        color: Colors.redAccent, 
+                        shape: new RoundedRectangleBorder(
+                                borderRadius: new BorderRadius.circular(30.0)),
+                        onPressed: ()=>confirm(),                
                       ),
-                      onPressed: () {
-                       Navigator.pushReplacementNamed(context, '/pages/list_product');
-                    
-                      },
-                    ), */
-                    ],
-                  ) 
-                ],
+                      VerticalDivider(),
+                /*          new RaisedButton(
+                        child: new Text("Salir"),
+                        color: Colors.yellow,
+                        shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30.0)
+                        ),
+                        onPressed: () {
+                         Navigator.pushReplacementNamed(context, '/pages/list_product');
+                      
+                        },
+                      ), */
+                      ],
+                    ) 
+                  ],
 /* ---------------Botones editar-elimanr salir------------- */
 
 
 
 
+                ),
               ),
             ),
           ),

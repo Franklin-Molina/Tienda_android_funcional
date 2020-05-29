@@ -60,98 +60,105 @@ class _EditDataState extends State<EditData> {
            )
         ],
       ),
-      body: Form(
-        child: ListView(
-          padding: const EdgeInsets.all(10.0),
-          children: <Widget>[
-            new Column(
-              children: <Widget>[
-                new ListTile(
-                  leading: const Icon(Icons.person, color: Colors.black),
-                  title: new TextFormField(
-                    controller: controllerUsername,
-                    validator: (value) {
-                      if (value.isEmpty) return "Ingresa un nombre de usurio";
-                    },
-                    decoration: new InputDecoration(
-                      hintText: "Usuario",
-                      labelText: "Usuario",
-                    ),
-                  ),
-                ),
-                new ListTile(
-                  leading: const Icon(Icons.vpn_key, color: Colors.black),
-                  title: new TextFormField(
-                    controller: controllerPassword,
-                    validator: (value) {
-                      if (value.isEmpty) return "Ingresa una Contraseña";
-                    },
-                    decoration: new InputDecoration(
-                      hintText: "Contraseña",
-                      labelText: "Contraseña",
-                    ),
-                  ),
-                ),
-                new ListTile(
-                  leading: const Icon(Icons.phone_android,
-                      color: Colors.black),
-                  title: new TextFormField(
-                    controller: controllerTelefono,
-                    validator: (value) {
-                      if (value.isEmpty) return "Ingresa un Telefono";
-                    },
-                    decoration: new InputDecoration(
-                      hintText: "Telefono",
-                      labelText: "Telefono",
-                    ),
-                  ),
-                ),
-                   new ListTile(
-                  leading: const Icon(Icons.location_city,
-                      color: Colors.black),
-                  title: new TextFormField(
-                    controller: controllerCiudad,
-                    validator: (value) {
-                      if (value.isEmpty) return "Ingresa una Ciudad";
-                    },
-                    decoration: new InputDecoration(
-                      hintText: "Ciudad",
-                      labelText: "Ciudad",
-                    ),
-                  ),
-                ),
+      body: Container(
+         decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [Colors.red,Colors.white])),
+        child: Form(
+          child: ListView(
+            padding: const EdgeInsets.all(10.0),
+            children: <Widget>[
+              new Column(
+                children: <Widget>[
                   new ListTile(
-                  leading: const Icon(Icons.call_split,
-                      color: Colors.black),
-                  title: new TextFormField(
-                    controller: controllerDireccion,
-                    validator: (value) {
-                      if (value.isEmpty) return "Ingresa una Direccion";
-                    },
-                    decoration: new InputDecoration(
-                      hintText: "Direccion",
-                      labelText: "Direccion",
+                    leading: const Icon(Icons.person, color: Colors.black),
+                    title: new TextFormField(
+                      controller: controllerUsername,
+                      validator: (value) {
+                        if (value.isEmpty) return "Ingresa un nombre de usurio";
+                      },
+                      decoration: new InputDecoration(
+                        hintText: "Usuario",
+                        labelText: "Usuario",
+                      ),
                     ),
                   ),
-                ),
-                const Divider(
-                  height: 1.0,
-                ),
-                new Padding(
-                  padding: const EdgeInsets.all(10.0),
-                ),
-                new RaisedButton(
-                  child: new Text("Guardar"),
-                  color: Colors.blueAccent,
-                  onPressed: () {
-                    editData();
-                    Navigator.of(context).pop(new MaterialPageRoute(
-                        builder: (BuildContext context) => new ListarUser()));
-                  },
-                )
-              ],
-            ),
-          ],
+                  new ListTile(
+                    leading: const Icon(Icons.vpn_key, color: Colors.black),
+                    title: new TextFormField(
+                      controller: controllerPassword,
+                      validator: (value) {
+                        if (value.isEmpty) return "Ingresa una Contraseña";
+                      },
+                      decoration: new InputDecoration(
+                        hintText: "Contraseña",
+                        labelText: "Contraseña",
+                      ),
+                    ),
+                  ),
+                  new ListTile(
+                    leading: const Icon(Icons.phone_android,
+                        color: Colors.black),
+                    title: new TextFormField(
+                      controller: controllerTelefono,
+                      validator: (value) {
+                        if (value.isEmpty) return "Ingresa un Telefono";
+                      },
+                      decoration: new InputDecoration(
+                        hintText: "Telefono",
+                        labelText: "Telefono",
+                      ),
+                    ),
+                  ),
+                     new ListTile(
+                    leading: const Icon(Icons.location_city,
+                        color: Colors.black),
+                    title: new TextFormField(
+                      controller: controllerCiudad,
+                      validator: (value) {
+                        if (value.isEmpty) return "Ingresa una Ciudad";
+                      },
+                      decoration: new InputDecoration(
+                        hintText: "Ciudad",
+                        labelText: "Ciudad",
+                      ),
+                    ),
+                  ),
+                    new ListTile(
+                    leading: const Icon(Icons.call_split,
+                        color: Colors.black),
+                    title: new TextFormField(
+                      controller: controllerDireccion,
+                      validator: (value) {
+                        if (value.isEmpty) return "Ingresa una Direccion";
+                      },
+                      decoration: new InputDecoration(
+                        hintText: "Direccion",
+                        labelText: "Direccion",
+                      ),
+                    ),
+                  ),
+                  const Divider(
+                    height: 1.0,
+                  ),
+                  new Padding(
+                    padding: const EdgeInsets.all(10.0),
+                  ),
+                  new RaisedButton(
+                    child: new Text("Guardar"),
+                    color: Colors.blueAccent,
+                    onPressed: () {
+                      editData();
+                      Navigator.of(context).pop(new MaterialPageRoute(
+                          builder: (BuildContext context) => new ListarUser()));
+                    },
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -7,7 +7,6 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
-import 'package:proyecto_tienda/pages/registroUsuarios.dart';
 
 class ListarUser extends StatefulWidget {
   @override
@@ -68,21 +67,28 @@ class _ListarUserState extends State<ListarUser> {
         )),
       ), */
     
-       body: new FutureBuilder<List>(
-          key: refreshKey,
-        future: getData(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) print(snapshot.error);
-          return snapshot.hasData
-              ? new ItemList(
-                  list: snapshot.data,
-                )
-              : new Center(
-                  child: new CircularProgressIndicator(),
-                
-                );
-        },
-      ), 
+       body: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [Colors.red,Colors.white])),
+         child: new FutureBuilder<List>(
+            key: refreshKey,
+          future: getData(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) print(snapshot.error);
+            return snapshot.hasData
+                ? new ItemList(
+                    list: snapshot.data,
+                  )
+                : new Center(
+                    child: new CircularProgressIndicator(),
+                  
+                  );
+          },
+      ),
+       ), 
     );
     
   }

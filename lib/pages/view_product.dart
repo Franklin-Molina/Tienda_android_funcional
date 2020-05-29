@@ -26,57 +26,64 @@ class Gneralprudcut extends StatelessWidget {
                 })
           ],
         ),
-        body: ListView(children: <Widget>[
-          new Padding(
-            padding: const EdgeInsets.all(70.0),
-          ),
-          new RaisedButton(
-          
-            child: new Text(' Productos Registrados',style: titulo,),
-            color: Colors.black,
-            shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(0)),
-            onPressed: () {
+        body: Container(
+           decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [Colors.redAccent,Colors.tealAccent])),
+          child: ListView(children: <Widget>[
+            new Padding(
+              padding: const EdgeInsets.all(70.0),
+            ),
+            new RaisedButton(
+            
+              child: new Text(' Productos Registrados',style: titulo,),
+              color: Colors.black,
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(0)),
+              onPressed: () {
     
-              Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => new LisProduct()));
-            },
-          ),
-           Divider(),
-          new RaisedButton(
-            child: new Text(' Crear Producto '),
-            color: Colors.orange,
-            shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(0)),
-            onPressed: () {
-              Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => new AddProduct()));
-            },
-          ),
-          Divider(),
-          new RaisedButton(
-            child: new Text('Categorias Registradas'),
-            color: Colors.tealAccent,
-            shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(0)),
-            onPressed: () {
-              Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => new LisCatg()));
-            },
-          ), 
-         
-          Divider(),
-          new RaisedButton(
-            child: new Text(' Agregar  Categoria '),
-            color: Colors.lightGreenAccent,
-            shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(0)),
-            onPressed: () {
-              Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (BuildContext context) => new AddCatg()));
-            },
-          ),
-        ]),
+                Navigator.of(context).push(new MaterialPageRoute(
+                    builder: (BuildContext context) => new LisProduct()));
+              },
+            ),
+             Divider(),
+            new RaisedButton(
+              child: new Text(' Crear Producto '),
+              color: Colors.orange,
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(0)),
+              onPressed: () {
+                Navigator.of(context).push(new MaterialPageRoute(
+                    builder: (BuildContext context) => new AddProduct()));
+              },
+            ),
+            Divider(),
+            new RaisedButton(
+              child: new Text('Categorias Registradas'),
+              color: Colors.tealAccent,
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(0)),
+              onPressed: () {
+                Navigator.of(context).push(new MaterialPageRoute(
+                    builder: (BuildContext context) => new LisCatg()));
+              },
+            ), 
+           
+            Divider(),
+            new RaisedButton(
+              child: new Text(' Agregar  Categoria '),
+              color: Colors.lightGreenAccent,
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(0)),
+              onPressed: () {
+                Navigator.of(context).push(new MaterialPageRoute(
+                    builder: (BuildContext context) => new AddCatg()));
+              },
+            ),
+          ]),
+        ),
       ),
     );
   }

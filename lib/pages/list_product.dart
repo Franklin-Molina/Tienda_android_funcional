@@ -6,7 +6,6 @@ import 'package:proyecto_tienda/pages/detalles_product.dart';
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:proyecto_tienda/pages/registroUsuarios.dart';
  
 
 class LisProduct extends StatefulWidget {
@@ -64,18 +63,25 @@ class _LisProductState extends State<LisProduct> {
       ), 
       
 
-      body: new FutureBuilder<List>(
-        future: getProduct(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) print(snapshot.error);
-          return snapshot.hasData
-              ? new ItemList(
-                  list: snapshot.data,
-                )
-              : new Center(
-                  child: new CircularProgressIndicator(),
-                );
-        },
+      body: Container(
+         decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [Colors.red,Colors.white])),
+        child: new FutureBuilder<List>(
+          future: getProduct(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) print(snapshot.error);
+            return snapshot.hasData
+                ? new ItemList(
+                    list: snapshot.data,
+                  )
+                : new Center(
+                    child: new CircularProgressIndicator(),
+                  );
+          },
+        ),
       ),
     );
   }

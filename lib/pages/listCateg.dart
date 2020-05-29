@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:proyecto_tienda/pages/addCateg.dart';
 import 'package:proyecto_tienda/pages/detalles_categ.dart';
+import 'package:flutter_gradients/flutter_gradients.dart';
 
 class LisCatg extends StatefulWidget {
   @override
@@ -60,18 +61,26 @@ class _LisCatgState extends State<LisCatg> {
 
       
 
-      body: new FutureBuilder<List>(
-        future: getCateg(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) print(snapshot.error);
-          return snapshot.hasData
-              ? new ItemList(
-                  list: snapshot.data,
-                )
-              : new Center(
-                  child: new CircularProgressIndicator(),
-                );
-        },
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [Colors.red,Colors.white])),
+        child: new FutureBuilder<List>(
+
+          future: getCateg(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) print(snapshot.error);
+            return snapshot.hasData
+                ? new ItemList(
+                    list: snapshot.data,
+                  )
+                : new Center(
+                    child: new CircularProgressIndicator(),
+                  );
+          },
+        ),
       ),
     );
   }

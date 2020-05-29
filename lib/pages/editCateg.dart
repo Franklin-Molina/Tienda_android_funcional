@@ -43,45 +43,52 @@ class _EditCategState extends State<EditCateg> {
            )
         ],
       ),
-      body: Form(
-        child: ListView(
-          padding: const EdgeInsets.all(10.0),
-          children: <Widget>[
-            new Column(
-              children: <Widget>[
-                new ListTile(
-                  leading: const Icon(Icons.rate_review, color: Colors.black),
-                  title: new TextFormField(
-                    controller: controllerNombreCateg,
-                    validator: (value) {
-                      if (value.isEmpty) return "Ingresa una categoria";
-                    },
-                    decoration: new InputDecoration(
-                      hintText: "Nombre categoria",
-                      labelText: "Nombre categoria",
+      body: Container(
+         decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [Colors.red,Colors.white])),
+        child: Form(
+          child: ListView(
+            padding: const EdgeInsets.all(10.0),
+            children: <Widget>[
+              new Column(
+                children: <Widget>[
+                  new ListTile(
+                    leading: const Icon(Icons.rate_review, color: Colors.black),
+                    title: new TextFormField(
+                      controller: controllerNombreCateg,
+                      validator: (value) {
+                        if (value.isEmpty) return "Ingresa una categoria";
+                      },
+                      decoration: new InputDecoration(
+                        hintText: "Nombre categoria",
+                        labelText: "Nombre categoria",
+                      ),
                     ),
                   ),
-                ),
-            
-            
-                const Divider(
-                  height: 1.0,
-                ),
-                new Padding(
-                  padding: const EdgeInsets.all(10.0),
-                ),
-                new RaisedButton(
-                  child: new Text("Guardar"),
-                  color: Colors.greenAccent,
-                  onPressed: () {
-                    editCateg();
-                    Navigator.of(context).pop(new MaterialPageRoute(
-                        builder: (BuildContext context) => new LisCatg()));
-                  },
-                )
-              ],
-            ),
-          ],
+              
+              
+                  const Divider(
+                    height: 1.0,
+                  ),
+                  new Padding(
+                    padding: const EdgeInsets.all(10.0),
+                  ),
+                  new RaisedButton(
+                    child: new Text("Guardar"),
+                    color: Colors.greenAccent,
+                    onPressed: () {
+                      editCateg();
+                      Navigator.of(context).pop(new MaterialPageRoute(
+                          builder: (BuildContext context) => new LisCatg()));
+                    },
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

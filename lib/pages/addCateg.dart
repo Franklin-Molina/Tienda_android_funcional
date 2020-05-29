@@ -39,59 +39,66 @@ class _AddCatgState extends State<AddCatg> {
            )
         ],
       ),
-      body: Form(
-        key: _formKey,
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: ListView(
-            children: <Widget>[
-              new Column(
-                children: <Widget>[
+      body: Container(
+         decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [Colors.red,Colors.white])),
+        child: Form(
+          key: _formKey,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ListView(
+              children: <Widget>[
+                new Column(
+                  children: <Widget>[
+                 
                
-             
-                   new ListTile(
-                    leading: const Icon(Icons.category, color: Colors.black),
-                    title: new TextFormField(
-                      controller: controllerCategoria,
-                      validator: (value) {
-                        if (value.isEmpty) return "Ingrese una Categoria";
-                      },
-                      decoration: new InputDecoration(
-                        hintText: "Categoria",
-                        labelText: "Categoria",
+                     new ListTile(
+                      leading: const Icon(Icons.category, color: Colors.black),
+                      title: new TextFormField(
+                        controller: controllerCategoria,
+                        validator: (value) {
+                          if (value.isEmpty) return "Ingrese una Categoria";
+                        },
+                        decoration: new InputDecoration(
+                          hintText: "Categoria",
+                          labelText: "Categoria",
+                        ),
                       ),
+                    ), 
+                    const Divider(
+                      height: 1.0,
                     ),
-                  ), 
-                  const Divider(
-                    height: 1.0,
-                  ),
-                  new Padding(
-                    padding: const EdgeInsets.all(10.0),
-                  ),
-                  new RaisedButton(
-                    child: new Text("Guardar"),
-                    color: Colors.lightGreenAccent,
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0)),
-                    onPressed: () {
-                      if (_formKey.currentState.validate()) {
-                        addCateg();
-                        Navigator.pop(context);
-                      }
-                    },
-                  ),
-                 /*  new RaisedButton(
-                    child: new Text("Salir"),
-                    color: Colors.red,
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0)),
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/powerPage');
-                    },
-                  ), */
-                ],
-              ),
-            ],
+                    new Padding(
+                      padding: const EdgeInsets.all(10.0),
+                    ),
+                    new RaisedButton(
+                      child: new Text("Guardar"),
+                      color: Colors.lightGreenAccent,
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0)),
+                      onPressed: () {
+                        if (_formKey.currentState.validate()) {
+                          addCateg();
+                          Navigator.pop(context);
+                        }
+                      },
+                    ),
+                   /*  new RaisedButton(
+                      child: new Text("Salir"),
+                      color: Colors.red,
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0)),
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, '/powerPage');
+                      },
+                    ), */
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

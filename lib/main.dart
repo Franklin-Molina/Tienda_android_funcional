@@ -134,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Container(
             decoration: new BoxDecoration(
               image: new DecorationImage(
-                  image: new AssetImage("assets/images/fondo_login.jpeg"),
+                  image: new AssetImage("assets/images/fondo1.jpg"),
                   fit: BoxFit.cover),
             ),
             child: Column(
@@ -142,15 +142,15 @@ class _LoginPageState extends State<LoginPage> {
                 new Container(
                   padding: EdgeInsets.only(top: 77.0),
                   child: new CircleAvatar(
-                    backgroundColor: Colors.green[200],
+                  
                     child: new Image(
-                        width: 135,
-                        height: 135,
+                        width: 100.0,
+                        height: 100.0,
                         image: new AssetImage('assets/images/avatarx.png')),
                   ),
                   width: 170.0,
-                  height: 170.0,
-                  decoration: BoxDecoration(shape: BoxShape.circle),
+                  height: 170.0
+                 
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height / 2,

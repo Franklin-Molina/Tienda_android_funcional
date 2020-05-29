@@ -16,7 +16,10 @@ dependencies:
   flutter_screenutil: ^1.1.0
   http: any
   image_picker: ^0.6.6+1
+  flutter_gradients: ^1.0.0+2
   liquid_pull_to_refresh: ^2.0.0
+  
+
 
 dev_dependencies:
   flutter_test:

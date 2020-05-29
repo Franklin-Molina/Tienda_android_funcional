@@ -60,85 +60,92 @@ class _EditDetallesState extends State<EditDetalles> {
            )
         ],
       ),
-      body: Form(
-        child: ListView(
-          padding: const EdgeInsets.all(10.0),
-          children: <Widget>[
-            new Column(
-              children: <Widget>[
-                new ListTile(
-                  leading: const Icon(Icons.rate_review, color: Colors.black),
-                  title: new TextFormField(
-                    controller: controllerNombre,
-                    validator: (value) {
-                      if (value.isEmpty) return "Ingresa un nombre para el producto";
-                    },
-                    decoration: new InputDecoration(
-                      hintText: "Nombre",
-                      labelText: "Nombre",
+      body: Container(
+         decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [Colors.red,Colors.white])),
+        child: Form(
+          child: ListView(
+            padding: const EdgeInsets.all(10.0),
+            children: <Widget>[
+              new Column(
+                children: <Widget>[
+                  new ListTile(
+                    leading: const Icon(Icons.rate_review, color: Colors.black),
+                    title: new TextFormField(
+                      controller: controllerNombre,
+                      validator: (value) {
+                        if (value.isEmpty) return "Ingresa un nombre para el producto";
+                      },
+                      decoration: new InputDecoration(
+                        hintText: "Nombre",
+                        labelText: "Nombre",
+                      ),
                     ),
                   ),
-                ),
-                new ListTile(
-                  leading: const Icon(Icons.monetization_on, color: Colors.black),
-                  title: new TextFormField(
-                    controller: controllerPrecio,
-                    validator: (value) {
-                      if (value.isEmpty) return "Ingresa un Precio";
-                    },
-                    decoration: new InputDecoration(
-                      hintText: "Precio",
-                      labelText: "Precio",
+                  new ListTile(
+                    leading: const Icon(Icons.monetization_on, color: Colors.black),
+                    title: new TextFormField(
+                      controller: controllerPrecio,
+                      validator: (value) {
+                        if (value.isEmpty) return "Ingresa un Precio";
+                      },
+                      decoration: new InputDecoration(
+                        hintText: "Precio",
+                        labelText: "Precio",
+                      ),
                     ),
                   ),
-                ),
-                new ListTile(
-                  leading: const Icon(Icons.description,
-                      color: Colors.black),
-                  title: new TextFormField(
-                    controller: controllerDescripcion,
-                    validator: (value) {
-                      if (value.isEmpty) return "Ingresa una Descripcion";
-                    },
-                    decoration: new InputDecoration(
-                      hintText: "Descripcion",
-                      labelText: "Descripcion",
+                  new ListTile(
+                    leading: const Icon(Icons.description,
+                        color: Colors.black),
+                    title: new TextFormField(
+                      controller: controllerDescripcion,
+                      validator: (value) {
+                        if (value.isEmpty) return "Ingresa una Descripcion";
+                      },
+                      decoration: new InputDecoration(
+                        hintText: "Descripcion",
+                        labelText: "Descripcion",
+                      ),
                     ),
                   ),
-                ),
-                    new ListTile(
-                  leading: const Icon(Icons.category,
-                      color: Colors.black),
-                  title: new TextFormField(
-                    controller: controllerCategoria,
-                    validator: (value) {
-                      if (value.isEmpty) return "Ingresa una Categoria";
-                    },
-                    decoration: new InputDecoration(
-                      hintText: "Categoria",
-                      labelText: "Categoria",
+                      new ListTile(
+                    leading: const Icon(Icons.category,
+                        color: Colors.black),
+                    title: new TextFormField(
+                      controller: controllerCategoria,
+                      validator: (value) {
+                        if (value.isEmpty) return "Ingresa una Categoria";
+                      },
+                      decoration: new InputDecoration(
+                        hintText: "Categoria",
+                        labelText: "Categoria",
+                      ),
                     ),
+                  ),  
+                
+                  const Divider(
+                    height: 1.0,
                   ),
-                ),  
-              
-                const Divider(
-                  height: 1.0,
-                ),
-                new Padding(
-                  padding: const EdgeInsets.all(10.0),
-                ),
-                new RaisedButton(
-                  child: new Text("Guardar"),
-                  color: Colors.greenAccent,
-                  onPressed: () {
-                    editProduc();
-                    Navigator.of(context).pop(new MaterialPageRoute(
-                        builder: (BuildContext context) => new LisProduct()));
-                  },
-                )
-              ],
-            ),
-          ],
+                  new Padding(
+                    padding: const EdgeInsets.all(10.0),
+                  ),
+                  new RaisedButton(
+                    child: new Text("Guardar"),
+                    color: Colors.greenAccent,
+                    onPressed: () {
+                      editProduc();
+                      Navigator.of(context).pop(new MaterialPageRoute(
+                          builder: (BuildContext context) => new LisProduct()));
+                    },
+                  )
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
