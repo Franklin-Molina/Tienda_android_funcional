@@ -44,7 +44,7 @@ class _AddCatgState extends State<AddCatg> {
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [Colors.red,Colors.white])),
+                colors: [Colors.cyanAccent,Colors.white,Colors.blueAccent[400]])),
         child: Form(
           key: _formKey,
           child: Padding(

@@ -65,7 +65,7 @@ class _EditDataState extends State<EditData> {
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [Colors.red,Colors.white])),
+                colors: [Colors.redAccent,Colors.greenAccent[100]])),
         child: Form(
           child: ListView(
             padding: const EdgeInsets.all(10.0),

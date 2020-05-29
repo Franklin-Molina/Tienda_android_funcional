@@ -1,4 +1,4 @@
- import 'dart:convert';
+import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
@@ -66,7 +66,7 @@ class _LisCatgState extends State<LisCatg> {
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [Colors.red,Colors.white])),
+                 colors: [Colors.cyanAccent,Colors.greenAccent,Colors.blueAccent[400]])),
         child: new FutureBuilder<List>(
 
           future: getCateg(),

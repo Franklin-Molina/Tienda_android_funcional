@@ -10,7 +10,8 @@ class AddProduct extends StatefulWidget {
   _AddProductState createState() => new _AddProductState();
 }
 
-class _AddProductState extends State<AddProduct> {    
+class _AddProductState extends State<AddProduct> {  
+  
   TextEditingController controllerNombre = new TextEditingController();
   TextEditingController controllerPrecio = new TextEditingController();
   TextEditingController controllerdescripcion = new TextEditingController();
@@ -18,7 +19,6 @@ class _AddProductState extends State<AddProduct> {
 
   // TextEditingController controllerImagen = new TextEditingController();  //Por agg imagen
  List<DropdownMenuItem<String>> _ciudadItems;
-
 
   var _formKey = GlobalKey<FormState>();
   File _imagenfile;
@@ -134,6 +134,7 @@ class _AddProductState extends State<AddProduct> {
                       ),
                     ),
                      new ListTile(
+                      
                       leading: const Icon(Icons.category, color: Colors.black),
                       title: new TextFormField(
                         controller: controllerCategoria,

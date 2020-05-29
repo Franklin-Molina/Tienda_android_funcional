@@ -35,7 +35,7 @@ class _AddDataState extends State<AddData> {
       appBar: new AppBar(
         title: new Text("Crear Cuenta"),
         actions: <Widget>[
-          IconButton(
+        /*   IconButton(
               icon: Icon(
                 Icons.exit_to_app,
                 size: 40.0,
@@ -43,7 +43,7 @@ class _AddDataState extends State<AddData> {
               ),
               onPressed: () {
                 Navigator.pushReplacementNamed(context, '/LoginPage');
-              })
+              }) */
         ],
       ),
       body: Container(
@@ -51,7 +51,7 @@ class _AddDataState extends State<AddData> {
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [Colors.red,Colors.white])),
+                colors: [Colors.redAccent,Colors.greenAccent[100]])),
         child: Form(
           key: _formKey,
           child: Padding(
@@ -145,7 +145,7 @@ class _AddDataState extends State<AddData> {
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           addData();
-                          Navigator.pushReplacementNamed(context, '/LoginPage');
+                          Navigator.pushReplacementNamed(context,'/pages/login');  
                         }
                       },
                     ),

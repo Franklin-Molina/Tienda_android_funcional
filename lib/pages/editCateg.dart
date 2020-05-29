@@ -48,7 +48,7 @@ class _EditCategState extends State<EditCateg> {
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [Colors.red,Colors.white])),
+                 colors: [Colors.cyanAccent,Colors.white,Colors.blueAccent[400]])),
         child: Form(
           child: ListView(
             padding: const EdgeInsets.all(10.0),

@@ -55,7 +55,8 @@ class _EditDetallesState extends State<EditDetalles> {
            actions: <Widget>[
           IconButton(icon: Icon(Icons.home , size: 40.0,color: Colors.red,),
            onPressed: (){
-         Navigator.pushReplacementNamed(context, '/pages/list_product');
+         Navigator.popAndPushNamed(context, '/pages/list_product');
+         //Navigator.of(context).pushNamedAndRemoveUntil('/pages/list_product', (Route<dynamic> route) => false);
            }
            )
         ],

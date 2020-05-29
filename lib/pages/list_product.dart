@@ -30,13 +30,14 @@ class _LisProductState extends State<LisProduct> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Listado de productos", textAlign: TextAlign.center),
-      /*   actions: <Widget>[
+          actions: <Widget>[
           IconButton(icon: Icon(Icons.home , size: 40.0,color: Colors.red,),
            onPressed: (){
-         Navigator.pushReplacementNamed(context,  '/pages/view_product');
+          Navigator.pushReplacementNamed(context,  '/pages/view_product');
+         // Navigator.of(context).pushNamedAndRemoveUntil('/pages/view_product', (Route<dynamic> route) => false);
            }
            )
-        ], */
+        ],  
       ),
       floatingActionButton: new FloatingActionButton(
         child: new Icon(

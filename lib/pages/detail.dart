@@ -72,58 +72,63 @@ void confirm (){
         ),
 
      
-      body: new SingleChildScrollView(
-        padding: const EdgeInsets.all(20.0),
-        child: new Card(
-          child: new Center(
-            child: new Column(
-              children: <Widget>[
+      body: Container(
+        child: new SingleChildScrollView(
+          padding: const EdgeInsets.all(20.0),
+          child: new Card(
+            child: new Center(
+              child: new Column(
+                children: <Widget>[
 
-                new Padding(padding: const EdgeInsets.only(top: 30.0),),
-                new Text(widget.list[widget.index]['username'], style: new TextStyle(fontSize: 20.0),),
-                Divider(),
-                new Text("Telefono : ${widget.list[widget.index]['telefono']}", style: new TextStyle(fontSize: 18.0,color: Colors.grey),),
-                new Text("Ciudad : ${widget.list[widget.index]['ciudad']}", style: new TextStyle(fontSize: 18.0,color: Colors.grey),),
-                new Text("Direccion : ${widget.list[widget.index]['direccion']}", style: new TextStyle(fontSize: 18.0,color: Colors.grey),),
-                new Padding(padding: const EdgeInsets.only(top: 30.0),),
+                  new Padding(padding: const EdgeInsets.only(top: 30.0),),
+                  new Text(widget.list[widget.index]['username'], style: new TextStyle(fontSize: 20.0),),
+                  Divider(),
+                  new Text("Telefono : ${widget.list[widget.index]['telefono']}", style: new TextStyle(fontSize: 18.0,color: Colors.grey),),
+                     Divider(),
+                  new Text("Ciudad : ${widget.list[widget.index]['ciudad']}", style: new TextStyle(fontSize: 18.0,color: Colors.grey),),
+                     Divider(),
+                  new Text("Direccion : ${widget.list[widget.index]['direccion']}", style: new TextStyle(fontSize: 18.0,color: Colors.grey),),
+                     Divider(),
+                  new Padding(padding: const EdgeInsets.only(top: 30.0),),
 
-                new Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                    new RaisedButton(
-                    child: new Text("EDITAR"),                  
-                    color: Colors.blueAccent,
-                    shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(25.0)),
-                    onPressed: ()=>Navigator.of(context).push(
-                        new MaterialPageRoute(
-                          builder: (BuildContext context)=>new EditData(list: widget.list, index: widget.index,),
-                        )
-                      ),                    
-                  ),
-                  VerticalDivider(),
-                  new RaisedButton(
-                    child: new Text("ELIMINAR"),                  
-                    color: Colors.redAccent, 
-                    shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(30.0)),
-                    onPressed: ()=>confirm(),                
-                  ),
-                 /*  VerticalDivider(),
-                     new RaisedButton(
-                    child: new Text("Salir"),
-                    color: Colors.yellow,
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0)
+                  new Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      new RaisedButton(
+                      child: new Text("EDITAR"),                  
+                      color: Colors.blueAccent,
+                      shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(25.0)),
+                      onPressed: ()=>Navigator.of(context).push(
+                          new MaterialPageRoute(
+                            builder: (BuildContext context)=>new EditData(list: widget.list, index: widget.index,),
+                          )
+                        ),                    
                     ),
-                    onPressed: () {
-                     Navigator.pushReplacementNamed(context, '/powerPage');
-                  
-                    },
-                  ),*/
-                  ],
-                )
-              ],
+                    VerticalDivider(),
+                    new RaisedButton(
+                      child: new Text("ELIMINAR"),                  
+                      color: Colors.redAccent, 
+                      shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0)),
+                      onPressed: ()=>confirm(),                
+                    ),
+                   /*  VerticalDivider(),
+                       new RaisedButton(
+                      child: new Text("Salir"),
+                      color: Colors.yellow,
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0)
+                      ),
+                      onPressed: () {
+                       Navigator.pushReplacementNamed(context, '/powerPage');
+                    
+                      },
+                    ),*/
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         ),

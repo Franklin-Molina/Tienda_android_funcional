@@ -9,6 +9,34 @@ class Gneralprudcut extends StatelessWidget {
   final titulo = TextStyle(color: Colors.white, fontSize: 15.0);
   @override
   Widget build(BuildContext context) {
+      void confirm() {
+      AlertDialog alertDialog = new AlertDialog(
+        content: new Text("¿Esta seguro de Salir?"),
+        actions: <Widget>[
+         
+          new RaisedButton(
+            child: new Text(
+              " Si",
+              style: new TextStyle(color: Colors.black),
+            ),
+            color: Colors.red,
+            onPressed: () {
+              Navigator.of(context).pushNamedAndRemoveUntil('/pages/login', (Route<dynamic> route) => false);
+            },
+          ),
+          VerticalDivider(),
+          new RaisedButton(
+            child:
+                new Text("No", style: new TextStyle(color: Colors.black)),
+            color: Colors.green,
+            onPressed: () => Navigator.pop(context),
+          ),
+        ],
+      );
+
+      showDialog(
+          context: context, barrierDismissible: false, child: alertDialog);
+    }
     return Container(
       child: Scaffold(
         appBar: AppBar(
@@ -21,9 +49,8 @@ class Gneralprudcut extends StatelessWidget {
                   size: 40.0,
                   color: Colors.red,
                 ),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/LoginPage');
-                })
+                  onPressed: () => confirm(),
+               )
           ],
         ),
         body: Container(

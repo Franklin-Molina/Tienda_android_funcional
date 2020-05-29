@@ -9,32 +9,63 @@ import 'package:flutter_gradients/flutter_gradients.dart';
 
 class SuperV extends StatelessWidget {
   final titulo = TextStyle(color: Colors.white, fontSize: 15.0);
+
   @override
   Widget build(BuildContext context) {
+    void confirm() {
+      AlertDialog alertDialog = new AlertDialog(
+        content: new Text("¿Esta seguro de Salir?"),
+        actions: <Widget>[
+         
+          new RaisedButton(
+            child: new Text(
+              " Si",
+              style: new TextStyle(color: Colors.black),
+            ),
+            color: Colors.red,
+            onPressed: () {
+              Navigator.of(context).pushNamedAndRemoveUntil('/pages/login', (Route<dynamic> route) => false);
+              //Navigator.pushReplacementNamed(context,'/pages/login');
+           
+            },
+          ),
+          VerticalDivider(),
+          new RaisedButton(
+            child:
+                new Text("No", style: new TextStyle(color: Colors.black)),
+            color: Colors.green,
+            onPressed: () => Navigator.pop(context),
+          ),
+        ],
+      );
+
+      showDialog(
+          context: context, barrierDismissible: false, child: alertDialog);
+    }
+
     return Container(
       child: Scaffold(
-      
         appBar: AppBar(
           title: new Center(
-              child: new Text('Administracion', textAlign: TextAlign.center)),            
+              child: new Text('Administracion', textAlign: TextAlign.center)),
           actions: <Widget>[
             IconButton(
-                icon: Icon(
-                  Icons.exit_to_app,
-                  size: 40.0,
-                  color: Colors.red,
-                ),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/LoginPage');
-                })
+              icon: Icon(
+                Icons.exit_to_app,
+                size: 40.0,
+                color: Colors.red,
+              ),
+              //Exi
+              onPressed: () => confirm(),
+            )
           ],
         ),
         body: Container(
-           decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [Colors.red,Colors.white])),
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                  colors: [Colors.red, Colors.white])),
           child: ListView(children: <Widget>[
             new Padding(
               padding: const EdgeInsets.all(10.0),
@@ -84,31 +115,29 @@ class SuperV extends StatelessWidget {
                 Navigator.of(context).push(new MaterialPageRoute(
                     builder: (BuildContext context) => new AddData()));
               },
-            ),  
-               Divider(),
+            ),
+            Divider(),
             new RaisedButton(
               child: new Text('Categorias Registradas  '),
               color: Colors.redAccent,
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(0)),
-               onPressed: () {
+              onPressed: () {
                 Navigator.of(context).push(new MaterialPageRoute(
-                    builder: (BuildContext context) => new LisCatg ()));
-              }, 
+                    builder: (BuildContext context) => new LisCatg()));
+              },
             ),
-             Divider(),
+            Divider(),
             new RaisedButton(
               child: new Text(' Crear Categorias '),
               color: Colors.blueAccent,
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(0)),
-               onPressed: () {
+              onPressed: () {
                 Navigator.of(context).push(new MaterialPageRoute(
                     builder: (BuildContext context) => new AddCatg()));
-              }, 
+              },
             ),
-               
-            
           ]),
         ),
       ),
