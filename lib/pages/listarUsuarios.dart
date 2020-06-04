@@ -32,12 +32,12 @@ class _ListarUserState extends State<ListarUser> {
     return null;
   }
   
-
+  //Traer arreglo json.de la db y y lo inserta en reponse
   Future<List> getData() async {
     final response = await http.get(
-      "http://192.168.0.105/tienda/getdata.php",
+      "http://192.168.0.109/tienda/getdata.php",
     );
-    return json.decode(response.body);
+    return json.decode(response.body); 
   }
 
   @override
@@ -73,17 +73,17 @@ class _ListarUserState extends State<ListarUser> {
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
                colors: [Colors.redAccent,Colors.greenAccent[100]])),
-         child: new FutureBuilder<List>(
+         child: new FutureBuilder<List>( //Llamar el listado de usuarios
             key: refreshKey,
           future: getData(),
           builder: (context, snapshot) {
-            if (snapshot.hasError) print(snapshot.error);
+            if (snapshot.hasError) print(snapshot.error); //Si hay fallo lo imprime en consola
             return snapshot.hasData
-                ? new ItemList(
-                    list: snapshot.data,
+                ? new ItemList( //Si no hay errores Mostrar el listado
+                    list: snapshot.data,//llenada datos
                   )
                 : new Center(
-                    child: new CircularProgressIndicator(),
+                    child: new CircularProgressIndicator(),//Miestras carga 
                   
                   );
           },
@@ -109,10 +109,10 @@ class ItemList extends StatelessWidget {
            itemCount: list == null ? 0 : list.length,
            itemBuilder: (context, i) {
         return new Container(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(10.0),//DIseño de la lista ↓
           child: new GestureDetector(
             onTap: () => Navigator.of(context).push(
-              new MaterialPageRoute(
+              new MaterialPageRoute(//Lo que muestra al darle click
                   builder: (BuildContext context) => new Detail(
                         list: list,
                         index: i,

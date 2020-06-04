@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:proyecto_tienda/pages/editCateg.dart';
+import 'package:proyecto_tienda/pages/listCateg.dart';
 
 class DetallesCatg extends StatefulWidget {
 
@@ -18,7 +19,7 @@ class DetallesCatg extends StatefulWidget {
 class _DetallesCatgState extends State<DetallesCatg> {
 
   void deleteCatg(){
-  var url="http://192.168.0.105/tienda/deleteCatg.php";
+  var url="http://192.168.0.109/tienda/deleteCatg.php";
   http.post(url, body: {
     'id': widget.listCatg[widget.indexCatg]['id']
   });
@@ -32,8 +33,13 @@ void confirm (){
         child: new Text(" Eliminar",style: new TextStyle(color: Colors.black),),
         color: Colors.red,
         onPressed: (){
-          deleteCatg();
-               Navigator.popAndPushNamed(context, '/pages/listCateg');
+        
+         deleteCatg();
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                '/pages/listCateg', (Route<dynamic> route) => false);
+                  
+              // Navigator.popAndPushNamed(context, '/pages/listCateg');
+              // Navigator.of(context).pushNamedAndRemoveUntil('/pages/listCateg', (Route<dynamic> route) => false);
         },
       ),
        VerticalDivider(),
@@ -56,7 +62,7 @@ void confirm (){
           actions: <Widget>[
           IconButton(icon: Icon(Icons.category , size: 40.0,color: Colors.red,),
            onPressed: (){
-        Navigator.pushReplacementNamed(context, '/pages/listCateg');
+        Navigator.of(context).pushNamedAndRemoveUntil('/pages/listCateg', (Route<dynamic> route) => false);
            }
            )
         ],

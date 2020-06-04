@@ -16,12 +16,13 @@ class _LisCatgState extends State<LisCatg> {
 
   
   Future<List> getCateg() async{
-    final response = await http.get("http://192.168.0.105/tienda/getCateg.php",);
+    final response = await http.get("http://192.168.0.109/tienda/getCateg.php",);
     return json.decode(response.body);
     
-
+    
    
   }
+
   
   @override
   
@@ -30,13 +31,13 @@ class _LisCatgState extends State<LisCatg> {
    return new Scaffold(
       appBar: new AppBar(
         title: new Text("Listado de Categorias"),
-      /*   actions: <Widget>[
-          IconButton(icon: Icon(Icons.search , size: 40.0,color: Colors.red,),
+         actions: <Widget>[
+          IconButton(icon: Icon(Icons.home , size: 40.0,color: Colors.red,),
            onPressed: (){
-         Navigator.pushReplacementNamed(context, '/Gneralprudcut');
+        Navigator.of(context).pushNamedAndRemoveUntil('/pages/list_product', (Route<dynamic> route) => false);
            }
            )
-        ], */
+        ], 
       ),
 
      floatingActionButton: new FloatingActionButton.extended(

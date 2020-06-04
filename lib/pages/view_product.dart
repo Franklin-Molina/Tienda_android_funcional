@@ -17,7 +17,7 @@ class Gneralprudcut extends StatelessWidget {
           new RaisedButton(
             child: new Text(
               " Si",
-              style: new TextStyle(color: Colors.black),
+              style: new TextStyle(color: Colors.white),
             ),
             color: Colors.red,
             onPressed: () {
@@ -27,7 +27,7 @@ class Gneralprudcut extends StatelessWidget {
           VerticalDivider(),
           new RaisedButton(
             child:
-                new Text("No", style: new TextStyle(color: Colors.black)),
+                new Text("No", style: new TextStyle(color: Colors.white)),
             color: Colors.green,
             onPressed: () => Navigator.pop(context),
           ),
@@ -70,9 +70,8 @@ class Gneralprudcut extends StatelessWidget {
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(0)),
               onPressed: () {
-    
-                Navigator.of(context).push(new MaterialPageRoute(
-                    builder: (BuildContext context) => new LisProduct()));
+                  Navigator.of(context).pushNamedAndRemoveUntil('/pages/list_product', (Route<dynamic> route) => false);
+
               },
             ),
              Divider(),

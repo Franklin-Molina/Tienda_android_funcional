@@ -16,7 +16,6 @@ class SuperV extends StatelessWidget {
       AlertDialog alertDialog = new AlertDialog(
         content: new Text("¿Esta seguro de Salir?"),
         actions: <Widget>[
-         
           new RaisedButton(
             child: new Text(
               " Si",
@@ -24,18 +23,19 @@ class SuperV extends StatelessWidget {
             ),
             color: Colors.red,
             onPressed: () {
-              Navigator.of(context).pushNamedAndRemoveUntil('/pages/login', (Route<dynamic> route) => false);
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/pages/login', (Route<dynamic> route) => false);
               //Navigator.pushReplacementNamed(context,'/pages/login');
-           
             },
           ),
           VerticalDivider(),
           new RaisedButton(
-            child:
-                new Text("No", style: new TextStyle(color: Colors.black)),
+            child: new Text("No", style: new TextStyle(color: Colors.black)),
             color: Colors.green,
             onPressed: () => Navigator.pop(context),
+           
           ),
+         
         ],
       );
 

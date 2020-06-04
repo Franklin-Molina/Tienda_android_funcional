@@ -21,7 +21,7 @@ class _EditDataState extends State<EditData> {
   TextEditingController controllerDireccion;
 
   void editData() {
-    var url = "http://192.168.0.105/tienda/editdata.php";
+    var url = "http://192.168.0.109/tienda/editdata.php";
     http.post(url, body: {
       "id": widget.list[widget.index]['id'],
       "username": controllerUsername.text,
@@ -33,7 +33,7 @@ class _EditDataState extends State<EditData> {
   }
 
   @override
-  void initState() {
+  void initState() { //Estado de inicializacion -Listado a editar
     controllerUsername =
         new TextEditingController(text: widget.list[widget.index]['username']);
     controllerPassword =
@@ -66,7 +66,7 @@ class _EditDataState extends State<EditData> {
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
                 colors: [Colors.redAccent,Colors.greenAccent[100]])),
-        child: Form(
+        child: Form(//Formulario 
           child: ListView(
             padding: const EdgeInsets.all(10.0),
             children: <Widget>[
@@ -76,7 +76,7 @@ class _EditDataState extends State<EditData> {
                     leading: const Icon(Icons.person, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerUsername,
-                      validator: (value) {
+                      validator: (value) {//SI el campo esta vacio
                         if (value.isEmpty) return "Ingresa un nombre de usurio";
                       },
                       decoration: new InputDecoration(

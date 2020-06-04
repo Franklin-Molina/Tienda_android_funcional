@@ -13,6 +13,8 @@ class EditDetalles extends StatefulWidget {
 }
 
 class _EditDetallesState extends State<EditDetalles> {
+   final titulo = TextStyle(color: Colors.black, fontSize: 15.0);
+    var _formKey = GlobalKey<FormState>();
   //para la base
   TextEditingController controllerNombre;
   TextEditingController controllerPrecio;
@@ -22,7 +24,7 @@ class _EditDetallesState extends State<EditDetalles> {
 
 
   void editProduc() {
-    var url = "http://192.168.0.105/tienda/editProduc.php";
+    var url = "http://192.168.0.109/tienda/editProduc.php";
     http.post(url, body: {
       "id": widget.list[widget.index]['id'],
       "nombre": controllerNombre.text,
@@ -55,8 +57,8 @@ class _EditDetallesState extends State<EditDetalles> {
            actions: <Widget>[
           IconButton(icon: Icon(Icons.home , size: 40.0,color: Colors.red,),
            onPressed: (){
-         Navigator.popAndPushNamed(context, '/pages/list_product');
-         //Navigator.of(context).pushNamedAndRemoveUntil('/pages/list_product', (Route<dynamic> route) => false);
+        // Navigator.popAndPushNamed(context, '/pages/list_product');
+         Navigator.of(context).pushNamedAndRemoveUntil('/pages/list_product', (Route<dynamic> route) => false);
            }
            )
         ],
@@ -68,6 +70,7 @@ class _EditDetallesState extends State<EditDetalles> {
                 end: Alignment.bottomLeft,
                 colors: [Colors.red,Colors.white])),
         child: Form(
+          key: _formKey,
           child: ListView(
             padding: const EdgeInsets.all(10.0),
             children: <Widget>[
@@ -138,9 +141,65 @@ class _EditDetallesState extends State<EditDetalles> {
                     child: new Text("Guardar"),
                     color: Colors.greenAccent,
                     onPressed: () {
-                      editProduc();
-                      Navigator.of(context).pop(new MaterialPageRoute(
-                          builder: (BuildContext context) => new LisProduct()));
+
+                       if (_formKey.currentState.validate()) {
+                          showDialog(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (context) {
+                                return AlertDialog(
+                                  backgroundColor: Colors.cyanAccent[100],
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(20.0)),
+                                  title: Text(
+                                    "¡¡ Successfull !!",
+                                    style: TextStyle(color: Colors.green),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  content: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      Text(
+                                        "Producto Editado Con exito!! ",
+                                        style: titulo,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                     
+                                      Divider(),
+                                      Icon(
+                                        Icons.add_shopping_cart,
+                                        color: Colors.green,
+                                        size: 73.0,
+                                      )
+                                    ],
+                                  ),
+                                  actions: <Widget>[
+                                    FlatButton(
+                                      child: Text(
+                                        "Aceptar",
+                                        style: titulo,
+                                      ),
+                                      onPressed: () {
+                                        editProduc();
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                          '/pages/list_product', (Route<dynamic> route) => false);
+                                        
+                                      },
+                                    ),
+                                  ],
+                                );
+                              });
+                        } else {
+                          
+                          print('Datos incorrectos');
+                        }
+                    
+                      /* editProduc();
+                            Navigator.of(context).pushNamedAndRemoveUntil(
+                          '/pages/list_product', (Route<dynamic> route) => false); */
                     },
                   )
                 ],

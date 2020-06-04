@@ -17,7 +17,7 @@ class _LisProductState extends State<LisProduct> {
 
 
   Future<List> getProduct() async{
-    final response = await http.get("http://192.168.0.105/tienda/getProduct.php",);
+    final response = await http.get("http://192.168.0.109/tienda/getProduct.php",);
     return json.decode(response.body);
 
    
@@ -31,7 +31,7 @@ class _LisProductState extends State<LisProduct> {
       appBar: new AppBar(
         title: new Text("Listado de productos", textAlign: TextAlign.center),
           actions: <Widget>[
-          IconButton(icon: Icon(Icons.home , size: 40.0,color: Colors.red,),
+          IconButton(icon: Icon(Icons.home , size: 40.0,color: Colors.yellowAccent,),
            onPressed: (){
           Navigator.pushReplacementNamed(context,  '/pages/view_product');
          // Navigator.of(context).pushNamedAndRemoveUntil('/pages/view_product', (Route<dynamic> route) => false);

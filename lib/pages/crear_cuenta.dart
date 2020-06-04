@@ -9,6 +9,9 @@ class AddData extends StatefulWidget {
 }
 
 class _AddDataState extends State<AddData> {
+  
+  final titulo = TextStyle(color: Colors.black, fontSize: 15.0);
+
   TextEditingController controllerUsername = new TextEditingController();
   TextEditingController controllerPassword = new TextEditingController();
   TextEditingController controllerTelefono = new TextEditingController();
@@ -18,7 +21,7 @@ class _AddDataState extends State<AddData> {
   var _formKey = GlobalKey<FormState>();
 
   void addData() {
-    var url = "http://192.168.0.105/tienda/adddata.php";
+    var url = "http://192.168.0.109/tienda/adddata.php";
 
     http.post(url, body: {
       "username": controllerUsername.text,
@@ -51,7 +54,7 @@ class _AddDataState extends State<AddData> {
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [Colors.redAccent,Colors.greenAccent[100]])),
+                colors: [Colors.greenAccent,Colors.white])),
         child: Form(
           key: _formKey,
           child: Padding(
@@ -144,8 +147,59 @@ class _AddDataState extends State<AddData> {
                           borderRadius: new BorderRadius.circular(5.0)),
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
-                          addData();
-                          Navigator.pushReplacementNamed(context,'/pages/login');  
+
+
+                           showDialog(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (context) {
+                                return AlertDialog(
+                                  backgroundColor: Colors.cyanAccent[100],
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(20.0)),
+                                  title: Text(
+                                    "¡¡ Successfull !!",
+                                    style: TextStyle(color: Colors.green),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                  content: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      Text(
+                                        "Cuenta creada con exito!! ",
+                                        style: titulo,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                     
+                                      Divider(),
+                                      Icon(
+                                        Icons.add_shopping_cart,
+                                        color: Colors.green,
+                                        size: 73.0,
+                                      )
+                                    ],
+                                  ),
+                                  actions: <Widget>[
+                                    FlatButton(
+                                      child: Text(
+                                        "Aceptar",
+                                        style: titulo,
+                                      ),
+                                      onPressed: () {
+                                        addData();
+                          Navigator.pushReplacementNamed(context,'/pages/login');
+                                      },
+                                    ),
+                                  ],
+                                );
+                              });
+                         /*  addData();
+                          Navigator.pushReplacementNamed(context,'/pages/login');   */
+                        }else{
+                          print('Datos errones');
                         }
                       },
                     ),
