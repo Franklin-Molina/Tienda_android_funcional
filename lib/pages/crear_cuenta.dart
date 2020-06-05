@@ -9,7 +9,6 @@ class AddData extends StatefulWidget {
 }
 
 class _AddDataState extends State<AddData> {
-  
   final titulo = TextStyle(color: Colors.black, fontSize: 15.0);
 
   TextEditingController controllerUsername = new TextEditingController();
@@ -21,7 +20,7 @@ class _AddDataState extends State<AddData> {
   var _formKey = GlobalKey<FormState>();
 
   void addData() {
-    var url = "http://192.168.0.109/tienda/adddata.php";
+    var url = "http://192.168.0.106/tienda/adddata.php";
 
     http.post(url, body: {
       "username": controllerUsername.text,
@@ -38,7 +37,7 @@ class _AddDataState extends State<AddData> {
       appBar: new AppBar(
         title: new Text("Crear Cuenta"),
         actions: <Widget>[
-        /*   IconButton(
+          /*   IconButton(
               icon: Icon(
                 Icons.exit_to_app,
                 size: 40.0,
@@ -54,7 +53,7 @@ class _AddDataState extends State<AddData> {
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [Colors.greenAccent,Colors.white])),
+                colors: [Colors.greenAccent, Colors.white])),
         child: Form(
           key: _formKey,
           child: Padding(
@@ -141,15 +140,18 @@ class _AddDataState extends State<AddData> {
                       padding: const EdgeInsets.all(10.0),
                     ),
                     new RaisedButton(
-                      child: new Text("Guardar",style: TextStyle(color: Colors.white,),),
+                      child: new Text(
+                        "Guardar",
+                        style: TextStyle(
+                          color: Colors.white,
+                        ),
+                      ),
                       color: Colors.black,
                       shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(5.0)),
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
-
-
-                           showDialog(
+                          showDialog(
                               context: context,
                               barrierDismissible: false,
                               builder: (context) {
@@ -173,10 +175,9 @@ class _AddDataState extends State<AddData> {
                                         style: titulo,
                                         textAlign: TextAlign.center,
                                       ),
-                                     
                                       Divider(),
                                       Icon(
-                                        Icons.add_shopping_cart,
+                                        Icons.perm_identity,
                                         color: Colors.green,
                                         size: 73.0,
                                       )
@@ -190,15 +191,19 @@ class _AddDataState extends State<AddData> {
                                       ),
                                       onPressed: () {
                                         addData();
-                          Navigator.pushReplacementNamed(context,'/pages/login');
+                                        Navigator.of(context)
+                                            .pushNamedAndRemoveUntil(
+                                                '/pages/login',
+                                                (Route<dynamic> route) =>
+                                                    false);
                                       },
                                     ),
                                   ],
                                 );
                               });
-                         /*  addData();
+                          /*  addData();
                           Navigator.pushReplacementNamed(context,'/pages/login');   */
-                        }else{
+                        } else {
                           print('Datos errones');
                         }
                       },

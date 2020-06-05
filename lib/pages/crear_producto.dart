@@ -41,7 +41,7 @@ class _AddProductState extends State<AddProduct> {
   }
 
   void addProduct() {
-    var url = "http://192.168.0.109/tienda/addProduct.php";
+    var url = "http://192.168.0.106/tienda/addProduct.php";
 
     http.post(url, body: {
       "nombre": controllerNombre.text,
@@ -51,10 +51,14 @@ class _AddProductState extends State<AddProduct> {
     });
   }
 
+  refreshproduct() {
+    setState(() {
+      addProduct();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-   
-
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("Agregar Producto"),
@@ -193,7 +197,6 @@ class _AddProductState extends State<AddProduct> {
                                         style: titulo,
                                         textAlign: TextAlign.center,
                                       ),
-                                     
                                       Divider(),
                                       Icon(
                                         Icons.add_shopping_cart,
@@ -209,6 +212,7 @@ class _AddProductState extends State<AddProduct> {
                                         style: titulo,
                                       ),
                                       onPressed: () {
+                                   
                                         addProduct();
                                         Navigator.of(context)
                                             .pushNamedAndRemoveUntil(
@@ -221,7 +225,6 @@ class _AddProductState extends State<AddProduct> {
                                 );
                               });
                         } else {
-                          
                           print('Datos incorrectos');
                         }
                       },
@@ -236,5 +239,3 @@ class _AddProductState extends State<AddProduct> {
     );
   }
 }
-
- 

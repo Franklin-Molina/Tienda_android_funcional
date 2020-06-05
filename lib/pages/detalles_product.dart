@@ -12,7 +12,7 @@ class DetalProduct extends StatefulWidget {
 
 class _DetalProductState extends State<DetalProduct> {
   void deletProduct() {
-    var url = "http://192.168.0.109/tienda/deletProduct.php";
+    var url = "http://192.168.0.106/tienda/deletProduct.php";
     http.post(url, body: {'id': widget.listPrd[widget.indexProd]['id']});
   }
 
@@ -28,12 +28,11 @@ class _DetalProductState extends State<DetalProduct> {
           ),
           color: Colors.red,
           onPressed: () {
-         
-            /*Navigator.of(context).pushNamedAndRemoveUntil(
-                '/pages/list_product', (Route<dynamic> route) => false);*/
-                Navigator.of(context).popAndPushNamed( '/pages/list_product');
-                 return  deletProduct();
-                 
+             deletProduct();
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                '/pages/list_product', (Route<dynamic> route) => false);
+            /*  Navigator.of(context).popAndPushNamed( '/pages/list_product');
+                 return  deletProduct(); */
           },
         ),
         VerticalDivider(),

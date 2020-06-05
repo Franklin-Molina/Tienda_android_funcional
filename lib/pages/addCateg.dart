@@ -13,7 +13,7 @@ class _AddCatgState extends State<AddCatg> {
   var _formKey = GlobalKey<FormState>();
 
   void addCateg() {
-    var url = "http://192.168.0.109/tienda/addCateg.php";
+    var url = "http://192.168.0.106/tienda/addCateg.php";
 
     http.post(url, body: {
       "nombre": controllerCategoria.text,

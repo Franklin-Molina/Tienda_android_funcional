@@ -18,7 +18,7 @@ class _EditCategState extends State<EditCateg> {
   TextEditingController controllerNombreCateg;
 
   void editCateg() {
-    var url = "http://192.168.0.109/tienda/editCateg.php";
+    var url = "http://192.168.0.106/tienda/editCateg.php";
     http.post(url, body: {
       "id": widget.listCatg[widget.indexCatg]['id'],
       "nombre": controllerNombreCateg.text,

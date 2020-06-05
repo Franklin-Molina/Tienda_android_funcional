@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   String mensaje = ''; //Alert
   Future<List> login() async {
     final response =
-        await http.post("http://192.168.0.109/tienda/login.php", body: {
+        await http.post("http://192.168.0.106/tienda/login.php", body: {
       "username": controllerUser.text,
       "password": controllerPass.text,
     });
@@ -120,7 +120,8 @@ class _LoginPageState extends State<LoginPage> {
                       style: titulo,
                     ),
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/powerPage');
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          '/powerPage', (Route<dynamic> route) => false);
                     },
                   ),
                 ],
@@ -130,7 +131,36 @@ class _LoginPageState extends State<LoginPage> {
         // Navigator.pushReplacementNamed(context, '/porwePage');
       } else if (datauser[0]['estado'] == 'ventas') {
         print('wellcome Usuario');
-        Navigator.pushReplacementNamed(context, '/pages/view_product');
+        AlertDialog alerta = new AlertDialog(
+          title: Text(
+            '!! Welcome ¡¡',
+            style: TextStyle(color: Colors.green,),textAlign:TextAlign.center
+          ),
+        
+          actions: <Widget>[
+            Icon(
+              Icons.fingerprint,
+              color: Colors.green,
+              size: 73.0,
+            ),
+            FlatButton(
+              child: Text(
+                "Aceptar",
+                style: titulo,
+              ),
+              onPressed: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/pages/view_product', (Route<dynamic> route) => false);
+              },
+            ),
+          ],
+        );
+        showDialog(
+          context: context,
+          child: alerta,
+        );
+        //  barrierDismissible: false,
+        //  Navigator.pushReplacementNamed(context, '/pages/view_product');
       }
 
       setState(() {
@@ -256,7 +286,4 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-Widget _alert(){
-
-  
-}
+Widget _alert() {}

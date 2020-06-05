@@ -13,25 +13,24 @@ class EditDetalles extends StatefulWidget {
 }
 
 class _EditDetallesState extends State<EditDetalles> {
-   final titulo = TextStyle(color: Colors.black, fontSize: 15.0);
-    var _formKey = GlobalKey<FormState>();
+  final titulo = TextStyle(color: Colors.black, fontSize: 15.0);
+  var _formKey = GlobalKey<FormState>();
   //para la base
   TextEditingController controllerNombre;
   TextEditingController controllerPrecio;
   TextEditingController controllerDescripcion;
   TextEditingController controllerCategoria;
- // TextEditingController controllerImagen;
-
+  // TextEditingController controllerImagen;
 
   void editProduc() {
-    var url = "http://192.168.0.109/tienda/editProduc.php";
+    var url = "http://192.168.0.106/tienda/editProduc.php";
     http.post(url, body: {
       "id": widget.list[widget.index]['id'],
       "nombre": controllerNombre.text,
       "precio": controllerPrecio.text,
       "descripcion": controllerDescripcion.text,
       "id_catg_producto": controllerCategoria.text,
-     // "imagen": controllerDireccion.text,
+      // "imagen": controllerDireccion.text,
     });
   }
 
@@ -41,11 +40,11 @@ class _EditDetallesState extends State<EditDetalles> {
         new TextEditingController(text: widget.list[widget.index]['nombre']);
     controllerPrecio =
         new TextEditingController(text: widget.list[widget.index]['precio']);
-    controllerDescripcion =
-        new TextEditingController(text: widget.list[widget.index]['descripcion']);
-     controllerCategoria =
+    controllerDescripcion = new TextEditingController(
+        text: widget.list[widget.index]['descripcion']);
+    controllerCategoria =
         new TextEditingController(text: widget.list[widget.index]['categ']);
- 
+
     super.initState();
   }
 
@@ -54,21 +53,26 @@ class _EditDetallesState extends State<EditDetalles> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("EDITAR"),
-           actions: <Widget>[
-          IconButton(icon: Icon(Icons.home , size: 40.0,color: Colors.red,),
-           onPressed: (){
-        // Navigator.popAndPushNamed(context, '/pages/list_product');
-         Navigator.of(context).pushNamedAndRemoveUntil('/pages/list_product', (Route<dynamic> route) => false);
-           }
-           )
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.home,
+                size: 40.0,
+                color: Colors.red,
+              ),
+              onPressed: () {
+                // Navigator.popAndPushNamed(context, '/pages/list_product');
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/pages/list_product', (Route<dynamic> route) => false);
+              })
         ],
       ),
       body: Container(
-         decoration: BoxDecoration(
+        decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [Colors.red,Colors.white])),
+                colors: [Colors.red, Colors.white])),
         child: Form(
           key: _formKey,
           child: ListView(
@@ -81,7 +85,8 @@ class _EditDetallesState extends State<EditDetalles> {
                     title: new TextFormField(
                       controller: controllerNombre,
                       validator: (value) {
-                        if (value.isEmpty) return "Ingresa un nombre para el producto";
+                        if (value.isEmpty)
+                          return "Ingresa un nombre para el producto";
                       },
                       decoration: new InputDecoration(
                         hintText: "Nombre",
@@ -90,7 +95,8 @@ class _EditDetallesState extends State<EditDetalles> {
                     ),
                   ),
                   new ListTile(
-                    leading: const Icon(Icons.monetization_on, color: Colors.black),
+                    leading:
+                        const Icon(Icons.monetization_on, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerPrecio,
                       validator: (value) {
@@ -103,8 +109,7 @@ class _EditDetallesState extends State<EditDetalles> {
                     ),
                   ),
                   new ListTile(
-                    leading: const Icon(Icons.description,
-                        color: Colors.black),
+                    leading: const Icon(Icons.description, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerDescripcion,
                       validator: (value) {
@@ -116,9 +121,8 @@ class _EditDetallesState extends State<EditDetalles> {
                       ),
                     ),
                   ),
-                      new ListTile(
-                    leading: const Icon(Icons.category,
-                        color: Colors.black),
+                  new ListTile(
+                    leading: const Icon(Icons.category, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerCategoria,
                       validator: (value) {
@@ -129,8 +133,7 @@ class _EditDetallesState extends State<EditDetalles> {
                         labelText: "Categoria",
                       ),
                     ),
-                  ),  
-                
+                  ),
                   const Divider(
                     height: 1.0,
                   ),
@@ -141,62 +144,59 @@ class _EditDetallesState extends State<EditDetalles> {
                     child: new Text("Guardar"),
                     color: Colors.greenAccent,
                     onPressed: () {
-
-                       if (_formKey.currentState.validate()) {
-                          showDialog(
-                              context: context,
-                              barrierDismissible: false,
-                              builder: (context) {
-                                return AlertDialog(
-                                  backgroundColor: Colors.cyanAccent[100],
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(20.0)),
-                                  title: Text(
-                                    "¡¡ Successfull !!",
-                                    style: TextStyle(color: Colors.green),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  content: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      Text(
-                                        "Producto Editado Con exito!! ",
-                                        style: titulo,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                     
-                                      Divider(),
-                                      Icon(
-                                        Icons.add_shopping_cart,
-                                        color: Colors.green,
-                                        size: 73.0,
-                                      )
-                                    ],
-                                  ),
-                                  actions: <Widget>[
-                                    FlatButton(
-                                      child: Text(
-                                        "Aceptar",
-                                        style: titulo,
-                                      ),
-                                      onPressed: () {
-                                        editProduc();
-                            Navigator.of(context).pushNamedAndRemoveUntil(
-                          '/pages/list_product', (Route<dynamic> route) => false);
-                                        
-                                      },
+                      if (_formKey.currentState.validate()) {
+                        showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (context) {
+                              return AlertDialog(
+                                backgroundColor: Colors.cyanAccent[100],
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0)),
+                                title: Text(
+                                  "¡¡ Successfull !!",
+                                  style: TextStyle(color: Colors.green),
+                                  textAlign: TextAlign.center,
+                                ),
+                                content: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    Text(
+                                      "Producto Editado Con exito!! ",
+                                      style: titulo,
+                                      textAlign: TextAlign.center,
                                     ),
+                                    Divider(),
+                                    Icon(
+                                      Icons.add_shopping_cart,
+                                      color: Colors.green,
+                                      size: 73.0,
+                                    )
                                   ],
-                                );
-                              });
-                        } else {
-                          
-                          print('Datos incorrectos');
-                        }
-                    
+                                ),
+                                actions: <Widget>[
+                                  FlatButton(
+                                    child: Text(
+                                      "Aceptar",
+                                      style: titulo,
+                                    ),
+                                    onPressed: () {
+                                      editProduc();
+                                      Navigator.of(context)
+                                          .pushNamedAndRemoveUntil(
+                                              '/pages/list_product',
+                                              (Route<dynamic> route) => false);
+                                    },
+                                  ),
+                                ],
+                              );
+                            });
+                      } else {
+                        print('Datos incorrectos');
+                      }
+
                       /* editProduc();
                             Navigator.of(context).pushNamedAndRemoveUntil(
                           '/pages/list_product', (Route<dynamic> route) => false); */
@@ -211,4 +211,3 @@ class _EditDetallesState extends State<EditDetalles> {
     );
   }
 }
- 

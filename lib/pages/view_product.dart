@@ -56,9 +56,10 @@ class Gneralprudcut extends StatelessWidget {
         body: Container(
            decoration: BoxDecoration(
             gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [Colors.redAccent,Colors.tealAccent])),
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              //  colors: [Colors.teal[300],Colors.lightBlue[200],Colors.greenAccent[200]])),
+                 colors: [Colors.black,Colors.green,Colors.yellow,Colors.red])),
           child: ListView(children: <Widget>[
             new Padding(
               padding: const EdgeInsets.all(70.0),

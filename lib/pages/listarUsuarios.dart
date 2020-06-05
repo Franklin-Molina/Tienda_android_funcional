@@ -6,7 +6,7 @@ import 'package:proyecto_tienda/pages/detail.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
-
+import 'package:proyecto_tienda/pages/editdata.dart';
 
 class ListarUser extends StatefulWidget {
   @override
@@ -14,38 +14,34 @@ class ListarUser extends StatefulWidget {
 }
 
 class _ListarUserState extends State<ListarUser> {
-
   var refreshKey = GlobalKey<RefreshIndicatorState>();
 
-    void initState() {
-    super.initState();
-    refreshList();
-    }
-  
-   
-    
   Future<Null> refreshList() async {
-    refreshKey.currentState?.show(atTop: false);
     await Future.delayed(Duration(seconds: 2));
 
-
+    setState(() {
+      ListarUser();
+      AddData();
+      Detail();
+      EditData();
+    });
     return null;
   }
-  
+
   //Traer arreglo json.de la db y y lo inserta en reponse
   Future<List> getData() async {
     final response = await http.get(
-      "http://192.168.0.109/tienda/getdata.php",
+      "http://192.168.0.106/tienda/getdata.php",
     );
-    return json.decode(response.body); 
+    return json.decode(response.body);
   }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-          title: Text('Usuarios Registrados'),
-     /*         actions: <Widget>[
+        title: Text('Usuarios Registrados'),
+        /*         actions: <Widget>[
           IconButton(icon: Icon(Icons.exit_to_app , size: 40.0,color: Colors.red,),
            onPressed: (){
          Navigator.pushReplacementNamed(context, '/LoginPage');
@@ -53,7 +49,6 @@ class _ListarUserState extends State<ListarUser> {
            )
         ], */
       ),
-   
 
 /* 
       floatingActionButton: new FloatingActionButton(
@@ -66,31 +61,32 @@ class _ListarUserState extends State<ListarUser> {
         
         )),
       ), */
-    
-       body: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
+
+      body: RefreshIndicator(
+        /* decoration: BoxDecoration(
+             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-               colors: [Colors.redAccent,Colors.greenAccent[100]])),
-         child: new FutureBuilder<List>( //Llamar el listado de usuarios
-            key: refreshKey,
+               colors: [Colors.redAccent,Colors.greenAccent[100]])), */
+        child: new FutureBuilder<List>(
+          //Llamar el listado de usuarios
           future: getData(),
           builder: (context, snapshot) {
-            if (snapshot.hasError) print(snapshot.error); //Si hay fallo lo imprime en consola
+            if (snapshot.hasError)
+              print(snapshot.error); //Si hay fallo lo imprime en consola
             return snapshot.hasData
-                ? new ItemList( //Si no hay errores Mostrar el listado
-                    list: snapshot.data,//llenada datos
+                ? new ItemList(
+                    //Si no hay errores Mostrar el listado
+                    list: snapshot.data, //llenada datos
                   )
                 : new Center(
-                    child: new CircularProgressIndicator(),//Miestras carga 
-                  
+                    child: new CircularProgressIndicator(), //Miestras carga
                   );
           },
+        ),
+        onRefresh: refreshList,
       ),
-       ), 
     );
-    
   }
 }
 
@@ -100,97 +96,88 @@ class ItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-       return LiquidPullToRefresh(
-    onRefresh:() async{
-      return await Future.delayed(Duration(seconds: 2));
-       
-    },
-        child: ListView.builder(
-           itemCount: list == null ? 0 : list.length,
-           itemBuilder: (context, i) {
-        return new Container(
-          padding: const EdgeInsets.all(10.0),//DIseño de la lista ↓
-          child: new GestureDetector(
-            onTap: () => Navigator.of(context).push(
-              new MaterialPageRoute(//Lo que muestra al darle click
-                  builder: (BuildContext context) => new Detail(
-                        list: list,
-                        index: i,
-                      )),
-            ),
-            child: new Card(
-              child: new ListTile(
-                title: new Text(
-                  list[i]['username'],
-                  style: TextStyle(fontSize: 25.0, color: Colors.black),
-                ),
-                leading: new Icon(
-                  Icons.person_pin,
-                  size: 77.0,
-                  color: Colors.red,
-                ),
-                subtitle: new Text(
-                  "Telefono : ${list[i]['telefono']}",
-                  style: TextStyle(fontSize: 20.0, color: Colors.grey),
+    return LiquidPullToRefresh(
+      onRefresh: () async {
+        return await Future.delayed(Duration(seconds: 2));
+      },
+      child: ListView.builder(
+        itemCount: list == null ? 0 : list.length,
+        itemBuilder: (context, i) {
+          return new Container(
+            padding: const EdgeInsets.all(10.0), //DIseño de la lista ↓
+            child: new GestureDetector(
+              onTap: () => Navigator.of(context).push(
+                new MaterialPageRoute(
+                    //Lo que muestra al darle click
+                    builder: (BuildContext context) => new Detail(
+                          list: list,
+                          index: i,
+                        )),
+              ),
+              child: new Card(
+                child: new ListTile(
+                  title: new Text(
+                    list[i]['username'],
+                    style: TextStyle(fontSize: 25.0, color: Colors.black),
+                  ),
+                  leading: new Icon(
+                    Icons.person_pin,
+                    size: 77.0,
+                    color: Colors.red,
+                  ),
+                  subtitle: new Text(
+                    "Telefono : ${list[i]['telefono']}",
+                    style: TextStyle(fontSize: 20.0, color: Colors.grey),
+                  ),
                 ),
               ),
             ),
-          ),
-        );
-      
-      },
-        
-        
-        ),
-     );
-   
+          );
+        },
+      ),
+    );
   }
+
   //Refres Opcion1
-   Widget _listaRefres(){
-     return LiquidPullToRefresh(
-    onRefresh:() async{
-      return await Future.delayed(Duration(seconds: 2));
-       
-    },
-        child: ListView.builder(
-           itemCount: list == null ? 0 : list.length,
-           itemBuilder: (context, i) {
-        return new Container(
-          padding: const EdgeInsets.all(10.0),
-          child: new GestureDetector(
-            onTap: () => Navigator.of(context).push(
-              new MaterialPageRoute(
-                  builder: (BuildContext context) => new Detail(
-                        list: list,
-                        index: i,
-                      )),
-            ),
-            child: new Card(
-              child: new ListTile(
-                title: new Text(
-                  list[i]['username'],
-                  style: TextStyle(fontSize: 25.0, color: Colors.black),
-                ),
-                leading: new Icon(
-                  Icons.person_pin,
-                  size: 77.0,
-                  color: Colors.red,
-                ),
-                subtitle: new Text(
-                  "Telefono : ${list[i]['telefono']}",
-                  style: TextStyle(fontSize: 20.0, color: Colors.grey),
+  Widget _listaRefres() {
+    return LiquidPullToRefresh(
+      onRefresh: () async {
+        return await Future.delayed(Duration(seconds: 2));
+      },
+      child: ListView.builder(
+        itemCount: list == null ? 0 : list.length,
+        itemBuilder: (context, i) {
+          return new Container(
+            padding: const EdgeInsets.all(10.0),
+            child: new GestureDetector(
+              onTap: () => Navigator.of(context).push(
+                new MaterialPageRoute(
+                    builder: (BuildContext context) => new Detail(
+                          list: list,
+                          index: i,
+                        )),
+              ),
+              child: new Card(
+                child: new ListTile(
+                  title: new Text(
+                    list[i]['username'],
+                    style: TextStyle(fontSize: 25.0, color: Colors.black),
+                  ),
+                  leading: new Icon(
+                    Icons.person_pin,
+                    size: 77.0,
+                    color: Colors.red,
+                  ),
+                  subtitle: new Text(
+                    "Telefono : ${list[i]['telefono']}",
+                    style: TextStyle(fontSize: 20.0, color: Colors.grey),
+                  ),
                 ),
               ),
             ),
-          ),
-        );
-      
-      },
-        
-        
-        ),
-     );
-   }
+          );
+        },
+      ),
+    );
+  }
 }
- 
-
