@@ -22,10 +22,8 @@ class SuperV extends StatelessWidget {
               style: new TextStyle(color: Colors.black),
             ),
             color: Colors.red,
-            onPressed: () {
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                  '/pages/login', (Route<dynamic> route) => false);
-              //Navigator.pushReplacementNamed(context,'/pages/login');
+             onPressed: () {
+              Navigator.of(context).pushNamedAndRemoveUntil('/pages/slider', (Route<dynamic> route) => false);
             },
           ),
           VerticalDivider(),

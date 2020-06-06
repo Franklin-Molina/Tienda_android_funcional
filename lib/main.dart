@@ -8,6 +8,7 @@ import 'package:proyecto_tienda/pages/editCateg.dart';
 import 'package:proyecto_tienda/pages/listCateg.dart';
 import 'package:proyecto_tienda/pages/list_product.dart';
 import 'package:proyecto_tienda/pages/listarUsuarios.dart';
+import 'package:proyecto_tienda/pages/slider.dart';
 import 'package:proyecto_tienda/pages/login.dart';
 import 'package:proyecto_tienda/pages/powerPage.dart';
 //import 'package:proyecto_tienda/pages/crear_producto.dart';
@@ -28,8 +29,10 @@ class LoginApp extends StatelessWidget {
         primaryColor: Colors.black,
       ),
       title: 'Mercado Libre',
-      home: LoginPage(),
+      home: IntroScreen(),
       routes: <String, WidgetBuilder>{
+        
+         '/pages/slider': (BuildContext context) => new IntroScreen(),
         '/powerPage': (BuildContext context) => new SuperV(),
         '/pages/list_product': (BuildContext context) => new LisProduct(),
         '/pages/login': (BuildContext context) => new LoginPage(),
@@ -39,8 +42,10 @@ class LoginApp extends StatelessWidget {
        '/pages/view_product': (BuildContext context) => new Gneralprudcut(),
        '/pages/listCateg':(BuildContext context) => new LisCatg(),
         '/editCateg':(BuildContext context) => new EditCateg(),
+
        
       },
     );
   }
 }
+

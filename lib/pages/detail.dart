@@ -32,9 +32,9 @@ class _DetailState extends State<Detail> {
           color: Colors.red,
           onPressed: () {
             deleteData();
-            Navigator.of(context).push(new MaterialPageRoute(
-              builder: (BuildContext context) => new ListarUser(),
-            ));
+
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                '/pages/listarUsuarios', (Route<dynamic> route) => false);
           },
         ),
         VerticalDivider(),
@@ -54,7 +54,8 @@ class _DetailState extends State<Detail> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("${widget.list[widget.index]['username']}"), //Nombre de la persona a editar en appbar
+        title: new Text(
+            "${widget.list[widget.index]['username']}"), //Nombre de la persona a editar en appbar
         actions: <Widget>[
           IconButton(
               icon: Icon(
@@ -78,7 +79,8 @@ class _DetailState extends State<Detail> {
                   new Padding(
                     padding: const EdgeInsets.only(top: 30.0),
                   ),
-                  new Text(//Traemos la Lista
+                  new Text(
+                    //Traemos la Lista
                     widget.list[widget.index]['username'],
                     style: new TextStyle(fontSize: 20.0),
                   ),

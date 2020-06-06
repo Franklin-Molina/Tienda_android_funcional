@@ -41,13 +41,14 @@ class _ListarUserState extends State<ListarUser> {
     return new Scaffold(
       appBar: new AppBar(
         title: Text('Usuarios Registrados'),
-        /*         actions: <Widget>[
-          IconButton(icon: Icon(Icons.exit_to_app , size: 40.0,color: Colors.red,),
+               actions: <Widget>[
+          IconButton(icon: Icon(Icons.home , size: 40.0,color: Colors.red,),
            onPressed: (){
-         Navigator.pushReplacementNamed(context, '/LoginPage');
+           Navigator.of(context).pushNamedAndRemoveUntil(
+                '/powerPage', (Route<dynamic> route) => false);
            }
            )
-        ], */
+        ], 
       ),
 
 /* 
@@ -63,26 +64,29 @@ class _ListarUserState extends State<ListarUser> {
       ), */
 
       body: RefreshIndicator(
-        /* decoration: BoxDecoration(
+      
+        child: Container(
+          decoration: BoxDecoration(
              gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-               colors: [Colors.redAccent,Colors.greenAccent[100]])), */
-        child: new FutureBuilder<List>(
-          //Llamar el listado de usuarios
-          future: getData(),
-          builder: (context, snapshot) {
-            if (snapshot.hasError)
-              print(snapshot.error); //Si hay fallo lo imprime en consola
-            return snapshot.hasData
-                ? new ItemList(
-                    //Si no hay errores Mostrar el listado
-                    list: snapshot.data, //llenada datos
-                  )
-                : new Center(
-                    child: new CircularProgressIndicator(), //Miestras carga
-                  );
-          },
+               colors: [Colors.redAccent,Colors.greenAccent[100]])),
+          child: new FutureBuilder<List>(
+            //Llamar el listado de usuarios
+            future: getData(),
+            builder: (context, snapshot) {
+              if (snapshot.hasError)
+                print(snapshot.error); //Si hay fallo lo imprime en consola
+              return snapshot.hasData
+                  ? new ItemList(
+                      //Si no hay errores Mostrar el listado
+                      list: snapshot.data, //llenada datos
+                    )
+                  : new Center(
+                      child: new CircularProgressIndicator(), //Miestras carga
+                    );
+            },
+          ),
         ),
         onRefresh: refreshList,
       ),
@@ -96,10 +100,8 @@ class ItemList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LiquidPullToRefresh(
-      onRefresh: () async {
-        return await Future.delayed(Duration(seconds: 2));
-      },
+    return Container(
+     
       child: ListView.builder(
         itemCount: list == null ? 0 : list.length,
         itemBuilder: (context, i) {
@@ -138,46 +140,4 @@ class ItemList extends StatelessWidget {
     );
   }
 
-  //Refres Opcion1
-  Widget _listaRefres() {
-    return LiquidPullToRefresh(
-      onRefresh: () async {
-        return await Future.delayed(Duration(seconds: 2));
-      },
-      child: ListView.builder(
-        itemCount: list == null ? 0 : list.length,
-        itemBuilder: (context, i) {
-          return new Container(
-            padding: const EdgeInsets.all(10.0),
-            child: new GestureDetector(
-              onTap: () => Navigator.of(context).push(
-                new MaterialPageRoute(
-                    builder: (BuildContext context) => new Detail(
-                          list: list,
-                          index: i,
-                        )),
-              ),
-              child: new Card(
-                child: new ListTile(
-                  title: new Text(
-                    list[i]['username'],
-                    style: TextStyle(fontSize: 25.0, color: Colors.black),
-                  ),
-                  leading: new Icon(
-                    Icons.person_pin,
-                    size: 77.0,
-                    color: Colors.red,
-                  ),
-                  subtitle: new Text(
-                    "Telefono : ${list[i]['telefono']}",
-                    style: TextStyle(fontSize: 20.0, color: Colors.grey),
-                  ),
-                ),
-              ),
-            ),
-          );
-        },
-      ),
-    );
-  }
 }

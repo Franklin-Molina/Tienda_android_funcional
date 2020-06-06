@@ -5,8 +5,15 @@ import 'package:proyecto_tienda/pages/listCateg.dart';
 import 'package:proyecto_tienda/pages/list_product.dart';
 
 
+
+
+
+
+
+
 class Gneralprudcut extends StatelessWidget {
   final titulo = TextStyle(color: Colors.white, fontSize: 15.0);
+  
   @override
   Widget build(BuildContext context) {
       void confirm() {
@@ -21,7 +28,7 @@ class Gneralprudcut extends StatelessWidget {
             ),
             color: Colors.red,
             onPressed: () {
-              Navigator.of(context).pushNamedAndRemoveUntil('/pages/login', (Route<dynamic> route) => false);
+              Navigator.of(context).pushNamedAndRemoveUntil('/pages/slider', (Route<dynamic> route) => false);
             },
           ),
           VerticalDivider(),

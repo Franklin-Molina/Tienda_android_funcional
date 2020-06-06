@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto_tienda/pages/listCateg.dart';
 import 'package:http/http.dart' as http;
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class AddCatg extends StatefulWidget {
   @override
@@ -8,6 +9,8 @@ class AddCatg extends StatefulWidget {
 }
 
 class _AddCatgState extends State<AddCatg> {
+
+ 
   final titulo = TextStyle(color: Colors.black, fontSize: 15.0);
   TextEditingController controllerCategoria = new TextEditingController();
   var _formKey = GlobalKey<FormState>();
@@ -19,6 +22,10 @@ class _AddCatgState extends State<AddCatg> {
       "nombre": controllerCategoria.text,
     });
   }
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +98,9 @@ class _AddCatgState extends State<AddCatg> {
                           borderRadius: new BorderRadius.circular(30.0)),
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
-                          showDialog(
+
+                          
+                           showDialog(
                               context: context,
                               barrierDismissible: false,
                               builder: (context) {
@@ -140,27 +149,13 @@ class _AddCatgState extends State<AddCatg> {
                                     ),
                                   ],
                                 );
-                              });
-
-                          /*  addCateg();
-                          Navigator.pop(context); */
-                          /*  Navigator.of(context).pushNamedAndRemoveUntil(
-                          '/pages/listCateg', (Route<dynamic> route) => false);
-                            return addCateg(); */
+                              }); 
                         } else {
                           print('Datos erroneso');
                         }
                       },
                     ),
-                    /*  new RaisedButton(
-                      child: new Text("Salir"),
-                      color: Colors.red,
-                      shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0)),
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(context, '/powerPage');
-                      },
-                    ), */
+                  
                   ],
                 ),
               ],

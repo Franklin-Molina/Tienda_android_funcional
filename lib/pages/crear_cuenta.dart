@@ -185,10 +185,7 @@ class _AddDataState extends State<AddData> {
                                   ),
                                   actions: <Widget>[
                                     FlatButton(
-                                      child: Text(
-                                        "Aceptar",
-                                        style: titulo,
-                                      ),
+                                      child: Text("Aceptar",style: titulo,),
                                       onPressed: () {
                                         addData();
                                         Navigator.of(context)

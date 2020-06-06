@@ -33,7 +33,8 @@ class _EditDataState extends State<EditData> {
   }
 
   @override
-  void initState() { //Estado de inicializacion -Listado a editar
+  void initState() {
+    //Estado de inicializacion -Listado a editar
     controllerUsername =
         new TextEditingController(text: widget.list[widget.index]['username']);
     controllerPassword =
@@ -52,21 +53,27 @@ class _EditDataState extends State<EditData> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text("EDITAR"),
-           actions: <Widget>[
-          IconButton(icon: Icon(Icons.home , size: 40.0,color: Colors.red,),
-           onPressed: (){
-         Navigator.pushReplacementNamed(context, '/pages/listarUsuarios');
-           }
-           )
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.home,
+                size: 40.0,
+                color: Colors.red,
+              ),
+              onPressed: () {
+                Navigator.pushReplacementNamed(
+                    context, '/pages/listarUsuarios');
+              })
         ],
       ),
       body: Container(
-         decoration: BoxDecoration(
+        decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
-                colors: [Colors.redAccent,Colors.greenAccent[100]])),
-        child: Form(//Formulario 
+                colors: [Colors.redAccent, Colors.greenAccent[100]])),
+        child: Form(
+          //Formulario
           child: ListView(
             padding: const EdgeInsets.all(10.0),
             children: <Widget>[
@@ -76,7 +83,8 @@ class _EditDataState extends State<EditData> {
                     leading: const Icon(Icons.person, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerUsername,
-                      validator: (value) {//SI el campo esta vacio
+                      validator: (value) {
+                        //SI el campo esta vacio
                         if (value.isEmpty) return "Ingresa un nombre de usurio";
                       },
                       decoration: new InputDecoration(
@@ -99,8 +107,8 @@ class _EditDataState extends State<EditData> {
                     ),
                   ),
                   new ListTile(
-                    leading: const Icon(Icons.phone_android,
-                        color: Colors.black),
+                    leading:
+                        const Icon(Icons.phone_android, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerTelefono,
                       validator: (value) {
@@ -112,9 +120,9 @@ class _EditDataState extends State<EditData> {
                       ),
                     ),
                   ),
-                     new ListTile(
-                    leading: const Icon(Icons.location_city,
-                        color: Colors.black),
+                  new ListTile(
+                    leading:
+                        const Icon(Icons.location_city, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerCiudad,
                       validator: (value) {
@@ -126,9 +134,8 @@ class _EditDataState extends State<EditData> {
                       ),
                     ),
                   ),
-                    new ListTile(
-                    leading: const Icon(Icons.call_split,
-                        color: Colors.black),
+                  new ListTile(
+                    leading: const Icon(Icons.call_split, color: Colors.black),
                     title: new TextFormField(
                       controller: controllerDireccion,
                       validator: (value) {
@@ -151,8 +158,9 @@ class _EditDataState extends State<EditData> {
                     color: Colors.blueAccent,
                     onPressed: () {
                       editData();
-                      Navigator.of(context).pop(new MaterialPageRoute(
-                          builder: (BuildContext context) => new ListarUser()));
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          '/pages/listarUsuarios',
+                          (Route<dynamic> route) => false);
                     },
                   )
                 ],
