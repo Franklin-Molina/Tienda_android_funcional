@@ -112,7 +112,7 @@ class _IntroScreenState extends State<IntroScreen> {
       // Skip button
       renderSkipBtn: this.renderSkipBtn(),
       colorSkipBtn: Colors.orangeAccent,
-      highlightColorSkipBtn: Color(0xff000000),
+      highlightColorSkipBtn: Colors.red,
 
       // Next button
       renderNextBtn: this.renderNextBtn(),
@@ -129,8 +129,8 @@ class _IntroScreenState extends State<IntroScreen> {
       sizeDot: 13.0,
 
       // Show or hide status bar
-      shouldHideStatusBar: true,
-      backgroundColorAllSlides: Colors.grey,
+      shouldHideStatusBar: false,
+     // backgroundColorAllSlides: Colors.grey,
     );
   }
 }
