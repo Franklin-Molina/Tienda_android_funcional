@@ -99,8 +99,14 @@ class _AddCatgState extends State<AddCatg> {
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
 
-                          
-                           showDialog(
+                          return addCateg();
+                          /*  Navigator.of(context)
+                                            .pushNamedAndRemoveUntil(
+                                                '/pages/listCateg',
+                                                (Route<dynamic> route) =>
+                                                    false);
+                                        return addCateg(); */
+                        /*   showDialog(
                               context: context,
                               barrierDismissible: false,
                               builder: (context) {
@@ -149,7 +155,7 @@ class _AddCatgState extends State<AddCatg> {
                                     ),
                                   ],
                                 );
-                              }); 
+                              }); */
                         } else {
                           print('Datos erroneso');
                         }

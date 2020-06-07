@@ -13,6 +13,7 @@ class EditData extends StatefulWidget {
 }
 
 class _EditDataState extends State<EditData> {
+  var _formKey = GlobalKey<FormState>();
   //para la base
   TextEditingController controllerUsername;
   TextEditingController controllerPassword;
@@ -74,6 +75,7 @@ class _EditDataState extends State<EditData> {
                 colors: [Colors.redAccent, Colors.greenAccent[100]])),
         child: Form(
           //Formulario
+          key: _formKey,
           child: ListView(
             padding: const EdgeInsets.all(10.0),
             children: <Widget>[
@@ -157,10 +159,56 @@ class _EditDataState extends State<EditData> {
                     child: new Text("Guardar"),
                     color: Colors.blueAccent,
                     onPressed: () {
-                      editData();
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                          '/pages/listarUsuarios',
-                          (Route<dynamic> route) => false);
+                      if (_formKey.currentState.validate()) {
+                        showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (context) {
+                              return AlertDialog(
+                                backgroundColor: Colors.cyanAccent[100],
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0)),
+                                title: Text(
+                                  "¡¡ Successfull !!",
+                                  style: TextStyle(color: Colors.green),
+                                  textAlign: TextAlign.center,
+                                ),
+                                content: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    Text(
+                                      "Usuario Editado Con exito!! ",
+                                      textAlign: TextAlign.center,
+                                    ),
+                                    Divider(),
+                                    Icon(
+                                      Icons.perm_identity,
+                                      color: Colors.green,
+                                      size: 73.0,
+                                    )
+                                  ],
+                                ),
+                                actions: <Widget>[
+                                  FlatButton(
+                                    child: Text(
+                                      "Aceptar",
+                                    ),
+                                    onPressed: () {
+                                      editData();
+                                      Navigator.of(context)
+                                          .pushNamedAndRemoveUntil(
+                                              '/pages/listarUsuarios',
+                                              (Route<dynamic> route) => false);
+                                    },
+                                  ),
+                                ],
+                              );
+                            });
+                      } else {
+                        print('fallo al editar categoria');
+                      }
                     },
                   )
                 ],
