@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:proyecto_tienda/pages/listCateg.dart';
 import 'package:http/http.dart' as http;
@@ -14,17 +16,21 @@ class _AddCatgState extends State<AddCatg> {
   final titulo = TextStyle(color: Colors.black, fontSize: 15.0);
   TextEditingController controllerCategoria = new TextEditingController();
   var _formKey = GlobalKey<FormState>();
+  
 
+    String res = '';
   void addCateg() {
-    var url = "http://192.168.0.106/tienda/addCateg.php";
+    
+    var url = "http://192.168.42.170/tienda/addCateg.php";
 
     http.post(url, body: {
       "nombre": controllerCategoria.text,
     });
+
+
+
   }
-
-
-
+ 
 
 
   @override
@@ -91,11 +97,14 @@ class _AddCatgState extends State<AddCatg> {
                     new Padding(
                       padding: const EdgeInsets.all(10.0),
                     ),
-                    new RaisedButton(
+                    new MaterialButton(
+                       height: 40.0,
+                      minWidth: 600.0,
                       child: new Text("Guardar"),
                       color: Colors.lightGreenAccent,
                       shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0)),
+                          borderRadius: new BorderRadius.circular(10.0)
+                      ),
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
 
@@ -157,7 +166,7 @@ class _AddCatgState extends State<AddCatg> {
                                 );
                               }); */
                         } else {
-                          print('Datos erroneso');
+                          print('Datos vacios');
                         }
                       },
                     ),

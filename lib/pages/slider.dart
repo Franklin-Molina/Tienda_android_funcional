@@ -130,7 +130,7 @@ class _IntroScreenState extends State<IntroScreen> {
 
       // Show or hide status bar
       shouldHideStatusBar: false,
-     // backgroundColorAllSlides: Colors.grey,
+     //backgroundColorAllSlides: Colors.red,
     );
   }
 }

@@ -15,7 +15,7 @@ class _LandingScreenState extends State<LandingScreen> {
   TextEditingController controllerimagen = new TextEditingController();
   
     void addimg() {
-    var url = "http://192.168.0.106/tienda/addimg.php";
+    var url = "http://192.168.42.170/tienda/addimg.php";
 
     http.post(url, body: {
      

@@ -1,7 +1,13 @@
 <?php
 
-	include 'conexion.php';
-	
+require_once "conexion.php";
+$conexion=conexion();
+ 
+
+  //  $nombre = $_POST['nombre'];
+    $img = $_POST['img'];
+  
+    $sql="INSERT INTO imagen (img)VALUES ('".$img."')";
   /*   $nombre = $_POST['nombre'];
     $img = $_POST['img'];
     

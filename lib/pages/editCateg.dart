@@ -18,7 +18,7 @@ class _EditCategState extends State<EditCateg> {
   TextEditingController controllerNombreCateg;
 
   void editCateg() {
-    var url = "http://192.168.0.106/tienda/editCateg.php";
+    var url = "http://192.168.42.170/tienda/editCateg.php";
     http.post(url, body: {
       "id": widget.listCatg[widget.indexCatg]['id'],
       "nombre": controllerNombreCateg.text,
@@ -86,7 +86,9 @@ class _EditCategState extends State<EditCateg> {
                   new Padding(
                     padding: const EdgeInsets.all(10.0),
                   ),
-                  new RaisedButton(
+                  new MaterialButton(
+                     height: 40.0,
+                      minWidth: 600.0,
                     child: new Text("Guardar"),
                     color: Colors.greenAccent,
                     onPressed: () {

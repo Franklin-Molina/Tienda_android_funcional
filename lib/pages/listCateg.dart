@@ -7,6 +7,7 @@ import 'package:proyecto_tienda/pages/addCateg.dart';
 import 'package:proyecto_tienda/pages/detalles_categ.dart';
 import 'package:flutter_gradients/flutter_gradients.dart';
 import 'package:proyecto_tienda/pages/editCateg.dart';
+import 'package:proyecto_tienda/uploadimg.dart';
 
 class LisCatg extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class LisCatg extends StatefulWidget {
 class _LisCatgState extends State<LisCatg> {
   Future<List> getCateg() async {
     final response = await http.get(
-      "http://192.168.0.106/tienda/getCateg.php",
+      "http://192.168.42.170/tienda/getCateg.php",
     );
     return json.decode(response.body);
   }
@@ -55,7 +56,7 @@ class _LisCatgState extends State<LisCatg> {
         onPressed: () => Navigator.of(context).push(new MaterialPageRoute(
           //Crear categorias con el boron
           // builder: (BuildContext context) => new AddCatg(),
-          builder: (BuildContext context) => new LandingScreen(),
+          builder: (BuildContext context) => new CargaImg(),
         )),
         icon: new Icon(Icons.add),
         label: const Text("Agregar categorias"),
@@ -120,7 +121,8 @@ class ItemList extends StatelessWidget {
                         //Detalles de las categorias
                         listCatg: list,
                         indexCatg: i,
-                      )),
+                      )
+                      ),
             ),
             child: new Card(
               child: new ListTile(

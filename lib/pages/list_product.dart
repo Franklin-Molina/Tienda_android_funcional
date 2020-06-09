@@ -16,11 +16,12 @@ class LisProduct extends StatefulWidget {
 class _LisProductState extends State<LisProduct> {
   Future<List> getProduct() async {
     final response = await http.get(
-      "http://192.168.0.106/tienda/getProduct.php",
+      "http://192.168.42.170/tienda/getProduct.php",
     );
     return json.decode(response.body);
   }
 
+//Refresh
   Future<Null> refreshList() async {
     await Future.delayed(Duration(seconds: 2));
 
@@ -32,7 +33,7 @@ class _LisProductState extends State<LisProduct> {
     });
     return null;
   }
-
+//
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -71,7 +72,7 @@ class _LisProductState extends State<LisProduct> {
             ),
             color: Colors.black),
       ),
-      body: RefreshIndicator(
+      body: RefreshIndicator(//refresh
         child: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -92,7 +93,7 @@ class _LisProductState extends State<LisProduct> {
             },
           ),
         ),
-        onRefresh: refreshList,
+        onRefresh: refreshList, //Refresh
       ),
     );
   }

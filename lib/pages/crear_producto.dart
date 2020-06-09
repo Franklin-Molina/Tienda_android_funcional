@@ -1,4 +1,6 @@
 import 'dart:io';
+import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -18,11 +20,42 @@ class _AddProductState extends State<AddProduct> {
   TextEditingController controllerdescripcion = new TextEditingController();
   TextEditingController controllerCategoria = new TextEditingController();
 
-  // TextEditingController controllerImagen = new TextEditingController();  //Por agg imagen
-  List<DropdownMenuItem<String>> _ciudadItems;
+  // TextEditingController controllerImagen = new TextEditingController();
+  //Por agg imagen
 
   var _formKey = GlobalKey<FormState>();
   File _imagenfile;
+
+  //////////////Categoria///////////////////////
+  @override
+  void initState() {
+    super.initState();
+    listcateg();
+  }
+
+  List datos;
+  Future<Null> listcateg() async {
+    final response = await http.get(
+      "http://192.168.42.170/tienda/pt.php",
+    );
+    setState(() {
+      datos = json.decode(response.body);
+    });
+    print(datos);
+    mostrarcategoria();
+  }
+
+  String _dropdownValue;
+
+  Map<String, String> liscatgmp = Map();
+  void mostrarcategoria() {
+    for (var i = 0; i < datos.length; i++) {
+      liscatgmp[datos[i]['id']] = datos[i]['nombre'];
+    }
+    _dropdownValue = liscatgmp[datos[0]['id']];
+  }
+
+////////////////////////////////////
 
   _galeria() async {
     var imagen = await ImagePicker.pickImage(
@@ -41,7 +74,7 @@ class _AddProductState extends State<AddProduct> {
   }
 
   void addProduct() {
-    var url = "http://192.168.0.106/tienda/addProduct.php";
+    var url = "http://192.168.42.170/tienda/addProduct.php";
 
     http.post(url, body: {
       "nombre": controllerNombre.text,
@@ -152,7 +185,7 @@ class _AddProductState extends State<AddProduct> {
                       title: new TextFormField(
                         controller: controllerCategoria,
                         validator: (value) {
-                          if (value.isEmpty) return "Ingrese una Categoria";
+                          if (value.isEmpty) return "Ingrese una categoria";
                         },
                         decoration: new InputDecoration(
                           hintText: "Categoria",
@@ -160,17 +193,66 @@ class _AddProductState extends State<AddProduct> {
                         ),
                       ),
                     ),
-                    const Divider(
-                      height: 1.0,
+
+                    //----Validaicon Categoria
+
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
                     ),
-                    new Padding(
-                      padding: const EdgeInsets.all(10.0),
+
+                    Container(
+                      padding: EdgeInsets.fromLTRB(18, 0, 10, 10),
+                      child: DropdownButtonFormField(
+                        validator: (value) =>
+                            value == '0' ? 'Selecione categoria' : null,
+                        decoration: InputDecoration(
+                          labelText: 'Categoria',
+                          icon: Icon(
+                            Icons.category,
+                            color: Colors.black,
+                          ),
+                        ),
+                        value: _dropdownValue,
+                        items: null,
+                        onChanged: (value) {
+                          setState(() {
+                            _dropdownValue = value;
+                          });
+                        },
+                        onSaved: (value) => _dropdownValue = value,
+                      ),
                     ),
-                    new RaisedButton(
+
+                    Padding(
+                      padding: EdgeInsets.only(top: 20.0),
+                    ),
+                    DropdownButton<String>(
+                      value: _dropdownValue,
+                      onChanged: (String newValue) {
+                        setState(() {
+                          _dropdownValue = newValue;
+                        });
+                      },
+                      items: liscatgmp.values
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ),
+
+                    Padding(
+                      padding: EdgeInsets.only(top: 20),
+                    ),
+
+                    new MaterialButton(
+                      height: 40.0,
+                      minWidth: 600.0,
                       child: new Text("Guardar"),
                       color: Colors.lightGreenAccent,
                       shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0)),
+                          borderRadius: new BorderRadius.circular(10.0)),
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
                           showDialog(
@@ -212,7 +294,6 @@ class _AddProductState extends State<AddProduct> {
                                         style: titulo,
                                       ),
                                       onPressed: () {
-                                   
                                         addProduct();
                                         Navigator.of(context)
                                             .pushNamedAndRemoveUntil(

@@ -9,11 +9,17 @@
     $categoria = $_POST['nombre'];
     
     if(buscaRepetido($categoria,$conexion)==1){
-       echo "Categoria existente!!!";
-       echo json_encode("errrorrr");
+        echo 'categoria existente ';
+       
     }else{
         $sql="INSERT INTO categoria (nombre)VALUES ('".$categoria."')";
         echo $result=mysqli_query($conexion,$sql);
+        
+        if($result= true){
+            echo'agregada con exito';
+        }else{
+            echo 'fallo';
+        }
     }
    
     

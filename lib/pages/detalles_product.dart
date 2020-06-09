@@ -12,7 +12,7 @@ class DetalProduct extends StatefulWidget {
 
 class _DetalProductState extends State<DetalProduct> {
   void deletProduct() {
-    var url = "http://192.168.0.106/tienda/deletProduct.php";
+    var url = "http://192.168.42.170/tienda/deletProduct.php";
     http.post(url, body: {'id': widget.listPrd[widget.indexProd]['id']});
   }
 
@@ -56,7 +56,7 @@ class _DetalProductState extends State<DetalProduct> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("${widget.listPrd[widget.indexProd]['nombre']}"),
+        title: new Text("${widget.listPrd[widget.indexProd]['nombre']}",textAlign: TextAlign.center,),
         actions: <Widget>[
           IconButton(
               icon: Icon(
@@ -79,6 +79,10 @@ class _DetalProductState extends State<DetalProduct> {
                 children: <Widget>[
                   new Padding(
                     padding: const EdgeInsets.only(top: 10.0),
+                  ),
+                  new Text('Detalles Producto'),
+                  Divider(
+                    color: Colors.red,
                   ),
                   new Text(
                     widget.listPrd[widget.indexProd]['nombre'],

@@ -31,7 +31,7 @@ class _ListarUserState extends State<ListarUser> {
   //Traer arreglo json.de la db y y lo inserta en reponse
   Future<List> getData() async {
     final response = await http.get(
-      "http://192.168.0.106/tienda/getdata.php",
+      "http://192.168.42.170/tienda/getdata.php",
     );
     return json.decode(response.body);
   }

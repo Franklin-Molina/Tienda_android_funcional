@@ -66,7 +66,7 @@ class Gneralprudcut extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
               //  colors: [Colors.teal[300],Colors.lightBlue[200],Colors.greenAccent[200]])),
-                 colors: [Colors.black,Colors.green,Colors.yellow,Colors.red])),
+                 colors: [Colors.redAccent,Colors.greenAccent,Colors.tealAccent])),
           child: ListView(children: <Widget>[
             new Padding(
               padding: const EdgeInsets.all(70.0),
@@ -74,7 +74,7 @@ class Gneralprudcut extends StatelessWidget {
             new RaisedButton(
             
               child: new Text(' Productos Registrados',style: titulo,),
-              color: Colors.black,
+              color: Colors.blueGrey,
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(0)),
               onPressed: () {
