@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_tienda/crear_producto.dart';
 import 'package:proyecto_tienda/pages/addCateg.dart';
-import 'package:proyecto_tienda/pages/crear_producto.dart';
 import 'package:proyecto_tienda/pages/listCateg.dart';
 import 'package:proyecto_tienda/pages/list_product.dart';
 
@@ -60,63 +60,91 @@ class Gneralprudcut extends StatelessWidget {
                )
           ],
         ),
+       backgroundColor: Colors.cyanAccent[200],
+       
+        
         body: Container(
-           decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              //  colors: [Colors.teal[300],Colors.lightBlue[200],Colors.greenAccent[200]])),
-                 colors: [Colors.redAccent,Colors.greenAccent,Colors.tealAccent])),
-          child: ListView(children: <Widget>[
-            new Padding(
-              padding: const EdgeInsets.all(70.0),
-            ),
-            new RaisedButton(
-            
-              child: new Text(' Productos Registrados',style: titulo,),
-              color: Colors.blueGrey,
-              shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(0)),
-              onPressed: () {
-                  Navigator.of(context).pushNamedAndRemoveUntil('/pages/list_product', (Route<dynamic> route) => false);
+          child: new Padding(               
+           padding: const EdgeInsets.all(60.0),         
+            child: Column(
+              
+              children: <Widget>[
+                Container(
+                  
+                   decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                  gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    //  colors: [Colors.teal[300],Colors.lightBlue[200],Colors.greenAccent[200]])),
+                       colors: [Colors.white,Colors.greenAccent,Colors.red])),
+                
+                  
+                    child: Column(
+                    children: <Widget>[
+                    new Padding(
+                      padding: const EdgeInsets.all(10.0),
+                    ),
+                    new MaterialButton(
+                      
+                      height: 40,
+                      minWidth: 200,
+                      child: new Text(' Productos Registrados',style: titulo,),
+                      color: Colors.blueGrey,
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(10)),
+                      onPressed: () {
+                          Navigator.of(context).pushNamedAndRemoveUntil('/pages/list_product', (Route<dynamic> route) => false);
 
-              },
+                      },
+                    ),
+                     Divider(color: Colors.red,),
+                    
+                    new MaterialButton(
+                      height: 40,
+                      minWidth: 200.0,
+                      child: new Text(' Crear Producto '),
+                      color: Colors.orange,
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(10)),
+                       onPressed: () {
+                        Navigator.of(context).push(new MaterialPageRoute(
+                            builder: (BuildContext context) => new AdProductt()));
+                      }, 
+                    ),
+                    Divider(color: Colors.redAccent,),
+                    new MaterialButton(
+                      height: 40,
+                      minWidth: 200.0,
+
+                      child: new Text('Categorias Registradas'),
+                      color: Colors.tealAccent,
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(10)),
+                      onPressed: () {
+                        Navigator.of(context).push(new MaterialPageRoute(
+                            builder: (BuildContext context) => new LisCatg()));
+                      },
+                    ), 
+                   
+                    Divider(color: Colors.black,),
+                    new MaterialButton(
+                      height: 40.0,
+                      minWidth: 200.0,
+                      child: new Text(' Agregar  Categoria '),
+                      color: Colors.lightGreenAccent,
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(10)),
+                      onPressed: () {
+                        Navigator.of(context).push(new MaterialPageRoute(
+                            builder: (BuildContext context) => new AddCatg()));
+                      },
+                    ),
+                  ]),
+                ),
+              ],
             ),
-             Divider(),
-            new RaisedButton(
-              child: new Text(' Crear Producto '),
-              color: Colors.orange,
-              shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(0)),
-              onPressed: () {
-                Navigator.of(context).push(new MaterialPageRoute(
-                    builder: (BuildContext context) => new AddProduct()));
-              },
-            ),
-            Divider(),
-            new RaisedButton(
-              child: new Text('Categorias Registradas'),
-              color: Colors.tealAccent,
-              shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(0)),
-              onPressed: () {
-                Navigator.of(context).push(new MaterialPageRoute(
-                    builder: (BuildContext context) => new LisCatg()));
-              },
-            ), 
-           
-            Divider(),
-            new RaisedButton(
-              child: new Text(' Agregar  Categoria '),
-              color: Colors.lightGreenAccent,
-              shape: new RoundedRectangleBorder(
-                  borderRadius: new BorderRadius.circular(0)),
-              onPressed: () {
-                Navigator.of(context).push(new MaterialPageRoute(
-                    builder: (BuildContext context) => new AddCatg()));
-              },
-            ),
-          ]),
+          ),
         ),
       ),
     );

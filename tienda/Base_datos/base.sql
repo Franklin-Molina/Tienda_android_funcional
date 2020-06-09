@@ -21,33 +21,38 @@ CREATE TABLE IF NOT EXISTS `categoria` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla android.categoria: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla android.categoria: ~7 rows (aproximadamente)
 /*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
 INSERT INTO `categoria` (`id`, `nombre`) VALUES
-	(1, 'Electronico'),
-	(4, 'inmuebles');
+	(1, 'Movildd'),
+	(2, 'tecnologia'),
+	(3, 'juegos'),
+	(22, 'musica'),
+	(24, 'wewe'),
+	(25, '63'),
+	(26, 'x');
 /*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
 
 -- Volcando estructura para tabla android.productos
 CREATE TABLE IF NOT EXISTS `productos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` text NOT NULL,
-  `precio` text NOT NULL,
-  `descripcion` text NOT NULL,
-  `imagen` longblob,
+  `nombre` text,
+  `precio` text,
+  `descripcion` text,
+  `img` text,
   `id_catg_producto` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FK_productos_categoria` (`id_catg_producto`),
-  CONSTRAINT `FK_productos_categoria` FOREIGN KEY (`id_catg_producto`) REFERENCES `categoria` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  KEY `FK_imagen_categoria` (`id_catg_producto`),
+  CONSTRAINT `FK_imagen_categoria` FOREIGN KEY (`id_catg_producto`) REFERENCES `categoria` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla android.productos: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla android.productos: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` (`id`, `nombre`, `precio`, `descripcion`, `imagen`, `id_catg_producto`) VALUES
-	(1, 'Lux led', '50000', 'Luz de navidad', NULL, 1),
-	(2, 'zapatos nike', '250000', 'Deportivos', NULL, 1);
+INSERT INTO `productos` (`id`, `nombre`, `precio`, `descripcion`, `img`, `id_catg_producto`) VALUES
+	(2, 'x', 'x', 'd', 'scaled_image_picker1103176990.jpg', 3),
+	(4, 'dd96', 'dd', 'dd', 'scaled_74456dab-de1f-4f5c-adcd-013665c083a7801327877.jpg', 1);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 
 -- Volcando estructura para tabla android.usuarios
@@ -60,17 +65,14 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `direccion` text NOT NULL,
   `estado` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
 
--- Volcando datos para la tabla android.usuarios: ~9 rows (aproximadamente)
+-- Volcando datos para la tabla android.usuarios: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 INSERT INTO `usuarios` (`id`, `username`, `password`, `telefono`, `ciudad`, `direccion`, `estado`) VALUES
 	(1, 'Franklin', '1234', '3165076269', 'Mocoa', 'Centro', 'admin'),
-	(8, 'juan', '0202', '321596', 'direccionmocoa', 'ciudadmocoa', 'ventas'),
-	(11, 'userx', 'sdf', '123456789', 'dircol', 'citymocoa', 'ventas'),
-	(12, 'user24', 'f', 'ttel', 'dr', 'cyt', 'ventas'),
-	(14, 'Kira', '0220', '3165076285', 'MocoaCity', 'Centro', 'ventas'),
-	(23, 'x', 'x', '316507', 'mocoa', 'barriox', 'ventas');
+	(23, 'x', 'x', '3108887767', 'SIngapur', 'Bajo el cielo', 'ventas'),
+	(29, 'Kira', '9632', '310555', 'Sinfin', 'Smertf', 'ventas');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

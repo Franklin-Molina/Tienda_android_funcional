@@ -9,7 +9,7 @@
     $categoria = $_POST['nombre'];
     
     if(buscaRepetido($categoria,$conexion)==1){
-        echo 'categoria existente ';
+      print(json_encode("La categoria ya existe"));
        
     }else{
         $sql="INSERT INTO categoria (nombre)VALUES ('".$categoria."')";

@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:proyecto_tienda/pages/crear_producto.dart';
+import 'package:proyecto_tienda/crear_producto.dart';
+//import 'package:proyecto_tienda/pages/crear_producto.dart';
 import 'package:proyecto_tienda/pages/detail.dart';
 import 'package:proyecto_tienda/pages/detalles_product.dart';
 import 'dart:async';
 import 'dart:convert';
 
 import 'package:proyecto_tienda/pages/editProduct.dart';
+
 
 class LisProduct extends StatefulWidget {
   @override
@@ -16,7 +18,7 @@ class LisProduct extends StatefulWidget {
 class _LisProductState extends State<LisProduct> {
   Future<List> getProduct() async {
     final response = await http.get(
-      "http://192.168.42.170/tienda/getProduct.php",
+      "http://192.168.0.106/tienda/getProduct.php",
     );
     return json.decode(response.body);
   }
@@ -27,7 +29,7 @@ class _LisProductState extends State<LisProduct> {
 
     setState(() {
       LisProduct();
-      AddProduct();
+      AdProductt();
       DetalProduct();
       EditDetalles();
     });
@@ -59,7 +61,7 @@ class _LisProductState extends State<LisProduct> {
         ),
         backgroundColor: Colors.greenAccent,
         onPressed: () => Navigator.of(context).push(new MaterialPageRoute(
-          builder: (BuildContext context) => new AddProduct(),
+          builder: (BuildContext context) => new AdProductt(),
         )),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

@@ -23,7 +23,7 @@ class _EditDetallesState extends State<EditDetalles> {
   // TextEditingController controllerImagen;
 
   void editProduc() {
-    var url = "http://192.168.42.170/tienda/editProduc.php";
+    var url = "http://192.168.0.106/tienda/editProduc.php";
     http.post(url, body: {
       "id": widget.list[widget.index]['id'],
       "nombre": controllerNombre.text,

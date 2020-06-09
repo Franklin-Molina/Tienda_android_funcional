@@ -19,7 +19,7 @@ class DetallesCatg extends StatefulWidget {
 class _DetallesCatgState extends State<DetallesCatg> {
 
   void deleteCatg(){
-  var url="http://192.168.42.170/tienda/deleteCatg.php";
+  var url="http://192.168.0.106/tienda/deleteCatg.php";
   http.post(url, body: {
     'id': widget.listCatg[widget.indexCatg]['id']
   });

@@ -3,8 +3,11 @@
   $conexion=conexion();
   
 
-$queryResult=$conexion->query("SELECT  p.id,p.nombre,p.precio,p.descripcion,p.imagen,categoria.nombre  AS categ FROM productos AS p
-INNER JOIN categoria ON categoria.id = p.id_catg_producto");
+  $queryResult=$conexion->query("SELECT * from productos");
+/*
+$queryResult=$conexion->query("SELECT p.id,p.nombre,p.precio,p.descripcion,p.img,categoria.nombre AS nom_catg from productos AS p
+INNER JOIN categoria ON p.id_catg_producto = p.id_catg_producto");*/
+
 
 $result=array();
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:proyecto_tienda/crear_producto.dart';
 import 'package:proyecto_tienda/pages/addCateg.dart';
 import 'package:proyecto_tienda/pages/crear_cuenta.dart';
-import 'package:proyecto_tienda/pages/crear_producto.dart';
 import 'package:proyecto_tienda/pages/listCateg.dart';
 import 'package:proyecto_tienda/pages/list_product.dart';
 import 'package:proyecto_tienda/pages/listarUsuarios.dart';
@@ -89,7 +89,7 @@ class SuperV extends StatelessWidget {
                   borderRadius: new BorderRadius.circular(0)),
               onPressed: () {
                 Navigator.of(context).push(new MaterialPageRoute(
-                    builder: (BuildContext context) => new AddProduct()));
+                    builder: (BuildContext context) => new AdProductt()));
               },
             ),
             Divider(),

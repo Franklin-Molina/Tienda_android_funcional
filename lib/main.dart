@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:proyecto_tienda/crear_producto.dart';
 import 'package:proyecto_tienda/pages/crear_cuenta.dart';
-import 'package:proyecto_tienda/pages/crear_producto.dart';
 import 'package:proyecto_tienda/pages/editCateg.dart';
 import 'package:proyecto_tienda/pages/listCateg.dart';
 import 'package:proyecto_tienda/pages/list_product.dart';
@@ -38,7 +38,7 @@ class LoginApp extends StatelessWidget {
         '/pages/login': (BuildContext context) => new LoginPage(),
         '/pages/listarUsuarios': (BuildContext context) => new ListarUser(),
         '/pages/crear_cuenta': (BuildContext context) => new AddData(),
-        '/pages/crear_producto': (BuildContext context) => new AddProduct(),
+        '/pages/crear_producto': (BuildContext context) => new AdProductt(),
        '/pages/view_product': (BuildContext context) => new Gneralprudcut(),
        '/pages/listCateg':(BuildContext context) => new LisCatg(),
         '/editCateg':(BuildContext context) => new EditCateg(),

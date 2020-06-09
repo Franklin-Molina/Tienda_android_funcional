@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:proyecto_tienda/pages/crear_cuenta.dart';
-import 'package:proyecto_tienda/pages/crear_producto.dart';
 import 'package:proyecto_tienda/pages/detail.dart';
 import 'dart:async';
 import 'dart:convert';
@@ -31,7 +30,7 @@ class _ListarUserState extends State<ListarUser> {
   //Traer arreglo json.de la db y y lo inserta en reponse
   Future<List> getData() async {
     final response = await http.get(
-      "http://192.168.42.170/tienda/getdata.php",
+      "http://192.168.0.106/tienda/getdata.php",
     );
     return json.decode(response.body);
   }

@@ -20,7 +20,7 @@ class _AddDataState extends State<AddData> {
   var _formKey = GlobalKey<FormState>();
 
   void addData() {
-    var url = "http://192.168.42.170/tienda/adddata.php";
+    var url = "http://192.168.0.106/tienda/adddata.php";
 
     http.post(url, body: {
       "username": controllerUsername.text,
@@ -139,7 +139,10 @@ class _AddDataState extends State<AddData> {
                     new Padding(
                       padding: const EdgeInsets.all(10.0),
                     ),
-                    new RaisedButton(
+                    new MaterialButton(
+                      height: 40,
+                      minWidth: 400,
+                      
                       child: new Text(
                         "Guardar",
                         style: TextStyle(

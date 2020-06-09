@@ -20,7 +20,7 @@ class _LoginPageState extends State<LoginPage> {
   String mensaje = ''; //Alert
   Future<List> login() async {
     final response =
-        await http.post("http://192.168.42.170/tienda/login.php", body: {
+        await http.post("http://192.168.0.106/tienda/login.php", body: {
       "username": controllerUser.text,
       "password": controllerPass.text,
     });
@@ -132,11 +132,11 @@ class _LoginPageState extends State<LoginPage> {
       } else if (datauser[0]['estado'] == 'ventas') {
         print('wellcome Usuario');
         AlertDialog alerta = new AlertDialog(
-          title: Text(
-            '!! Welcome ¡¡',
-            style: TextStyle(color: Colors.green,),textAlign:TextAlign.center
-          ),
-        
+          title: Text('!! Welcome ¡¡',
+              style: TextStyle(
+                color: Colors.green,
+              ),
+              textAlign: TextAlign.center),
           actions: <Widget>[
             Icon(
               Icons.fingerprint,
@@ -191,8 +191,6 @@ class _LoginPageState extends State<LoginPage> {
                     padding: EdgeInsets.only(top: 77.0),
                     child: new CircleAvatar(
                       child: new Image(
-                          width: 100.0,
-                          height: 100.0,
                           image: new AssetImage('assets/images/avatarx.png')),
                     ),
                     width: 170.0,
@@ -208,7 +206,7 @@ class _LoginPageState extends State<LoginPage> {
                         padding: EdgeInsets.only(
                             top: 4, left: 16, right: 16, bottom: 4),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Colors.white,
                             boxShadow: [
                               BoxShadow(color: Colors.black, blurRadius: 5),
@@ -231,7 +229,7 @@ class _LoginPageState extends State<LoginPage> {
                         padding: EdgeInsets.only(
                             top: 4, left: 16, right: 16, bottom: 4),
                         decoration: BoxDecoration(
-                            borderRadius: BorderRadius.all(Radius.circular(50)),
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
                             color: Colors.white,
                             boxShadow: [
                               BoxShadow(color: Colors.black, blurRadius: 5),
@@ -241,35 +239,13 @@ class _LoginPageState extends State<LoginPage> {
                           obscureText: true,
                           decoration: InputDecoration(
                               icon: Icon(
-                                Icons.vpn_key,
+                                Icons.https,
                                 color: Colors.black,
                               ),
                               hintText: 'Password'),
                         ),
                       ),
-                      Spacer(),
-                      new RaisedButton(
-                        child: new Text('Ingresar'),
-                        color: Colors.red[100],
-                        shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(10.0)),
-                        onPressed: () {
-                          login();
-                          //   Navigator.pop(context);
-                        },
-                      ),
-                      Spacer(),
-                      new RaisedButton(
-                        child: new Text('Crear cuenta'),
-                        color: Colors.red,
-                        shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(10.0)),
-                        onPressed: () {
-                          Navigator.of(context).push(new MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  new AddData()));
-                        },
-                      ),
+
                       Text(
                         mensaje,
                         style: TextStyle(fontSize: 1, color: Colors.red),
@@ -277,6 +253,38 @@ class _LoginPageState extends State<LoginPage> {
                     ],
                   ),
                 ),
+                Container(
+                  // padding: EdgeInsets.fromLTRB(75, 0, 10, 10),
+                  child: Column(
+                    children: <Widget>[
+                      MaterialButton(
+                        height: 30,
+                        minWidth: 200,
+                        child: new Text('Ingresar'),
+                        color: Colors.tealAccent,
+                        onPressed: () {
+                          login();
+                          //   Navigator.pop(context);
+                        },
+                      ),
+                      VerticalDivider(),
+                      new MaterialButton(
+                        height: 30,
+                        minWidth: 200,
+                        child: new Text(
+                          'Crear cuenta',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        color: Colors.pinkAccent,
+                        onPressed: () {
+                          Navigator.of(context).push(new MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  new AddData()));
+                        },
+                      ),
+                    ],
+                  ),
+                )
               ],
             ),
           ),
@@ -285,5 +293,3 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 }
-
-Widget _alert() {}

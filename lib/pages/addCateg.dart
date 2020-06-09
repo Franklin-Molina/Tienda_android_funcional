@@ -21,7 +21,7 @@ class _AddCatgState extends State<AddCatg> {
     String res = '';
   void addCateg() {
     
-    var url = "http://192.168.42.170/tienda/addCateg.php";
+    var url = "http://192.168.0.106/tienda/addCateg.php";
 
     http.post(url, body: {
       "nombre": controllerCategoria.text,
@@ -30,6 +30,11 @@ class _AddCatgState extends State<AddCatg> {
 
 
   }
+
+
+
+
+  
  
 
 

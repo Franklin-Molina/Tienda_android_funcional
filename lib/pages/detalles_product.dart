@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:proyecto_tienda/pages/editProduct.dart';
 import 'package:http/http.dart' as http;
@@ -11,8 +13,15 @@ class DetalProduct extends StatefulWidget {
 }
 
 class _DetalProductState extends State<DetalProduct> {
+
+  //File _image;
+
+
+
+
+
   void deletProduct() {
-    var url = "http://192.168.42.170/tienda/deletProduct.php";
+    var url = "http://192.168.0.106/tienda/deletProduct.php";
     http.post(url, body: {'id': widget.listPrd[widget.indexProd]['id']});
   }
 
@@ -95,7 +104,7 @@ class _DetalProductState extends State<DetalProduct> {
                   ),
                   Divider(),
                   new Text(
-                    "Categoria : ${widget.listPrd[widget.indexProd]['categ']}",
+                    "Categoria : ${widget.listPrd[widget.indexProd]['nom_catg']}",
                     style: new TextStyle(fontSize: 18.0, color: Colors.grey),
                   ),
                   Divider(),
@@ -104,9 +113,17 @@ class _DetalProductState extends State<DetalProduct> {
                     style: new TextStyle(fontSize: 18.0, color: Colors.grey),
                   ),
                   Divider(),
+                    new Text(
+                    "Foto : ${widget.listPrd[widget.indexProd]['imagen']}",
+                    style: new TextStyle(fontSize: 18.0, color: Colors.grey),
+                  ),
+                  Divider(),
                   new Padding(
                     padding: const EdgeInsets.only(top: 30.0),
                   ),
+
+
+                  
                   new Row(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
@@ -123,6 +140,13 @@ class _DetalProductState extends State<DetalProduct> {
                           ),
                         )),
                       ),
+                    /*  Container(
+                         child: _image == null ? new Text('NO hay image')
+                         : new Image.file(_image),
+                      
+                      
+                      
+                      ),*/
                       VerticalDivider(),
                       new RaisedButton(
                         child: new Text("ELIMINAR"),
@@ -153,5 +177,30 @@ class _DetalProductState extends State<DetalProduct> {
         ),
       ),
     );
+    
   }
+
+
+
+  
+    /*Widget _mostrarFoto() {
+    if (imageUrl != null) {
+      return FadeInImage(
+        image: NetworkImage(imageUrl),
+        placeholder: AssetImage('assets/loading.gif'),
+        fit: BoxFit.cover,
+      );
+    } else {
+      //usamos un operador ternario para cambiar de widget en caso de no seleccionar imagen
+      return Image(
+        image: (_image?.path == null)
+            ? AssetImage('assets/no-image.png')
+            : FileImage(
+                _image), //AssetImage(_image?.path ?? 'assets/no-image.png'),
+        height: 300.0,
+        fit: BoxFit.cover,
+      );
+    }
+  }*/
+
 }

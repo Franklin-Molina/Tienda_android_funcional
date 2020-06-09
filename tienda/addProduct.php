@@ -7,12 +7,15 @@
     $precio = $_POST['precio'];
     $descripcion = $_POST['descripcion'];
     $categoria = $_POST['id_catg_producto'];
-   // $imagen=addslashes(file_get_contents($_FILES['imagen']['tmp_name']));
-//Por agregar imagen
+    //AddImg
+    $image= $_FILES['image']['name'];
+    $imagePath = "imgsave/".$image; //Ubicacion
+    move_uploaded_file($_FILES['image']['tmp_name'],$imagePath);
+
 
 	
 	
-	$conexion->query("INSERT INTO productos (nombre,precio,descripcion,id_catg_producto) 
-                        VALUES ('".$nombre."','".$precio."','".$descripcion."','".$categoria."')")
+	$conexion->query(("INSERT INTO productos (nombre,precio,descripcion,id_catg_producto,imagen) 
+                        VALUES ('".$nombre."','".$precio."','".$descripcion."','".$categoria."','".$image."')"));
 
 ?>
