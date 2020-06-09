@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:proyecto_tienda/crear_producto.dart';
 import 'package:proyecto_tienda/pages/crear_cuenta.dart';
+import 'package:proyecto_tienda/pages/crear_producto.dart';
 import 'package:proyecto_tienda/pages/editCateg.dart';
 import 'package:proyecto_tienda/pages/listCateg.dart';
 import 'package:proyecto_tienda/pages/list_product.dart';
