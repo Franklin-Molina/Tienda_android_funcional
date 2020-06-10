@@ -42,6 +42,20 @@ class _AddCatgState extends State<AddCatg> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
+                         leading: Builder(
+    builder: (BuildContext context) {
+      return IconButton(
+        icon: const Icon(Icons.keyboard_backspace,color: Colors.red,),
+
+          onPressed: () {
+                Navigator.pushReplacementNamed(context, '/pages/view_product');
+                // Navigator.of(context).pushNamedAndRemoveUntil('/pages/view_product', (Route<dynamic> route) => false);
+              },
+        tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+      );
+    },
+  ),
+        
         title: new Text("Agregar Categoria"),
         actions: <Widget>[
           IconButton(

@@ -94,7 +94,7 @@ class Gneralprudcut extends StatelessWidget {
                       shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10)),
                       onPressed: () {
-                          Navigator.of(context).pushNamedAndRemoveUntil('/pages/list_product', (Route<dynamic> route) => false);
+                          Navigator.of(context).pushNamedAndRemoveUntil( '/allproduct/ListProducto', (Route<dynamic> route) => false);
 
                       },
                     ),
@@ -107,10 +107,10 @@ class Gneralprudcut extends StatelessWidget {
                       color: Colors.orange,
                       shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10)),
-                       onPressed: () {
-                        Navigator.of(context).push(new MaterialPageRoute(
-                            builder: (BuildContext context) => new AdProductt()));
-                      }, 
+                         onPressed: () {
+                          Navigator.of(context).pushNamedAndRemoveUntil( '/pages/crear_producto', (Route<dynamic> route) => false);
+
+                      },
                     ),
                     Divider(color: Colors.redAccent,),
                     new MaterialButton(
@@ -121,9 +121,9 @@ class Gneralprudcut extends StatelessWidget {
                       color: Colors.tealAccent,
                       shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10)),
-                      onPressed: () {
-                        Navigator.of(context).push(new MaterialPageRoute(
-                            builder: (BuildContext context) => new LisCatg()));
+                       onPressed: () {
+                          Navigator.of(context).pushNamedAndRemoveUntil( '/pages/listCateg', (Route<dynamic> route) => false);
+
                       },
                     ), 
                    
@@ -135,9 +135,9 @@ class Gneralprudcut extends StatelessWidget {
                       color: Colors.lightGreenAccent,
                       shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(10)),
-                      onPressed: () {
-                        Navigator.of(context).push(new MaterialPageRoute(
-                            builder: (BuildContext context) => new AddCatg()));
+                          onPressed: () {
+                          Navigator.of(context).pushNamedAndRemoveUntil( '/pages/addCateg', (Route<dynamic> route) => false);
+
                       },
                     ),
                   ]),

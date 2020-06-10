@@ -26,7 +26,7 @@ class _AdProducttState extends State<AdProductt> {
 
   Future getImageGallery() async {
     var imgeFile = await ImagePicker.pickImage(
-        source: ImageSource.gallery, maxHeight: 400.0, maxWidth: 400.0);
+        source: ImageSource.gallery, maxHeight: 200.0, maxWidth: 200.0);
 
     setState(() {
       _image = imgeFile;
@@ -35,7 +35,7 @@ class _AdProducttState extends State<AdProductt> {
 
   Future getImageCamera() async {
     var imgeFile = await ImagePicker.pickImage(
-        source: ImageSource.camera, maxHeight: 300.0, maxWidth: 300.0);
+        source: ImageSource.camera, maxHeight: 200.0, maxWidth: 200.0);
     setState(() {
       _image = imgeFile;
     });
@@ -70,6 +70,19 @@ class _AdProducttState extends State<AdProductt> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: new AppBar(
+                           leading: Builder(
+    builder: (BuildContext context) {
+      return IconButton(
+        icon: const Icon(Icons.keyboard_backspace,color: Colors.red,),
+
+          onPressed: () {
+                Navigator.pushReplacementNamed(context, '/pages/view_product');
+                // Navigator.of(context).pushNamedAndRemoveUntil('/pages/view_product', (Route<dynamic> route) => false);
+              },
+        tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+      );
+    },
+  ),
           title: new Text("Agregar Producto"),
           actions: <Widget>[
             IconButton(
@@ -254,7 +267,7 @@ class _AdProducttState extends State<AdProductt> {
                                               upload(_image);
                                               Navigator.of(context)
                                                   .pushNamedAndRemoveUntil(
-                                                      '/pages/list_product',
+                                                      '/allproduct/ListProducto',
                                                       (Route<dynamic> route) =>
                                                           false);
                                             },

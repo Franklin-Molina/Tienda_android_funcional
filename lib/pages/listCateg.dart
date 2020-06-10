@@ -38,6 +38,19 @@ class _LisCatgState extends State<LisCatg> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
+                 leading: Builder(
+    builder: (BuildContext context) {
+      return IconButton(
+        icon: const Icon(Icons.keyboard_backspace,color: Colors.red,),
+
+          onPressed: () {
+                Navigator.pushReplacementNamed(context, '/pages/view_product');
+                // Navigator.of(context).pushNamedAndRemoveUntil('/pages/view_product', (Route<dynamic> route) => false);
+              },
+        tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+      );
+    },
+  ),
         title: new Text("Listado de Categorias"),
         actions: <Widget>[
           IconButton(
@@ -53,11 +66,10 @@ class _LisCatgState extends State<LisCatg> {
         ],
       ),
       floatingActionButton: new FloatingActionButton.extended(
-        onPressed: () => Navigator.of(context).push(new MaterialPageRoute(
-          //Crear categorias con el boron
-          // builder: (BuildContext context) => new AddCatg(),
-          builder: (BuildContext context) => new AddCatg(),
-        )),
+         onPressed: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/pages/addCateg', (Route<dynamic> route) => false);
+              },
         icon: new Icon(Icons.add),
         label: const Text("Agregar categorias"),
         backgroundColor: Colors.green,

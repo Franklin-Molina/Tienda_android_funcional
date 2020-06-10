@@ -40,11 +40,25 @@ class _LisProductState extends State<LisProduct> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
+           leading: Builder(
+    builder: (BuildContext context) {
+      return IconButton(
+        icon: const Icon(Icons.keyboard_backspace),
+
+          onPressed: () {
+                Navigator.pushReplacementNamed(context, '/pages/view_product');
+                // Navigator.of(context).pushNamedAndRemoveUntil('/pages/view_product', (Route<dynamic> route) => false);
+              },
+        tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+      );
+    },
+  ),
         title: new Text("Listado de productos", textAlign: TextAlign.center),
         actions: <Widget>[
           IconButton(
               icon: Icon(
-                Icons.home,
+              
+                Icons.keyboard_backspace,
                 size: 40.0,
                 color: Colors.yellowAccent,
               ),
