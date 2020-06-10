@@ -80,12 +80,13 @@ void deletProduct() {
       backgroundColor: Colors.black,
       ),
       body: new Container(
+         decoration: BoxDecoration(border: Border.all(color: Colors.red)),
         child: new Center(
           child: Column(
             children: <Widget>[
               Padding(
                 child: new Text(
-                  'DETALES- PRODUCTO',
+                  '  ${widget.value.nombre}',
                   style: new TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 20.0),
                   textAlign: TextAlign.center,

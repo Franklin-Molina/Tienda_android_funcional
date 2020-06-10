@@ -16,7 +16,7 @@ import 'package:proyecto_tienda/pages/login.dart';
 import 'package:proyecto_tienda/pages/powerPage.dart';
 //import 'package:proyecto_tienda/pages/crear_producto.dart';
 import 'package:http/http.dart' as http;
-import 'package:proyecto_tienda/pages/view_product.dart';
+
 
 void main() => runApp(LoginApp());
 //MyApp- img -base
@@ -37,13 +37,13 @@ class LoginApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         
          '/pages/slider': (BuildContext context) => new IntroScreen(),
-        '/powerPage': (BuildContext context) => new SuperV(),
+        '/powerPage': (BuildContext context) => new Admin(),
         '/pages/list_product': (BuildContext context) => new LisProduct(),
         '/pages/login': (BuildContext context) => new LoginPage(),
         '/pages/listarUsuarios': (BuildContext context) => new ListarUser(),
         '/pages/crear_cuenta': (BuildContext context) => new AddData(),
         '/pages/crear_producto': (BuildContext context) => new AdProductt(),
-       '/pages/view_product': (BuildContext context) => new Gneralprudcut(),
+     //  '/pages/view_product': (BuildContext context) => new Gneralprudcut(),
        '/pages/listCateg':(BuildContext context) => new LisCatg(),
         '/editCateg':(BuildContext context) => new EditCateg(),
         '/allproduct/ListProducto':(BuildContext context) => new Listado(),

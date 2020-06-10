@@ -149,15 +149,16 @@ class _LoginPageState extends State<LoginPage> {
                 style: titulo,
               ),
               onPressed: () {
-                Navigator.of(context).pushNamedAndRemoveUntil(
-                    '/pages/view_product', (Route<dynamic> route) => false);
-              },
+                          Navigator.of(context).pushNamedAndRemoveUntil( '/allproduct/ListProducto', (Route<dynamic> route) => false);
+
+                      },
             ),
           ],
         );
         showDialog(
           context: context,
           child: alerta,
+          barrierDismissible: false,
         );
         //  barrierDismissible: false,
         //  Navigator.pushReplacementNamed(context, '/pages/view_product');
@@ -182,14 +183,14 @@ class _LoginPageState extends State<LoginPage> {
           child: Container(
             decoration: new BoxDecoration(
               image: new DecorationImage(
-                  image: new AssetImage("assets/images/fondo1.jpg"),
+                   image: new AssetImage("assets/images/fondo_log.jpeg"),
                   fit: BoxFit.cover),
             ),
             child: Column(
               children: <Widget>[
                 new Container(
                     padding: EdgeInsets.only(top: 77.0),
-                    child: new CircleAvatar(
+                    child: new Container(
                       child: new Image(
                           image: new AssetImage('assets/images/avatarx.png')),
                     ),
@@ -255,9 +256,13 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Container(
                   // padding: EdgeInsets.fromLTRB(75, 0, 10, 10),
+                  
+                  
                   child: Column(
                     children: <Widget>[
                       MaterialButton(
+                         shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(10.0)),
                         height: 30,
                         minWidth: 200,
                         child: new Text('Ingresar'),
@@ -267,7 +272,7 @@ class _LoginPageState extends State<LoginPage> {
                           //   Navigator.pop(context);
                         },
                       ),
-                      VerticalDivider(),
+                     
                       new MaterialButton(
                         height: 30,
                         minWidth: 200,

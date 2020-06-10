@@ -4,11 +4,17 @@ import 'package:proyecto_tienda/allproduct/detalles.dart';
 import 'package:proyecto_tienda/pages/prueba.dart';
 
 class CustomListView extends StatelessWidget {
+
+
+
+  
   final List<Datos> dataproductos;
 
   CustomListView(this.dataproductos);
 
   Widget build(context) {
+
+    
     return ListView.builder(
       itemCount: dataproductos.length,
       itemBuilder: (context, int currentIndex) {
@@ -83,7 +89,7 @@ class CustomListView extends StatelessWidget {
                             builder: (BuildContext context) =>
                                 new SecondScreen(value: dataproduct),
                           );
-                          Navigator.of(context).push(route);
+                          Navigator.of(context).pushReplacement(route);
                         },
                       ),
                       new MaterialButton(

@@ -76,9 +76,9 @@ class _AdProducttState extends State<AdProductt> {
         icon: const Icon(Icons.keyboard_backspace,color: Colors.red,),
 
           onPressed: () {
-                Navigator.pushReplacementNamed(context, '/pages/view_product');
-                // Navigator.of(context).pushNamedAndRemoveUntil('/pages/view_product', (Route<dynamic> route) => false);
-              },
+                          Navigator.of(context).pushNamedAndRemoveUntil( '/allproduct/ListProducto', (Route<dynamic> route) => false);
+
+                      },
         tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
       );
     },
