@@ -147,7 +147,7 @@ void deletProduct() {
                       
                       ),*/
                       VerticalDivider(),
-                      new RaisedButton(
+                   /*    new RaisedButton(
                         child: new Text("ELIMINAR"),
                         color: Colors.redAccent,
                         shape: new RoundedRectangleBorder(
@@ -157,7 +157,7 @@ void deletProduct() {
                           deletProduct();
                           
                         },
-                      ),
+                      ), */
                       /*   VerticalDivider(),
                        new RaisedButton(
                       child: new Text("Salir"),

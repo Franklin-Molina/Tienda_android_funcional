@@ -22,13 +22,13 @@ class CustomListView extends StatelessWidget {
         title: new Card(
           elevation: 5.0,
           child: new Container(
-            decoration: BoxDecoration(border: Border.all(color: Colors.redAccent)),
+            decoration:
+                BoxDecoration(border: Border.all(color: Colors.redAccent)),
             padding: EdgeInsets.all(20.0),
             margin: EdgeInsets.all(20.0),
             child: Column(
               children: <Widget>[
                 Padding(
-                  
                   child: Image.network(dataproduct.imgen),
                   padding: EdgeInsets.only(bottom: 8.0),
                 ),
@@ -48,8 +48,6 @@ class CustomListView extends StatelessWidget {
                         textAlign: TextAlign.right,
                       ),
                       padding: EdgeInsets.all(1.0)),
-              
-                 
                 ]),
               ],
             ),
@@ -57,77 +55,69 @@ class CustomListView extends StatelessWidget {
         ),
         //ruta-▲
         onTap: () {
-
-           showDialog(
-            context: context,
-            barrierDismissible: false,
-            builder: (context) {
-              return AlertDialog(
-                backgroundColor: Colors.cyanAccent[100],
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
-                title: Text(
-                  "¡¡ Informacion !!",
-                  style: TextStyle(color: Colors.green),
-                  textAlign: TextAlign.center,
-                ),
-                content: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisSize: MainAxisSize.min,
-                  children: <Widget>[
-                   
-                     new MaterialButton(
+          showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) {
+                return AlertDialog(
+                  backgroundColor: Colors.cyanAccent[100],
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0)),
+                  title: Text(
+                    "¡¡ Informacion !!",
+                    style: TextStyle(color: Colors.green),
+                    textAlign: TextAlign.center,
+                  ),
+                  content: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisSize: MainAxisSize.min,
+                    children: <Widget>[
+                      new MaterialButton(
                         child: new Text("Ver más detalles"),
                         color: Colors.lightGreenAccent,
                         shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(30.0)),
-                        onPressed: (){
+                        onPressed: () {
                           print('click-Detalles');
-                         
-                          
+                          var route = new MaterialPageRoute(
+                            builder: (BuildContext context) =>
+                                new SecondScreen(value: dataproduct),
+                          );
+                          Navigator.of(context).push(route);
                         },
                       ),
-                          new MaterialButton(
+                      new MaterialButton(
                         child: new Text("Editar"),
                         color: Colors.blueAccent,
                         shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(30.0)),
-                        onPressed: (){
+                        onPressed: () {
                           print('click-Editar');
-                         
-                          
                         },
                       ),
-                           new MaterialButton(
+                      new MaterialButton(
                         child: new Text("ELIMINAR"),
                         color: Colors.redAccent,
                         shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(30.0)),
-                        onPressed: (){
+                        onPressed: () {
                           print('click-borrar');
-                         
-                          
                         },
                       ),
-
-
-
-                   
-                  ],
-                ),
-                actions: <Widget>[
-                  FlatButton(
-                    child: Text(
-                      "Aceptar",
-                    
-                    ),
-                  onPressed: () {
-                      Navigator.of(context).pop();
-                    },
+                    ],
                   ),
-                ],
-              );
-            });
+                  actions: <Widget>[
+                    FlatButton(
+                      child: Text(
+                        "Aceptar",
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                );
+              });
           /*
 
           //We start by creating a Page Route.
@@ -140,8 +130,6 @@ class CustomListView extends StatelessWidget {
           //A Navigator is a widget that manages a set of child widgets with
           //stack discipline.It allows us navigate pages.
           Navigator.of(context).push(route);*/
-        }
-   );
+        });
   }
 }
-
