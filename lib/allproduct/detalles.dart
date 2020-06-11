@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:proyecto_tienda/allproduct/Clase.dart';
-import 'package:proyecto_tienda/pages/prueba.dart';
 import 'package:http/http.dart' as http;
 
 class SecondScreen extends StatefulWidget {

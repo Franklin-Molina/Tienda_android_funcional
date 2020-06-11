@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto_tienda/allproduct/Clase.dart';
 import 'package:proyecto_tienda/allproduct/detalles.dart';
-import 'package:proyecto_tienda/pages/prueba.dart';
+
 
 class CustomListView extends StatelessWidget {
 
@@ -63,7 +63,7 @@ class CustomListView extends StatelessWidget {
           ),
         ),
         //ruta-▲
-        onTap: () {
+        onTap: () {/*
           showDialog(
               context: context,
               barrierDismissible: false,
@@ -129,7 +129,8 @@ class CustomListView extends StatelessWidget {
                   ],
                 );
               });
-          /*
+              */
+          
 
           //We start by creating a Page Route.
           //A MaterialPageRoute is a modal route that replaces the entire
@@ -140,7 +141,7 @@ class CustomListView extends StatelessWidget {
           );
           //A Navigator is a widget that manages a set of child widgets with
           //stack discipline.It allows us navigate pages.
-          Navigator.of(context).push(route);*/
+          Navigator.of(context).push(route);
         });
   }
 }

@@ -10,7 +10,6 @@ import 'package:proyecto_tienda/pages/editCateg.dart';
 import 'package:proyecto_tienda/pages/listCateg.dart';
 import 'package:proyecto_tienda/pages/list_product.dart';
 import 'package:proyecto_tienda/pages/listarUsuarios.dart';
-import 'package:proyecto_tienda/pages/prueba.dart';
 import 'package:proyecto_tienda/pages/slider.dart';
 import 'package:proyecto_tienda/pages/login.dart';
 import 'package:proyecto_tienda/pages/powerPage.dart';

@@ -9,7 +9,7 @@ import 'package:proyecto_tienda/pages/crear_producto.dart';
 import 'package:proyecto_tienda/pages/detalles_product.dart';
 import 'package:proyecto_tienda/pages/editProduct.dart';
 import 'package:proyecto_tienda/pages/list_product.dart';
-import 'package:proyecto_tienda/pages/prueba.dart';
+
 
 class Admin extends StatefulWidget {
   @override

@@ -223,6 +223,21 @@ void initState() {
                           ),
                           Divider(),
                           new Text('Busque su categoria y luego escriba el numero de ella'),
+                          new Text('→ Si no esta su categoria puede agregarla '),
+                          Divider(),
+                               ListTile(
+          title: Text("Agregar Categoria "),
+          leading: Icon(Icons.category,color: Colors.black),
+          trailing: Icon(Icons.keyboard_arrow_right),
+          onTap: () {
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                     '/pages/addCateg', (Route<dynamic> route) => false);
+           
+           
+          },
+        ),
+                          
+
                           Divider(),
                                 new Container(
                           child: DropdownButton<String>(
@@ -250,8 +265,8 @@ void initState() {
                                   return "Ingrese una categoria";
                               },
                               decoration: new InputDecoration(
-                                hintText: "Categoria",
-                                labelText: "Categoria",
+                                hintText: "Numero de Categoria",
+                                labelText: "Numero de categoria",
                               ),
                                keyboardType: TextInputType.numberWithOptions(
                                   decimal: true),
