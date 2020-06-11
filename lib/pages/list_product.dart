@@ -7,7 +7,6 @@ import 'package:proyecto_tienda/pages/detalles_product.dart';
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:proyecto_tienda/pages/editProduct.dart';
 
 
 class LisProduct extends StatefulWidget {

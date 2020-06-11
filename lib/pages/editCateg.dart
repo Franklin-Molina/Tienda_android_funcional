@@ -13,8 +13,8 @@ class EditCateg extends StatefulWidget {
 }
 
 class _EditCategState extends State<EditCateg> {
-   final titulo = TextStyle(color: Colors.black, fontSize: 15.0);
-   var _validacion = GlobalKey<FormState>();
+  final titulo = TextStyle(color: Colors.black, fontSize: 15.0);
+  var _validacion = GlobalKey<FormState>();
   TextEditingController controllerNombreCateg;
 
   void editCateg() {
@@ -87,67 +87,64 @@ class _EditCategState extends State<EditCateg> {
                     padding: const EdgeInsets.all(10.0),
                   ),
                   new MaterialButton(
-                     height: 40.0,
-                      minWidth: 600.0,
+                    height: 40.0,
+                    minWidth: 600.0,
                     child: new Text("Guardar"),
                     color: Colors.greenAccent,
                     onPressed: () {
-                      if(_validacion.currentState.validate()){
-
-                          showDialog(
-                              context: context,
-                              barrierDismissible: false,
-                              builder: (context) {
-                                return AlertDialog(
-                                  backgroundColor: Colors.cyanAccent[100],
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(20.0)),
-                                  title: Text(
-                                    "¡¡ Successfull !!",
-                                    style: TextStyle(color: Colors.green),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  content: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      Text(
-                                        "Categoria editada con exito!! ",
-                                        style: titulo,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Divider(),
-                                      Icon(
-                                        Icons.category,
-                                        color: Colors.green,
-                                        size: 73.0,
-                                      )
-                                    ],
-                                  ),
-                                  actions: <Widget>[
-                                    FlatButton(
-                                      child: Text(
-                                        "Aceptar",
-                                        style: titulo,
-                                      ),
-                                      onPressed: () {
-                                        editCateg();
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                          '/pages/listCateg', (Route<dynamic> route) => false);
-                                       
-                                      },
+                      if (_validacion.currentState.validate()) {
+                        showDialog(
+                            context: context,
+                            barrierDismissible: false,
+                            builder: (context) {
+                              return AlertDialog(
+                                backgroundColor: Colors.cyanAccent[100],
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0)),
+                                title: Text(
+                                  "¡¡ Successfull !!",
+                                  style: TextStyle(color: Colors.green),
+                                  textAlign: TextAlign.center,
+                                ),
+                                content: Column(
+                                  crossAxisAlignment:
+                                      CrossAxisAlignment.stretch,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    Text(
+                                      "Categoria editada con exito!! ",
+                                      style: titulo,
+                                      textAlign: TextAlign.center,
                                     ),
+                                    Divider(),
+                                    Icon(
+                                      Icons.category,
+                                      color: Colors.green,
+                                      size: 73.0,
+                                    )
                                   ],
-                                );
-                              });
-                         /*   */
-                      }else{
+                                ),
+                                actions: <Widget>[
+                                  FlatButton(
+                                    child: Text(
+                                      "Aceptar",
+                                      style: titulo,
+                                    ),
+                                    onPressed: () {
+                                      editCateg();
+                                      Navigator.of(context)
+                                          .pushNamedAndRemoveUntil(
+                                              '/pages/listCateg',
+                                              (Route<dynamic> route) => false);
+                                    },
+                                  ),
+                                ],
+                              );
+                            });
+                        /*   */
+                      } else {
                         print('error al editar producto');
-
                       }
-                     
                     },
                   )
                 ],

@@ -111,7 +111,7 @@ class _IntroScreenState extends State<IntroScreen> {
 
       // Skip button
       renderSkipBtn: this.renderSkipBtn(),
-      colorSkipBtn: Colors.orangeAccent,
+      colorSkipBtn: Colors.greenAccent,
       highlightColorSkipBtn: Colors.red,
 
       // Next button

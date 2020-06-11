@@ -113,7 +113,7 @@ class _SecondScreenState extends State<SecondScreen> {
                 padding: EdgeInsets.all(20.0),
               ),
               Divider(),
-              new Text('Categorias '),
+              new Text('Lista de Categorias '),
               new Container(
                   child: DropdownButton<String>(
           value: _dropdownValue,
@@ -130,109 +130,8 @@ class _SecondScreenState extends State<SecondScreen> {
           }).toList(),
         ),
               ),
-              new Row(
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  /* new RaisedButton(
-                        child: new Text("EDITAR"),
-                        color: Colors.blueAccent,
-                        shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(25.0)),
-                        onPressed: () =>
-                            Navigator.of(context).push(new MaterialPageRoute(
-                          builder: (BuildContext context) => new EditDetalles(
-                            list: widget.listPrd,
-                            index: widget.indexProd,
-                          ),
-                        )),
-                      ),*/
-                  /*  Container(
-                         child: _image == null ? new Text('NO hay image')
-                         : new Image.file(_image),
-                      
-                      
-                      
-                      ),*/
-                  VerticalDivider(),
-                /*  new RaisedButton(
-                    child: new Text("ELIMINAR"),
-                    color: Colors.redAccent,
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(30.0)),
-                    onPressed: () {
-                      showDialog(
-                          context: context,
-                          barrierDismissible: false,
-                          builder: (context) {
-                            return AlertDialog(
-                              backgroundColor: Colors.cyanAccent[100],
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0)),
-                              title: Text(
-                                "¡¡ Precaución !!",
-                                style: TextStyle(color: Colors.green),
-                                textAlign: TextAlign.center,
-                              ),
-                              content: Column(
-                                crossAxisAlignment: CrossAxisAlignment.stretch,
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  Text(
-                                    "¿Esta seguro de Eliminar? → ${widget.value.nombre}",
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  Divider(
-                                    color: Colors.red,
-                                  ),
-                                  Icon(
-                                    Icons.report_problem,
-                                    color: Colors.yellow,
-                                    size: 73.0,
-                                  )
-                                ],
-                              ),
-                              actions: <Widget>[
-                                MaterialButton(
-                                  color: Colors.red,
-                                  child: Text(
-                                    "SI",
-                                  ),
-                                  onPressed: () {
-                                    deletProduct();
-                                  },
-                                ),
-                                VerticalDivider(
-                                  color: Colors.red,
-                                ),
-                                MaterialButton(
-                                  color: Colors.green,
-                                  child: Text(
-                                    "No",
-                                  ),
-                                  onPressed: () {
-                                    Navigator.pop(context);
-                                  },
-                                ),
-                              ],
-                            );
-                          });
-                    },
-                  ),*/
-                  /*   VerticalDivider(),
-                       new RaisedButton(
-                      child: new Text("Salir"),
-                      color: Colors.yellow,
-                      shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0)
-                      ),
-                      onPressed: () {
-                       Navigator.pushReplacementNamed(context, '/pages/list_product');
-                    
-                      },
-                    ),*/
-                ],
-              )
-            ],
+             
+       ],
           ),
         ),
       ),

@@ -7,9 +7,7 @@ import 'package:proyecto_tienda/allproduct/Clase.dart';
 import 'package:proyecto_tienda/allproduct/Edicion.dart';
 import 'package:proyecto_tienda/pages/crear_producto.dart';
 import 'package:proyecto_tienda/pages/detalles_product.dart';
-import 'package:proyecto_tienda/pages/editProduct.dart';
 import 'package:proyecto_tienda/pages/list_product.dart';
-
 
 class Admin extends StatefulWidget {
   @override
@@ -42,7 +40,7 @@ class _AdminState extends State<Admin> {
       LisProduct();
       AdProductt();
       DetalProduct();
-    //  EditDetalles();
+      //  EditDetalles();
     });
     return null;
   }
@@ -50,24 +48,9 @@ class _AdminState extends State<Admin> {
 //
   @override
   Widget build(BuildContext context) {
-    
-
     return Scaffold(
       drawer: Menu(),
       appBar: new AppBar(
-        /*  leading: Builder(
-    builder: (BuildContext context) {
-      return IconButton(
-        icon: const Icon(Icons.keyboard_backspace,color: Colors.red,),
-
-          onPressed: () {
-                Navigator.pushReplacementNamed(context, '/pages/view_product');
-                // Navigator.of(context).pushNamedAndRemoveUntil('/pages/view_product', (Route<dynamic> route) => false);
-              },
-        tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-      );
-    },
-  ), */
         title: new Text(" Administrador"),
       ),
       floatingActionButton: new FloatingActionButton(
@@ -91,13 +74,8 @@ class _AdminState extends State<Admin> {
             color: Colors.black),
       ),
       body: new RefreshIndicator(
-        //FutureBuilder is a widget that builds itself based on the latest snapshot
-        // of interaction with a Future.
         child: new FutureBuilder<List<Datos>>(
           future: downloadJSON(),
-          //we pass a BuildContext and an AsyncSnapshot object which is an
-          //Immutable representation of the most recent interaction with
-          //an asynchronous computation.
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               List<Datos> spacecrafts = snapshot.data;
@@ -105,7 +83,6 @@ class _AdminState extends State<Admin> {
             } else if (snapshot.hasError) {
               return Text('${snapshot.error}');
             }
-            //return  a circular progress indicator.
             return new CircularProgressIndicator();
           },
         ),
@@ -116,7 +93,6 @@ class _AdminState extends State<Admin> {
 }
 
 class Menu extends StatelessWidget {
-  
   Widget build(BuildContext context) {
     return new Drawer(
       child: ListView(
@@ -125,8 +101,6 @@ class Menu extends StatelessWidget {
             accountEmail: new Text("Kira@gmail.com"),
             accountName: Text("Administrador",
                 style: TextStyle(fontSize: 40, color: Colors.black87)),
-            /*  accountEmail: Text(""), */
-
             decoration: new BoxDecoration(
               image: new DecorationImage(
                   image: new AssetImage("assets/images/fondo_log.jpeg"),
@@ -140,136 +114,130 @@ class Menu extends StatelessWidget {
             Divider(
               color: Colors.blue,
             ),
-                           ListTile(
-          title: Text("Lista Productos "),
-          leading: Icon(Icons.add_shopping_cart,color: Colors.black,),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: () {
-              Navigator.of(context).pushNamedAndRemoveUntil(
+            ListTile(
+              title: Text("Lista Productos "),
+              leading: Icon(
+                Icons.add_shopping_cart,
+                color: Colors.black,
+              ),
+              trailing: Icon(Icons.keyboard_arrow_right),
+              onTap: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
                     '/allproduct/ListProducto',
                     (Route<dynamic> route) => false);
-           
-           
-          },
-        ),
-          
+              },
+            ),
             Divider(
               color: Colors.blue,
             ),
-                  ListTile(
-          title: Text("Crear Producto "),
-          leading: Icon(Icons.add_shopping_cart,color: Colors.black,),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: () {
-             Navigator.of(context).pushNamedAndRemoveUntil(
-                    '/pages/crear_producto', (Route<dynamic> route) => false);
-           
-           
-          },
-        ),
-
-            
-            Divider(
-              color: Colors.blue,
-            ),
-               ListTile(
-          title: Text("Categorias Registradas "),
-          leading: Icon(Icons.category,color: Colors.black),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: () {
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                    '/pages/listCateg', (Route<dynamic> route) => false);
-           
-           
-          },
-        ),
-      
-             Divider(),
-        ListTile(
-          title: Text("Agregar Categoria"),
-          leading: Icon(Icons.category,color: Colors.black),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: () {
-             Navigator.of(context).pushNamedAndRemoveUntil(
-                    '/pages/addCateg', (Route<dynamic> route) => false);
-           
-           
-          },
-        ),
             ListTile(
-          title: Text("Lista Usuarios"),
-          leading: Icon(Icons.perm_identity,color: Colors.black),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: () {
-             Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/pages/listarUsuarios', (Route<dynamic> route) => false);
-           
-           
-          },
-        ),
-          ListTile(
-          title: Text("Salir"),
-          leading: Icon(Icons.exit_to_app,color: Colors.black),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: () {
-            showDialog(
-                              context: context,
-                              barrierDismissible: false,
-                              builder: (context) {
-                                return AlertDialog(
-                                  backgroundColor: Colors.cyanAccent[100],
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(20.0)),
-                                  title: Text(
-                                    "¡¡ Precaución !!",
-                                    style: TextStyle(color: Colors.green),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  content: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      Text(
-                                        "¿Esta seguro de salir? ",
-                                      
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Divider(color: Colors.red,),
-                                      Icon(
-                                        Icons.report_problem,
-                                        color: Colors.yellow,
-                                        size: 73.0,
-                                      )
-                                    ],
-                                  ),
-                                  actions: <Widget>[
-                                    MaterialButton(
-                                      color: Colors.red,
-                                      child: Text("SI",),
-                                      onPressed: () {
-                                       Navigator.of(context).pushNamedAndRemoveUntil('/pages/slider', (Route<dynamic> route) => false);
-                                       
-                                      },
-                                    ),
-                                    VerticalDivider(
-                                      color: Colors.red,
-                                    ),
-                                      MaterialButton(
-                                        color: Colors.green,
-                                      child: Text("No",),
-                                      onPressed: () {
-                                      Navigator.pop(context);
-                                       
-                                      },
-                                    ),
-                                  ],
-                                );
-                              });
-           
-          },
-        ),
+              title: Text("Crear Producto "),
+              leading: Icon(
+                Icons.add_shopping_cart,
+                color: Colors.black,
+              ),
+              trailing: Icon(Icons.keyboard_arrow_right),
+              onTap: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/pages/crear_producto', (Route<dynamic> route) => false);
+              },
+            ),
+            Divider(
+              color: Colors.blue,
+            ),
+            ListTile(
+              title: Text("Categorias Registradas "),
+              leading: Icon(Icons.category, color: Colors.black),
+              trailing: Icon(Icons.keyboard_arrow_right),
+              onTap: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/pages/listCateg', (Route<dynamic> route) => false);
+              },
+            ),
+            Divider(),
+            ListTile(
+              title: Text("Agregar Categoria"),
+              leading: Icon(Icons.category, color: Colors.black),
+              trailing: Icon(Icons.keyboard_arrow_right),
+              onTap: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/pages/addCateg', (Route<dynamic> route) => false);
+              },
+            ),
+            ListTile(
+              title: Text("Lista Usuarios"),
+              leading: Icon(Icons.perm_identity, color: Colors.black),
+              trailing: Icon(Icons.keyboard_arrow_right),
+              onTap: () {
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/pages/listarUsuarios', (Route<dynamic> route) => false);
+              },
+            ),
+            ListTile(
+              title: Text("Salir"),
+              leading: Icon(Icons.exit_to_app, color: Colors.black),
+              trailing: Icon(Icons.keyboard_arrow_right),
+              onTap: () {
+                showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    builder: (context) {
+                      return AlertDialog(
+                        backgroundColor: Colors.cyanAccent[100],
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20.0)),
+                        title: Text(
+                          "¡¡ Precaución !!",
+                          style: TextStyle(color: Colors.green),
+                          textAlign: TextAlign.center,
+                        ),
+                        content: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          mainAxisSize: MainAxisSize.min,
+                          children: <Widget>[
+                            Text(
+                              "¿Esta seguro de salir? ",
+                              textAlign: TextAlign.center,
+                            ),
+                            Divider(
+                              color: Colors.red,
+                            ),
+                            Icon(
+                              Icons.report_problem,
+                              color: Colors.yellow,
+                              size: 73.0,
+                            )
+                          ],
+                        ),
+                        actions: <Widget>[
+                          MaterialButton(
+                            color: Colors.red,
+                            child: Text(
+                              "SI",
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pushNamedAndRemoveUntil(
+                                  '/pages/slider',
+                                  (Route<dynamic> route) => false);
+                            },
+                          ),
+                          VerticalDivider(
+                            color: Colors.red,
+                          ),
+                          MaterialButton(
+                            color: Colors.green,
+                            child: Text(
+                              "No",
+                            ),
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                          ),
+                        ],
+                      );
+                    });
+              },
+            ),
           ]),
         ],
       ),

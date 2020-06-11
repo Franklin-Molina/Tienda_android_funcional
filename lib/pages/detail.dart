@@ -127,18 +127,6 @@ class _DetailState extends State<Detail> {
                             borderRadius: new BorderRadius.circular(30.0)),
                         onPressed: () => confirm(),
                       ),
-                      /*  VerticalDivider(),
-                       new RaisedButton(
-                      child: new Text("Salir"),
-                      color: Colors.yellow,
-                      shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0)
-                      ),
-                      onPressed: () {
-                       Navigator.pushReplacementNamed(context, '/powerPage');
-                    
-                      },
-                    ),*/
                     ],
                   )
                 ],

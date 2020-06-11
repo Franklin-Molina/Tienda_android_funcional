@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:proyecto_tienda/pages/editProduct.dart';
 import 'package:http/http.dart' as http;
 
 class DetalProduct extends StatefulWidget {
@@ -13,12 +12,7 @@ class DetalProduct extends StatefulWidget {
 }
 
 class _DetalProductState extends State<DetalProduct> {
-
   //File _image;
-
-
-
-
 
   void deletProduct() {
     var url = "http://192.168.0.106/tienda/deletProduct.php";
@@ -37,7 +31,7 @@ class _DetalProductState extends State<DetalProduct> {
           ),
           color: Colors.red,
           onPressed: () {
-             deletProduct();
+            deletProduct();
             Navigator.of(context).pushNamedAndRemoveUntil(
                 '/pages/list_product', (Route<dynamic> route) => false);
             /*  Navigator.of(context).popAndPushNamed( '/pages/list_product');
@@ -65,7 +59,10 @@ class _DetalProductState extends State<DetalProduct> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("${widget.listPrd[widget.indexProd]['nombre']}",textAlign: TextAlign.center,),
+        title: new Text(
+          "${widget.listPrd[widget.indexProd]['nombre']}",
+          textAlign: TextAlign.center,
+        ),
         actions: <Widget>[
           IconButton(
               icon: Icon(
@@ -113,7 +110,7 @@ class _DetalProductState extends State<DetalProduct> {
                     style: new TextStyle(fontSize: 18.0, color: Colors.grey),
                   ),
                   Divider(),
-                    new Text(
+                  new Text(
                     "Foto : ${widget.listPrd[widget.indexProd]['img']}",
                     style: new TextStyle(fontSize: 18.0, color: Colors.grey),
                   ),
@@ -121,83 +118,31 @@ class _DetalProductState extends State<DetalProduct> {
                   new Padding(
                     padding: const EdgeInsets.only(top: 30.0),
                   ),
-
-
-                  
                   new Row(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      /* new RaisedButton(
-                        child: new Text("EDITAR"),
-                        color: Colors.blueAccent,
-                        shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(25.0)),
-                        onPressed: () =>
-                            Navigator.of(context).push(new MaterialPageRoute(
-                          builder: (BuildContext context) => new EditDetalles(
-                            list: widget.listPrd,
-                            index: widget.indexProd,
-                          ),
-                        )),
-                      ), */
-                  
                       VerticalDivider(),
                       new MaterialButton(
                         height: 40,
                         minWidth: 200,
-                        
-                        child: new Text("ELIMINAR",style: TextStyle(color: Colors.white),),
+                        child: new Text(
+                          "ELIMINAR",
+                          style: TextStyle(color: Colors.white),
+                        ),
                         color: Colors.redAccent,
                         shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(10.0)),
                         onPressed: () => confirm(),
                       ),
-                      /*   VerticalDivider(),
-                       new RaisedButton(
-                      child: new Text("Salir"),
-                      color: Colors.yellow,
-                      shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0)
-                      ),
-                      onPressed: () {
-                       Navigator.pushReplacementNamed(context, '/pages/list_product');
-                    
-                      },
-                    ),*/
                     ],
                   )
                 ],
-/* ---------------Botones editar-elimanr salir------------- */
               ),
             ),
           ),
         ),
       ),
     );
-    
   }
-
-
-
-  
-    /*Widget _mostrarFoto() {
-    if (imageUrl != null) {
-      return FadeInImage(
-        image: NetworkImage(imageUrl),
-        placeholder: AssetImage('assets/loading.gif'),
-        fit: BoxFit.cover,
-      );
-    } else {
-      //usamos un operador ternario para cambiar de widget en caso de no seleccionar imagen
-      return Image(
-        image: (_image?.path == null)
-            ? AssetImage('assets/no-image.png')
-            : FileImage(
-                _image), //AssetImage(_image?.path ?? 'assets/no-image.png'),
-        height: 300.0,
-        fit: BoxFit.cover,
-      );
-    }
-  }*/
 
 }

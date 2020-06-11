@@ -15,15 +15,14 @@ class AdProductt extends StatefulWidget {
 }
 
 class _AdProducttState extends State<AdProductt> {
-
-
 /*    ------------------------------ */
 
-void initState() {
+  void initState() {
     super.initState();
     getCateg();
   }
-    List datos;
+
+  List datos;
   Future<Null> getCateg() async {
     final response = await http.get(
       "http://192.168.0.106/tienda/pt.php",
@@ -34,18 +33,19 @@ void initState() {
 
     mostrarcategoria();
   }
-  String _dropdownValue ;
+
+  String _dropdownValue;
 
   Map<String, String> liscatgmp = Map();
   void mostrarcategoria() {
     for (var i = 0; i < datos.length; i++) {
-      liscatgmp[datos[i]['id']] ="[" +datos[i]["id"]+"]"+ "→ "+ datos[i]['nombre'];
+      liscatgmp[datos[i]['id']] =
+          "[" + datos[i]["id"] + "]" + "→ " + datos[i]['nombre'];
     }
     _dropdownValue = liscatgmp[datos[0]['id']];
   }
 
 /* ---------------------------------- */
-
 
   File _image;
   var _formKey = GlobalKey<FormState>();
@@ -102,19 +102,22 @@ void initState() {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: new AppBar(
-                           leading: Builder(
-    builder: (BuildContext context) {
-      return IconButton(
-        icon: const Icon(Icons.keyboard_backspace,color: Colors.red,),
-
-          onPressed: () {
-                          Navigator.of(context).pushNamedAndRemoveUntil( '/allproduct/ListProducto', (Route<dynamic> route) => false);
-
-                      },
-        tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-      );
-    },
-  ),
+          leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: const Icon(
+                  Icons.keyboard_backspace,
+                  color: Colors.red,
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      '/allproduct/ListProducto',
+                      (Route<dynamic> route) => false);
+                },
+                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              );
+            },
+          ),
           title: new Text("Agregar Producto"),
           actions: <Widget>[
             IconButton(
@@ -137,7 +140,8 @@ void initState() {
                 ),
                 onPressed: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
-                     '/allproduct/ListProducto', (Route<dynamic> route) => false);
+                      '/allproduct/ListProducto',
+                      (Route<dynamic> route) => false);
                 }),
           ],
         ),
@@ -149,7 +153,7 @@ void initState() {
                     child: ListView(children: <Widget>[
                       new Column(
                         children: <Widget>[
-                            Center(
+                          Center(
                             child: _image == null
                                 ? new Text('Selecione una imagen')
                                 : new Image.file(_image),
@@ -160,21 +164,23 @@ void initState() {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: <Widget>[
                                 RaisedButton(
-                                  child: Icon(Icons.image,
-                                  color: Colors.pink,
+                                  child: Icon(
+                                    Icons.image,
+                                    color: Colors.pink,
                                   ),
                                   onPressed: getImageGallery,
                                 ),
                                 VerticalDivider(),
                                 RaisedButton(
-                                  child: Icon(Icons.camera,color: Colors.pink,),
+                                  child: Icon(
+                                    Icons.camera,
+                                    color: Colors.pink,
+                                  ),
                                   onPressed: getImageCamera,
                                 ),
                               ],
                             ),
                           ),
-
-
                           new ListTile(
                             leading: const Icon(Icons.rate_review,
                                 color: Colors.black),
@@ -222,39 +228,38 @@ void initState() {
                             ),
                           ),
                           Divider(),
-                          new Text('Busque su categoria y luego escriba el numero de ella'),
-                          new Text('→ Si no esta su categoria puede agregarla '),
+                          new Text(
+                              'Busque su categoria y luego escriba el numero de ella'),
+                          new Text(
+                              '→ Si no esta su categoria puede agregarla '),
                           Divider(),
-                               ListTile(
-          title: Text("Agregar Categoria "),
-          leading: Icon(Icons.category,color: Colors.black),
-          trailing: Icon(Icons.keyboard_arrow_right),
-          onTap: () {
-              Navigator.of(context).pushNamedAndRemoveUntil(
-                     '/pages/addCateg', (Route<dynamic> route) => false);
-           
-           
-          },
-        ),
-                          
-
+                          ListTile(
+                            title: Text("Agregar Categoria "),
+                            leading: Icon(Icons.category, color: Colors.black),
+                            trailing: Icon(Icons.keyboard_arrow_right),
+                            onTap: () {
+                              Navigator.of(context).pushNamedAndRemoveUntil(
+                                  '/pages/addCateg',
+                                  (Route<dynamic> route) => false);
+                            },
+                          ),
                           Divider(),
-                                new Container(
-                          child: DropdownButton<String>(
-          value: _dropdownValue,
-          onChanged: (String newValue) {
-            setState(() {
-              _dropdownValue = newValue;
-            });
-          },
-          items: liscatgmp.values.map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
-        )
-                        ),
+                          new Container(
+                              child: DropdownButton<String>(
+                            value: _dropdownValue,
+                            onChanged: (String newValue) {
+                              setState(() {
+                                _dropdownValue = newValue;
+                              });
+                            },
+                            items: liscatgmp.values
+                                .map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          )),
                           new ListTile(
                             leading:
                                 const Icon(Icons.category, color: Colors.black),
@@ -268,11 +273,11 @@ void initState() {
                                 hintText: "Numero de Categoria",
                                 labelText: "Numero de categoria",
                               ),
-                               keyboardType: TextInputType.numberWithOptions(
+                              keyboardType: TextInputType.numberWithOptions(
                                   decimal: true),
                             ),
                           ),
-                     /*     new Container(
+                          /*     new Container(
                             padding: EdgeInsets.fromLTRB(18, 0, 10, 10),
                               child: DropdownButtonFormField(
                         
@@ -286,14 +291,7 @@ void initState() {
                       ),
                           ), */
 
-                          
-                  
-
-
-
                           Divider(),
-
-                        
                           MaterialButton(
                             height: 40.0,
                             minWidth: 600.0,

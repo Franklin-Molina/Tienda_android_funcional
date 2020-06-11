@@ -127,8 +127,6 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               );
             });
-        //  Navigator.pushReplacementNamed(context, '/powerPage');
-        // Navigator.pushReplacementNamed(context, '/porwePage');
       } else if (datauser[0]['estado'] == 'ventas') {
         print('wellcome Usuario');
         AlertDialog alerta = new AlertDialog(
@@ -149,9 +147,10 @@ class _LoginPageState extends State<LoginPage> {
                 style: titulo,
               ),
               onPressed: () {
-                          Navigator.of(context).pushNamedAndRemoveUntil( '/allproduct/ListProducto', (Route<dynamic> route) => false);
-
-                      },
+                Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/allproduct/ListProducto',
+                    (Route<dynamic> route) => false);
+              },
             ),
           ],
         );
@@ -160,8 +159,6 @@ class _LoginPageState extends State<LoginPage> {
           child: alerta,
           barrierDismissible: false,
         );
-        //  barrierDismissible: false,
-        //  Navigator.pushReplacementNamed(context, '/pages/view_product');
       }
 
       setState(() {
@@ -183,7 +180,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Container(
             decoration: new BoxDecoration(
               image: new DecorationImage(
-                   image: new AssetImage("assets/images/fondo_log.jpeg"),
+                  image: new AssetImage("assets/images/fondo_log.jpeg"),
                   fit: BoxFit.cover),
             ),
             child: Column(
@@ -192,7 +189,7 @@ class _LoginPageState extends State<LoginPage> {
                     padding: EdgeInsets.only(top: 77.0),
                     child: new Container(
                       child: new Image(
-                          image: new AssetImage('assets/images/avatarx.png')),
+                          image: new AssetImage('assets/images/avatarf.png')),
                     ),
                     width: 170.0,
                     height: 170.0),
@@ -256,13 +253,12 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 Container(
                   // padding: EdgeInsets.fromLTRB(75, 0, 10, 10),
-                  
-                  
+
                   child: Column(
                     children: <Widget>[
                       MaterialButton(
-                         shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(10.0)),
+                        shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(10.0)),
                         height: 30,
                         minWidth: 200,
                         child: new Text('Ingresar'),
@@ -272,10 +268,9 @@ class _LoginPageState extends State<LoginPage> {
                           //   Navigator.pop(context);
                         },
                       ),
-                     
                       new MaterialButton(
-                         shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(10.0)),
+                        shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(10.0)),
                         height: 30,
                         minWidth: 200,
                         child: new Text(

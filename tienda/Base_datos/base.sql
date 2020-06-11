@@ -21,18 +21,15 @@ CREATE TABLE IF NOT EXISTS `categoria` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` text,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla android.categoria: ~7 rows (aproximadamente)
+-- Volcando datos para la tabla android.categoria: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
 INSERT INTO `categoria` (`id`, `nombre`) VALUES
 	(1, 'Movildd'),
 	(2, 'tecnologia'),
-	(3, 'juegos'),
-	(22, 'musica'),
-	(24, 'wewe'),
-	(25, '63'),
-	(26, 'x');
+	(29, 'Gimnasio'),
+	(30, 'Lord');
 /*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
 
 -- Volcando estructura para tabla android.productos
@@ -46,14 +43,32 @@ CREATE TABLE IF NOT EXISTS `productos` (
   PRIMARY KEY (`id`),
   KEY `FK_imagen_categoria` (`id_catg_producto`),
   CONSTRAINT `FK_imagen_categoria` FOREIGN KEY (`id_catg_producto`) REFERENCES `categoria` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
--- Volcando datos para la tabla android.productos: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla android.productos: ~2 rows (aproximadamente)
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
 INSERT INTO `productos` (`id`, `nombre`, `precio`, `descripcion`, `img`, `id_catg_producto`) VALUES
-	(2, 'x', 'x', 'd', 'scaled_image_picker1103176990.jpg', 3),
-	(4, 'dd96', 'dd', 'dd', 'scaled_74456dab-de1f-4f5c-adcd-013665c083a7801327877.jpg', 1);
+	(5, 'Security', '999999', 'Muy seguro ', 'scaled_image_picker1660621040.jpg', 2),
+	(6, 'Pikachu', '600000', 'Mascota amigable y de buen humor lÃ­o k', 'scaled_image_picker670771741.jpg', 2),
+	(7, 'BlackMoon', '9999999999999999999999999999999', 'Eclipse animeed', 'scaled_image_picker1919193947.jpg', 2),
+	(8, 'Candado', '6000', 'Mas seguro que la policiag', 'scaled_image_picker7188822.jpg', 30);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
+
+-- Volcando estructura para tabla android.prueba
+CREATE TABLE IF NOT EXISTS `prueba` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` text,
+  `precio` text,
+  `descripcion` text,
+  `img` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
+
+-- Volcando datos para la tabla android.prueba: ~1 rows (aproximadamente)
+/*!40000 ALTER TABLE `prueba` DISABLE KEYS */;
+INSERT INTO `prueba` (`id`, `nombre`, `precio`, `descripcion`, `img`) VALUES
+	(66, 'Nontoimagen', '9999', 'imagens descrita', 'scaled_image_picker1103176990.jpg');
+/*!40000 ALTER TABLE `prueba` ENABLE KEYS */;
 
 -- Volcando estructura para tabla android.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (
@@ -65,14 +80,14 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `direccion` text NOT NULL,
   `estado` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 -- Volcando datos para la tabla android.usuarios: ~3 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 INSERT INTO `usuarios` (`id`, `username`, `password`, `telefono`, `ciudad`, `direccion`, `estado`) VALUES
 	(1, 'Franklin', '1234', '3165076269', 'Mocoa', 'Centro', 'admin'),
 	(23, 'x', 'x', '3108887767', 'SIngapur', 'Bajo el cielo', 'ventas'),
-	(29, 'Kira', '9632', '310555', 'Sinfin', 'Smertf', 'ventas');
+	(24, 'x', 'x', 'x', 'x', 'x', 'ventas');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

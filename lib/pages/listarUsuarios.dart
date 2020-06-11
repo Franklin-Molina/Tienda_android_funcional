@@ -49,19 +49,6 @@ class _ListarUserState extends State<ListarUser> {
            )
         ], 
       ),
-
-/* 
-      floatingActionButton: new FloatingActionButton(
-        child: new Icon(
-          Icons.add,
-          color: Colors.black,
-        ),
-        onPressed: () => Navigator.of(context).push(new MaterialPageRoute(
-          builder: (BuildContext context) => new AddData(),
-        
-        )),
-      ), */
-
       body: RefreshIndicator(
       
         child: Container(
