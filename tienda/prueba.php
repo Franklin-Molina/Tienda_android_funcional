@@ -51,7 +51,7 @@ class Spacecrafts
                 while($row=$result->fetch_array())
                 {
                     array_push($spacecrafts, array("id"=>$row['id'],"nombre"=>$row['nombre'],
-                    "precio"=>$row['precio'],"descripcion"=>$row['descripcion'],
+                    "precio"=>$row['precio'],"descripcion"=>$row['descripcion'],"id_catg_producto"=>$row['id_catg_producto'],
                     "img"=>$row['img']));
                 }
                 print(json_encode(array_reverse($spacecrafts)));
@@ -69,4 +69,4 @@ class Spacecrafts
 $spacecrafts=new Spacecrafts();
 $spacecrafts->select();
 
-//end
+//endid_catg_producto

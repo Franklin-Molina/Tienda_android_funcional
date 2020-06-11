@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
-import 'package:proyecto_tienda/pages/DropCateg.dart';
 import 'package:proyecto_tienda/pages/addCateg.dart';
 import 'package:proyecto_tienda/pages/detalles_categ.dart';
 import 'package:flutter_gradients/flutter_gradients.dart';
@@ -61,7 +60,7 @@ class _LisCatgState extends State<LisCatg> {
               ),
               onPressed: () {
                 Navigator.of(context).pushNamedAndRemoveUntil(
-                    '/pages/list_product', (Route<dynamic> route) => false);
+                  '/allproduct/ListProducto', (Route<dynamic> route) => false);
               })
         ],
       ),

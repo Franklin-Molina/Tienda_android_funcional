@@ -42,7 +42,7 @@ class _ListadoState extends State<Listado> {
       LisProduct();
       AdProductt();
       DetalProduct();
-      EditDetalles();
+    //  EditDetalles();
     });
     return null;
   }
@@ -55,19 +55,6 @@ class _ListadoState extends State<Listado> {
     return Scaffold(
       drawer: Menu(),
       appBar: new AppBar(
-        /*  leading: Builder(
-    builder: (BuildContext context) {
-      return IconButton(
-        icon: const Icon(Icons.keyboard_backspace,color: Colors.red,),
-
-          onPressed: () {
-                Navigator.pushReplacementNamed(context, '/pages/view_product');
-                // Navigator.of(context).pushNamedAndRemoveUntil('/pages/view_product', (Route<dynamic> route) => false);
-              },
-        tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-      );
-    },
-  ), */
         title: new Text("Listado de Productos"),
       ),
       floatingActionButton: new FloatingActionButton(
@@ -90,26 +77,33 @@ class _ListadoState extends State<Listado> {
             ),
             color: Colors.black),
       ),
-      body: new RefreshIndicator(
-        //FutureBuilder is a widget that builds itself based on the latest snapshot
-        // of interaction with a Future.
-        child: new FutureBuilder<List<Datos>>(
-          future: downloadJSON(),
-          //we pass a BuildContext and an AsyncSnapshot object which is an
-          //Immutable representation of the most recent interaction with
-          //an asynchronous computation.
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              List<Datos> spacecrafts = snapshot.data;
-              return new CustomListView(spacecrafts);
-            } else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
-            }
-            //return  a circular progress indicator.
-            return new CircularProgressIndicator();
-          },
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [
+              Colors.cyanAccent,
+              Colors.white,
+              Colors.blueAccent[400]
+            ])),
+        child: new RefreshIndicator(
+         
+          child: new FutureBuilder<List<Datos>>(
+            future: downloadJSON(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                List<Datos> spacecrafts = snapshot.data;
+                return new CustomListView(spacecrafts);
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              }
+              //return  a circular progress indicator.
+              return new CircularProgressIndicator();
+            },
+          ),
+          onRefresh: refreshList, //Refresh
         ),
-        onRefresh: refreshList, //Refresh
       ),
     );
   }
@@ -121,6 +115,7 @@ class Menu extends StatelessWidget {
     return new Drawer(
       child: ListView(
         children: <Widget>[
+         
           new UserAccountsDrawerHeader(
             accountEmail: new Text("Kira@gmail.com"),
             accountName: Text("Bienvenido",
@@ -134,12 +129,7 @@ class Menu extends StatelessWidget {
             ),
           ),
           Column(children: <Widget>[
-            new Padding(
-              padding: const EdgeInsets.all(10.0),
-            ),
-            Divider(
-              color: Colors.blue,
-            ),
+        
                            ListTile(
           title: Text("Lista Productos "),
           leading: Icon(Icons.add_shopping_cart,color: Colors.black,),
@@ -167,6 +157,18 @@ class Menu extends StatelessWidget {
            
           },
         ),
+        Divider(color: Colors.blueAccent,),
+                    ListTile(
+          title: Text("Eliminar Producto "),
+          leading: Icon(Icons.delete,color: Colors.black,),
+          trailing: Icon(Icons.keyboard_arrow_right),
+          onTap: () {
+             Navigator.of(context).pushNamedAndRemoveUntil(
+                    '/pages/list_product', (Route<dynamic> route) => false);
+           
+           
+          },
+        ),
 
             
             Divider(
@@ -184,7 +186,8 @@ class Menu extends StatelessWidget {
           },
         ),
       
-             Divider(),
+             
+            Divider(color: Colors.blue),
         ListTile(
           title: Text("Agregar Categoria"),
           leading: Icon(Icons.category,color: Colors.black),
@@ -196,6 +199,8 @@ class Menu extends StatelessWidget {
            
           },
         ),
+        
+              Divider(color: Colors.blue),
           ListTile(
           title: Text("Salir"),
           leading: Icon(Icons.exit_to_app,color: Colors.black),
@@ -212,7 +217,7 @@ class Menu extends StatelessWidget {
                                           BorderRadius.circular(20.0)),
                                   title: Text(
                                     "¡¡ Precaución !!",
-                                    style: TextStyle(color: Colors.green),
+                                    style: TextStyle(color: Colors.redAccent),
                                     textAlign: TextAlign.center,
                                   ),
                                   content: Column(

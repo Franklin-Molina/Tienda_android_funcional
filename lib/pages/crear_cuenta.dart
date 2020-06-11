@@ -208,16 +208,6 @@ class _AddDataState extends State<AddData> {
                         }
                       },
                     ),
-                    /*      new RaisedButton(
-                      child: new Text("Salir"),
-                      color: Colors.red,
-                      shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0)),
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(context, '/LoginPage');
-                      },
-                    ), */
-                    /*-------------------------*/
                   ],
                 ),
               ],

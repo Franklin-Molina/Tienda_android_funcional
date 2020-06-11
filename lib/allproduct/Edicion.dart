@@ -6,7 +6,6 @@ import 'package:proyecto_tienda/pages/prueba.dart';
 class CustomListView extends StatelessWidget {
 
 
-
   
   final List<Datos> dataproductos;
 
@@ -38,23 +37,27 @@ class CustomListView extends StatelessWidget {
                   child: Image.network(dataproduct.imgen),
                   padding: EdgeInsets.only(bottom: 8.0),
                 ),
-                Row(children: <Widget>[
-                  Padding(
-                      child: Text(
-                        dataproduct.nombre,
-                        style: new TextStyle(fontWeight: FontWeight.bold),
-                        textAlign: TextAlign.right,
-                      ),
-                      padding: EdgeInsets.all(1.0)),
-                  Text("  \$ "),
-                  Padding(
-                      child: Text(
-                        dataproduct.precio,
-                        style: new TextStyle(fontStyle: FontStyle.italic),
-                        textAlign: TextAlign.right,
-                      ),
-                      padding: EdgeInsets.all(1.0)),
-                ]),
+                Container(
+                  child: Wrap(children: <Widget>[
+                    Padding(
+                        child: Text(
+                          dataproduct.nombre,
+                          style: new TextStyle(fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.right,
+                        ),
+                        padding: EdgeInsets.all(1.0)),
+                    Text("  \$ "),
+                    Container(
+                      child: Padding(
+                          child: Text(
+                            dataproduct.precio,
+                            style: new TextStyle(fontStyle: FontStyle.italic,color: Colors.red),
+                            textAlign: TextAlign.right,
+                          ),
+                          padding: EdgeInsets.all(1.0)),
+                    ),
+                  ]),
+                ),
               ],
             ),
           ),
@@ -70,7 +73,7 @@ class CustomListView extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20.0)),
                   title: Text(
-                    "¡¡ Informacion !!",
+                    "¡¡ Mas detalles !!",
                     style: TextStyle(color: Colors.green),
                     textAlign: TextAlign.center,
                   ),
@@ -79,10 +82,11 @@ class CustomListView extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
                       new MaterialButton(
-                        child: new Text("Ver más detalles"),
-                        color: Colors.lightGreenAccent,
+                        height: 40,
+                        child: new Text("Ver",style: TextStyle(color: Colors.white),),
+                        color: Colors.purpleAccent,
                         shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(30.0)),
+                            borderRadius: new BorderRadius.circular(10.0)),
                         onPressed: () {
                           print('click-Detalles');
                           var route = new MaterialPageRoute(
@@ -92,7 +96,7 @@ class CustomListView extends StatelessWidget {
                           Navigator.of(context).pushReplacement(route);
                         },
                       ),
-                      new MaterialButton(
+                    /*   new MaterialButton(
                         child: new Text("Editar"),
                         color: Colors.blueAccent,
                         shape: new RoundedRectangleBorder(
@@ -109,13 +113,14 @@ class CustomListView extends StatelessWidget {
                         onPressed: () {
                           print('click-borrar');
                         },
-                      ),
+                      ), */
                     ],
                   ),
                   actions: <Widget>[
-                    FlatButton(
+                    MaterialButton(
+                      color: Colors.black,
                       child: Text(
-                        "Aceptar",
+                        "Regresar",
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();

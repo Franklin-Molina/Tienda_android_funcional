@@ -274,6 +274,8 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                      
                       new MaterialButton(
+                         shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(10.0)),
                         height: 30,
                         minWidth: 200,
                         child: new Text(

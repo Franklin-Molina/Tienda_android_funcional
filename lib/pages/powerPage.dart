@@ -42,7 +42,7 @@ class _AdminState extends State<Admin> {
       LisProduct();
       AdProductt();
       DetalProduct();
-      EditDetalles();
+    //  EditDetalles();
     });
     return null;
   }

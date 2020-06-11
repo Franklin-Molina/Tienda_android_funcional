@@ -31,7 +31,7 @@ class _LisProductState extends State<LisProduct> {
       LisProduct();
       AdProductt();
       DetalProduct();
-      EditDetalles();
+     // EditDetalles();
     });
     return null;
   }
@@ -41,32 +41,21 @@ class _LisProductState extends State<LisProduct> {
     return new Scaffold(
       appBar: new AppBar(
            leading: Builder(
+             
     builder: (BuildContext context) {
       return IconButton(
         icon: const Icon(Icons.keyboard_backspace),
 
           onPressed: () {
-                Navigator.pushReplacementNamed(context, '/pages/view_product');
-                // Navigator.of(context).pushNamedAndRemoveUntil('/pages/view_product', (Route<dynamic> route) => false);
-              },
+                          Navigator.of(context).pushNamedAndRemoveUntil( '/allproduct/ListProducto', (Route<dynamic> route) => false);
+
+                      },
         tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
       );
     },
   ),
-        title: new Text("Listado de productos", textAlign: TextAlign.center),
-        actions: <Widget>[
-          IconButton(
-              icon: Icon(
-              
-                Icons.keyboard_backspace,
-                size: 40.0,
-                color: Colors.yellowAccent,
-              ),
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, '/pages/view_product');
-                // Navigator.of(context).pushNamedAndRemoveUntil('/pages/view_product', (Route<dynamic> route) => false);
-              })
-        ],
+  
+        title: new Text("Eliminar productos", textAlign: TextAlign.center),
       ),
       floatingActionButton: new FloatingActionButton(
         child: new Icon(
@@ -80,10 +69,10 @@ class _LisProductState extends State<LisProduct> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
-        clipBehavior: Clip.antiAlias,
+        clipBehavior: Clip.none,
         child: Material(
             child: SizedBox(
-              width: double.infinity,
+              width: double.minPositive,
               height: 50.0,
             ),
             color: Colors.black),
@@ -92,9 +81,10 @@ class _LisProductState extends State<LisProduct> {
         child: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                  begin: Alignment.topRight,
-                  end: Alignment.bottomLeft,
-                  colors: [Colors.red, Colors.white])),
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                
+                  colors: [Colors.blueAccent, Colors.greenAccent,Colors.redAccent])),
           child: new FutureBuilder<List>(
             future: getProduct(),
             builder: (context, snapshot) {
@@ -141,12 +131,13 @@ class ItemList extends StatelessWidget {
                   style: TextStyle(fontSize: 25.0, color: Colors.black),
                 ),
                 leading: new Icon(
-                  Icons.add_shopping_cart,
+                  Icons.delete_forever,
                   size: 50.0,
-                  color: Colors.green,
+                  color: Colors.redAccent,
                 ),
+                 trailing: Icon(Icons.keyboard_arrow_right),
                 subtitle: new Text(
-                  "Precio →  ${list[i]['precio']}",
+                  "Precio \$ ${list[i]['precio']}",
                   /*  list[i]['precio'],  */
                   style: TextStyle(fontSize: 20.0, color: Colors.grey),
                 ),

@@ -104,7 +104,7 @@ class _DetalProductState extends State<DetalProduct> {
                   ),
                   Divider(),
                   new Text(
-                    "Categoria : ${widget.listPrd[widget.indexProd]['nom_catg']}",
+                    "Categoria : ${widget.listPrd[widget.indexProd]['id_catg_producto']}",
                     style: new TextStyle(fontSize: 18.0, color: Colors.grey),
                   ),
                   Divider(),
@@ -114,7 +114,7 @@ class _DetalProductState extends State<DetalProduct> {
                   ),
                   Divider(),
                     new Text(
-                    "Foto : ${widget.listPrd[widget.indexProd]['imagen']}",
+                    "Foto : ${widget.listPrd[widget.indexProd]['img']}",
                     style: new TextStyle(fontSize: 18.0, color: Colors.grey),
                   ),
                   Divider(),
@@ -127,7 +127,7 @@ class _DetalProductState extends State<DetalProduct> {
                   new Row(
                     mainAxisSize: MainAxisSize.min,
                     children: <Widget>[
-                      new RaisedButton(
+                      /* new RaisedButton(
                         child: new Text("EDITAR"),
                         color: Colors.blueAccent,
                         shape: new RoundedRectangleBorder(
@@ -139,20 +139,17 @@ class _DetalProductState extends State<DetalProduct> {
                             index: widget.indexProd,
                           ),
                         )),
-                      ),
-                    /*  Container(
-                         child: _image == null ? new Text('NO hay image')
-                         : new Image.file(_image),
-                      
-                      
-                      
-                      ),*/
+                      ), */
+                  
                       VerticalDivider(),
-                      new RaisedButton(
-                        child: new Text("ELIMINAR"),
+                      new MaterialButton(
+                        height: 40,
+                        minWidth: 200,
+                        
+                        child: new Text("ELIMINAR",style: TextStyle(color: Colors.white),),
                         color: Colors.redAccent,
                         shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(30.0)),
+                            borderRadius: new BorderRadius.circular(10.0)),
                         onPressed: () => confirm(),
                       ),
                       /*   VerticalDivider(),

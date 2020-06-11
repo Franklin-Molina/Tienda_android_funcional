@@ -15,6 +15,38 @@ class AdProductt extends StatefulWidget {
 }
 
 class _AdProducttState extends State<AdProductt> {
+
+
+/*    ------------------------------ */
+
+void initState() {
+    super.initState();
+    getCateg();
+  }
+    List datos;
+  Future<Null> getCateg() async {
+    final response = await http.get(
+      "http://192.168.0.106/tienda/pt.php",
+    );
+    setState(() {
+      datos = json.decode(response.body);
+    });
+
+    mostrarcategoria();
+  }
+  String _dropdownValue ;
+
+  Map<String, String> liscatgmp = Map();
+  void mostrarcategoria() {
+    for (var i = 0; i < datos.length; i++) {
+      liscatgmp[datos[i]['id']] ="[" +datos[i]["id"]+"]"+ "→ "+ datos[i]['nombre'];
+    }
+    _dropdownValue = liscatgmp[datos[0]['id']];
+  }
+
+/* ---------------------------------- */
+
+
   File _image;
   var _formKey = GlobalKey<FormState>();
   TextEditingController nombreimg = new TextEditingController();
@@ -105,7 +137,7 @@ class _AdProducttState extends State<AdProductt> {
                 ),
                 onPressed: () {
                   Navigator.of(context).pushNamedAndRemoveUntil(
-                      '/pages/list_product', (Route<dynamic> route) => false);
+                     '/allproduct/ListProducto', (Route<dynamic> route) => false);
                 }),
           ],
         ),
@@ -117,6 +149,32 @@ class _AdProducttState extends State<AdProductt> {
                     child: ListView(children: <Widget>[
                       new Column(
                         children: <Widget>[
+                            Center(
+                            child: _image == null
+                                ? new Text('Selecione una imagen')
+                                : new Image.file(_image),
+                          ),
+                          Container(
+                            padding: EdgeInsets.fromLTRB(75, 0, 10, 10),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                RaisedButton(
+                                  child: Icon(Icons.image,
+                                  color: Colors.pink,
+                                  ),
+                                  onPressed: getImageGallery,
+                                ),
+                                VerticalDivider(),
+                                RaisedButton(
+                                  child: Icon(Icons.camera,color: Colors.pink,),
+                                  onPressed: getImageCamera,
+                                ),
+                              ],
+                            ),
+                          ),
+
+
                           new ListTile(
                             leading: const Icon(Icons.rate_review,
                                 color: Colors.black),
@@ -163,6 +221,25 @@ class _AdProducttState extends State<AdProductt> {
                               ),
                             ),
                           ),
+                          Divider(),
+                          new Text('Busque su categoria y luego escriba el numero de ella'),
+                          Divider(),
+                                new Container(
+                          child: DropdownButton<String>(
+          value: _dropdownValue,
+          onChanged: (String newValue) {
+            setState(() {
+              _dropdownValue = newValue;
+            });
+          },
+          items: liscatgmp.values.map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+        )
+                        ),
                           new ListTile(
                             leading:
                                 const Icon(Icons.category, color: Colors.black),
@@ -176,9 +253,11 @@ class _AdProducttState extends State<AdProductt> {
                                 hintText: "Categoria",
                                 labelText: "Categoria",
                               ),
+                               keyboardType: TextInputType.numberWithOptions(
+                                  decimal: true),
                             ),
                           ),
-                        /*  new Container(
+                     /*     new Container(
                             padding: EdgeInsets.fromLTRB(18, 0, 10, 10),
                               child: DropdownButtonFormField(
                         
@@ -190,32 +269,16 @@ class _AdProducttState extends State<AdProductt> {
                           ),
                         ),
                       ),
-                          ),*/
+                          ), */
+
+                          
+                  
+
+
+
                           Divider(),
-                          Center(
-                            child: _image == null
-                                ? new Text('Selecione una imagen')
-                                : new Image.file(_image),
-                          ),
-                          Container(
-                            padding: EdgeInsets.fromLTRB(75, 0, 10, 10),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                RaisedButton(
-                                  child: Icon(Icons.image,
-                                  color: Colors.pink,
-                                  ),
-                                  onPressed: getImageGallery,
-                                ),
-                                VerticalDivider(),
-                                RaisedButton(
-                                  child: Icon(Icons.camera,color: Colors.pink,),
-                                  onPressed: getImageCamera,
-                                ),
-                              ],
-                            ),
-                          ),
+
+                        
                           MaterialButton(
                             height: 40.0,
                             minWidth: 600.0,
