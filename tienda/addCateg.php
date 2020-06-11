@@ -1,44 +1,22 @@
 <?php
-
-    
-	require_once "conexion.php";
+    require_once "conexion.php";
 	$conexion=conexion();
    
-
-	
+/* 
+    $registercategoria = $_POST['nombre']; */
     $categoria = $_POST['nombre'];
-    
-    if(buscaRepetido($categoria,$conexion)==1){
-      print(json_encode("La categoria ya existe"));
-       
+
+    $validarcategorias = $conexion -> query("SELECT * FROM categoria WHERE nombre = '$categoria' ");
+    $resultado = array();
+
+    if(mysqli_num_rows($validarcategorias) > 0)
+    {
+        while($extraerdatos = $validarcategorias -> fetch_assoc()){
+            $resultado[] = $extraerdatos;
+        }   
     }else{
-        $sql="INSERT INTO categoria (nombre)VALUES ('".$categoria."')";
-        echo $result=mysqli_query($conexion,$sql);
-        
-        if($result= true){
-            echo'agregada con exito';
-        }else{
-            echo 'fallo';
-        }
+        $conexion->query("INSERT INTO categoria(nombre) VALUES('$categoria')");
     }
-   
     
-
-   //Funcion para validacion de datos repetidos
-   function buscaRepetido($categoria,$conexion){
-    $sql="SELECT * from categoria  where nombre='$categoria'";
-    $result=mysqli_query($conexion,$sql);
-
-    if(mysqli_num_rows($result) > 0){
-        return 1;
-    }else{
-        return 0;
-    }
-}
-  
-    
-
-
-   
-
+    echo json_encode($resultado);
 ?>

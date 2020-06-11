@@ -19,17 +19,94 @@ class _AddCatgState extends State<AddCatg> {
   
 
     String res = '';
-  void addCateg() {
-    
-    var url = "http://192.168.0.106/tienda/addCateg.php";
-
-    http.post(url, body: {
+ 
+  Future <List> _guardarcat(BuildContext context) async{
+    final regitrarcat = await http.post("http://192.168.0.106/tienda/addCateg.php",body: {
       "nombre": controllerCategoria.text,
     });
 
+    var catregistradas = json.decode(regitrarcat.body);
 
-
+    if(catregistradas.length != 0)
+    {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16)
+          ),
+          elevation:0,
+         /*  backgroundColor: Colors.red[200], */
+          title: Text('ERROR'),
+         content: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.stretch,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      Text(
+                                        "Categoria existente!! ",
+                                        style: titulo,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                      Divider(),
+                                      Icon(
+                                        Icons.error_outline,
+                                        color: Colors.red,
+                                        size: 73.0,
+                                      )
+                                    ],
+                                  ),
+          
+          actions: <Widget>[
+          
+            FlatButton(
+              child: Text(
+                'Ok',
+                style: TextStyle(color: Colors.black)
+              
+              ),
+              onPressed: (){
+                Navigator.pop(context,);
+              },
+            )
+          ],
+        ),
+      );
+    }else{
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16)
+          ),
+          elevation:0,
+          backgroundColor: Colors.lightBlueAccent,
+          title: Text('!! Succesfull !'),
+          content: Text('esta categoria se registro con exito!'),
+          actions: <Widget>[
+            FlatButton(
+              child: Text(
+                'Ok',
+                style: TextStyle(color: Colors.black, fontWeight: FontWeight.w300)
+              ),
+              onPressed: (){
+              Navigator.of(context)
+                                            .pushNamedAndRemoveUntil(
+                                                '/pages/listCateg',
+                                                (Route<dynamic> route) =>
+                                                    false);
+              },
+            )
+          ],
+        ),
+      );
+    }  
   }
+
+
+  ///
 
 
 
@@ -127,63 +204,8 @@ class _AddCatgState extends State<AddCatg> {
                       onPressed: () {
                         if (_formKey.currentState.validate()) {
 
-                         /*  return addCateg();
-                            Navigator.of(context)
-                                            .pushNamedAndRemoveUntil(
-                                                '/pages/listCateg',
-                                                (Route<dynamic> route) =>
-                                                    false);
-                                        return addCateg();  */
-                           showDialog(
-                              context: context,
-                              barrierDismissible: false,
-                              builder: (context) {
-                                return AlertDialog(
-                                  backgroundColor: Colors.cyanAccent[100],
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(20.0)),
-                                  title: Text(
-                                    "¡¡ Successfull !!",
-                                    style: TextStyle(color: Colors.green),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  content: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      Text(
-                                        "Categoria creada con exito!! ",
-                                        style: titulo,
-                                        textAlign: TextAlign.center,
-                                      ),
-                                      Divider(),
-                                      Icon(
-                                        Icons.category,
-                                        color: Colors.green,
-                                        size: 73.0,
-                                      )
-                                    ],
-                                  ),
-                                  actions: <Widget>[
-                                    FlatButton(
-                                      child: Text(
-                                        "Aceptar",
-                                        style: titulo,
-                                      ),
-                                      onPressed: () {
-                                        Navigator.of(context)
-                                            .pushNamedAndRemoveUntil(
-                                                '/pages/listCateg',
-                                                (Route<dynamic> route) =>
-                                                    false);
-                                        return addCateg();
-                                      },
-                                    ),
-                                  ],
-                                );
-                              }); 
+                         _guardarcat(context);
+                          
                         } else {
                           print('Datos vacios');
                         }
