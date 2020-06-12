@@ -125,7 +125,7 @@ class _IntroScreenState extends State<IntroScreen> {
 
       // Dot indicator
       colorDot: Colors.white,
-      colorActiveDot: Colors.orangeAccent[200],
+      colorActiveDot: Colors.redAccent[200],
       sizeDot: 13.0,
 
       // Show or hide status bar

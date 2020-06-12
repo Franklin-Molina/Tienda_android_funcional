@@ -26,6 +26,7 @@ class _ListadoState extends State<Listado> {
       return dataproductos
           .map((spacecraft) => new Datos.fromJson(spacecraft))
           .toList();
+          
     } else
       throw Exception(
           'We were not able to successfully download the json data.');
@@ -75,14 +76,9 @@ class _ListadoState extends State<Listado> {
       ),
       body: Container(
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-                begin: Alignment.topRight,
-                end: Alignment.bottomLeft,
-                colors: [
-              Colors.cyanAccent,
-              Colors.white,
-              Colors.blueAccent[400]
-            ])),
+            image: new DecorationImage(
+                  image: new AssetImage("assets/images/pgif.gif"),
+                  fit: BoxFit.cover),),
         child: new RefreshIndicator(
           child: new FutureBuilder<List<Datos>>(
             future: downloadJSON(),

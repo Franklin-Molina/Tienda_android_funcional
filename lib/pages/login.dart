@@ -252,15 +252,18 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 Container(
-                  // padding: EdgeInsets.fromLTRB(75, 0, 10, 10),
+                  padding: EdgeInsets.fromLTRB(75, 0, 10, 10),
 
-                  child: Column(
+                  child: Row(
                     children: <Widget>[
+                      
                       MaterialButton(
+                        
                         shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(10.0)),
-                        height: 30,
-                        minWidth: 200,
+                          
+                            borderRadius: new BorderRadius.circular(20.0)),
+                        height: 45,
+                        minWidth: 100,
                         child: new Text('Ingresar'),
                         color: Colors.tealAccent,
                         onPressed: () {
@@ -268,11 +271,14 @@ class _LoginPageState extends State<LoginPage> {
                           //   Navigator.pop(context);
                         },
                       ),
+                      
+                      Padding(padding: EdgeInsets.fromLTRB(10, 0, 20, 0)),
+
                       new MaterialButton(
                         shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(10.0)),
-                        height: 30,
-                        minWidth: 200,
+                        borderRadius: new BorderRadius.circular(20.0)),
+                        height: 45,
+                        minWidth: 100,
                         child: new Text(
                           'Crear cuenta',
                           style: TextStyle(color: Colors.white),

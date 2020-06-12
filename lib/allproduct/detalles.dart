@@ -68,70 +68,76 @@ class _SecondScreenState extends State<SecondScreen> {
         
         backgroundColor: Colors.black,
       ),
-      body: new SingleChildScrollView(
-        
-        child: new Center(
-          child: Column(
-            children: <Widget>[
+      body: Container(
+       
+        child: new SingleChildScrollView(
+          
+          child: Container(
             
-              Padding(
-                //`widget` is the current configuration. A State object's configuration
-                //is the corresponding StatefulWidget instance.
-                child: Image.network('${widget.value.imgen}'),
-                padding: EdgeInsets.all(12.0),
+            child: new Center(
+              child: Column(
+                children: <Widget>[
+                
+                  Padding(
+                    //`widget` is the current configuration. A State object's configuration
+                    //is the corresponding StatefulWidget instance.
+                    child: Image.network('${widget.value.imgen}'),
+                    padding: EdgeInsets.all(12.0),
+                  ),
+                  Padding(
+                    child: new Text(
+                      'Nombre : ${widget.value.nombre}',
+                      style: new TextStyle(fontWeight: FontWeight.w400),
+                      textAlign: TextAlign.left,
+                    ),
+                    padding: EdgeInsets.all(20.0),
+                  ),
+                  Padding(
+                    child: new Text(
+                      '\$ : ${widget.value.precio}',
+                      style: new TextStyle(fontWeight: FontWeight.w400),
+                      textAlign: TextAlign.left,
+                    ),
+                    padding: EdgeInsets.all(20.0),
+                  ),
+                  Padding(
+                    child: new Text(
+                      'Descripcion : ${widget.value.descripcion}',
+                      style: new TextStyle(fontWeight: FontWeight.w400),
+                      textAlign: TextAlign.left,
+                    ),
+                    padding: EdgeInsets.all(20.0),
+                  ),
+                  Padding(
+                    child: new Text(
+                      'Categoria : ${widget.value.categoria}',
+                      style: new TextStyle(fontWeight: FontWeight.w400),
+                      textAlign: TextAlign.left,
+                    ),
+                    padding: EdgeInsets.all(20.0),
+                  ),
+                  Divider(),
+                  new Text('Lista de Categorias '),
+                  new Container(
+                      child: DropdownButton<String>(
+              value: _dropdownValue,
+              onChanged: (String newValue) {
+                setState(() {
+                  _dropdownValue = newValue;
+                });
+              },
+              items: liscatgmp.values.map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
+                  ),
+                 
+         ],
               ),
-              Padding(
-                child: new Text(
-                  'Nombre : ${widget.value.nombre}',
-                  style: new TextStyle(fontWeight: FontWeight.w400),
-                  textAlign: TextAlign.left,
-                ),
-                padding: EdgeInsets.all(20.0),
-              ),
-              Padding(
-                child: new Text(
-                  '\$ : ${widget.value.precio}',
-                  style: new TextStyle(fontWeight: FontWeight.w400),
-                  textAlign: TextAlign.left,
-                ),
-                padding: EdgeInsets.all(20.0),
-              ),
-              Padding(
-                child: new Text(
-                  'Descripcion : ${widget.value.descripcion}',
-                  style: new TextStyle(fontWeight: FontWeight.w400),
-                  textAlign: TextAlign.left,
-                ),
-                padding: EdgeInsets.all(20.0),
-              ),
-              Padding(
-                child: new Text(
-                  'Categoria : ${widget.value.categoria}',
-                  style: new TextStyle(fontWeight: FontWeight.w400),
-                  textAlign: TextAlign.left,
-                ),
-                padding: EdgeInsets.all(20.0),
-              ),
-              Divider(),
-              new Text('Lista de Categorias '),
-              new Container(
-                  child: DropdownButton<String>(
-          value: _dropdownValue,
-          onChanged: (String newValue) {
-            setState(() {
-              _dropdownValue = newValue;
-            });
-          },
-          items: liscatgmp.values.map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),
-        ),
-              ),
-             
-       ],
+            ),
           ),
         ),
       ),

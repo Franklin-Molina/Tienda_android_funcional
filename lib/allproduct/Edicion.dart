@@ -8,11 +8,13 @@ class CustomListView extends StatelessWidget {
   CustomListView(this.dataproductos);
 
   Widget build(context) {
-    return ListView.builder(
-      itemCount: dataproductos.length,
-      itemBuilder: (context, int currentIndex) {
-        return createViewItem(dataproductos[currentIndex], context);
-      },
+    return Container(
+      child: ListView.builder(
+        itemCount: dataproductos.length,
+        itemBuilder: (context, int currentIndex) {
+          return createViewItem(dataproductos[currentIndex], context);
+        },
+      ),
     );
   }
 
@@ -21,8 +23,15 @@ class CustomListView extends StatelessWidget {
         title: new Card(
           elevation: 5.0,
           child: new Container(
-            decoration:
-                BoxDecoration(border: Border.all(color: Colors.redAccent)),
+            decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [
+              Colors.cyanAccent,
+              Colors.white,
+              Colors.blueAccent[400]
+            ])),
             padding: EdgeInsets.all(20.0),
             margin: EdgeInsets.all(20.0),
             child: Column(
