@@ -1,6 +1,6 @@
 # PROYECTO ANDROID - Tipo Mercado libre
 
-A new Flutter project.
+Flutter project.
 
 ## Integrantes
 
